@@ -265,7 +265,8 @@ return <span id="ek2" style={{
         fontSize: 50,
         fontWeight: 'bold',
         cursor: 'move',
-        position: 'relative'
+        position: 'relative',
+        zIndex: "20"
       }}>
       ♞</span>
 
@@ -537,8 +538,7 @@ var canMoveKnight = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return ((dx) === 1 && (dy) === -2) 
 }
 
 var moveKnight2 = function (toX, toY) {
@@ -943,12 +943,12 @@ var Knight = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+       
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♘
+        ♞
       </span>
     );
   }
@@ -981,12 +981,12 @@ var Knight2 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♘
+        ♞
       </span>
     );
   }
@@ -1016,12 +1016,12 @@ var Bishop1 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♗
+        ♝
       </span>
     );
   }
@@ -1053,12 +1053,12 @@ var Bishop2 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♗
+        ♝
       </span>
     );
   }
@@ -1088,12 +1088,12 @@ var Pawn1 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+       
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1121,12 +1121,11 @@ var Pawn2 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1155,12 +1154,12 @@ var Pawn3 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1188,12 +1187,12 @@ var Pawn4 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+       
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1223,12 +1222,12 @@ var Pawn5 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1256,12 +1255,12 @@ var Pawn6 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1290,12 +1289,12 @@ var Pawn7 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1324,12 +1323,12 @@ var Pawn8 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♙
+        ♟
       </span>
     );
   }
@@ -1359,12 +1358,12 @@ var Castle1 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♖
+        ♜
       </span>
     );
   }
@@ -1393,12 +1392,12 @@ var Castle2 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+      
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♖
+        ♜
       </span>
     );
   }
@@ -1429,12 +1428,12 @@ var Queen = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+       
         cursor: 'move',
         position: 'relative',
         zIndex: 3
       }}>
-        ♕
+        ♛
       </span>
     );
   }
@@ -1462,7 +1461,7 @@ var King = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-        fontWeight: 'bold',
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
@@ -1861,11 +1860,13 @@ function collectme(connect, monitor) {
         <Square black={black}>
           {this.props.children}
         </Square>
-        {x == 4 && y == 6 && count == 0 && this.renderOverlay('blue')}
+        {x == 4 && y == 6 && count == -1 && this.renderOverlay('blue')}
         {x == 6 && y == 7 && count == 1 && this.renderOverlay('blue')}
-        {isOver && !canDrop && this.renderOverlay('red')}
-        {!isOver && canDrop && this.renderOverlay('yellow')}
-        {isOver && canDrop && this.renderOverlay('green')}
+        {x == 3 && y == 6 && count == 2 && this.renderOverlay('blue')}
+        {x == 5 && y == 5 && count == 5 && this.renderOverlay('blue')}
+        {x == 1 && y == 7 && count == 6 && this.renderOverlay('blue')}
+        {!isOver && canDrop && this.renderOverlay('blue')}
+        {isOver && canDrop && this.renderOverlay('blue')}
       </div>
     );
   }
@@ -2648,18 +2649,18 @@ else {
 else if(x == pawn5X && y == pawn5Y && P5kill == 0){
 
 
-  let p = Xarray.some(function(c) {
-return c[0] == pawn5X && c[1] == pawn5Y
-    })
+//   let p = Xarray.some(function(c) {
+// return c[0] == pawn5X && c[1] == pawn5Y
+//     })
 
-if(p === false){
+// if(p === false){
 
   return <P5/>
-}
-else {
+// }
+// else {
 
-  P5kill++;
-}
+//   P5kill++;
+// }
 }
 
 else if(x == pawn6X && y == pawn6Y){
@@ -3060,18 +3061,18 @@ else {
 
 else if(x == pawn5X && y == pawn5Y && P5kill == 0){
 
-// let p = Xarray.some(function(c) {
-// return c[0] == pawn5X && c[1] == pawn5Y
-//     })
+let p = Xarray.some(function(c) {
+return c[0] == pawn5X && c[1] == pawn5Y
+    })
 
-// if(p === false){
+if(p === false){
 
   return <P5/>
-// }
-// else {
+}
+else {
 
-//   P5kill++;
-// }
+  P5kill++;
+}
   
 
 
@@ -3174,24 +3175,30 @@ var squares = [];
      
        else if (count == 3) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB4));
+              squares.push(this.renderSquare(i,BS2));
 
       }
 
      
-  else if (count == 4) {
+  else if (count == 5) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB5));
+              squares.push(this.renderSquare(i,BS2));
 
       }
 
 
 
-     else {
+     else if (count == 6) {
+
+      squares.push(this.renderSquare(i,BS1));
+
+     }
+
+    else {
 
       squares.push(this.renderSquare(i,PB5));
 
-     }
+    }
 
     
 
@@ -3363,13 +3370,13 @@ observe(function (knightPosition2) {
   
 // });
 
-function pawnDown(element) {
+function pawnDown(element, distance) {
 
 $(element).animate(
                 {
                         
                         
-                        "top" : "125px"
+                        "top" : distance
                 }, 
                 1000
         );
@@ -3400,14 +3407,14 @@ $(element).animate(
 
 
 
-function KnightUpTwoLeft(element) {
+function KnightMove(element,top,left) {
 
 $(element).animate(
                 {
                         
                         
-                        "top" : "125px",
-                        "left": "62.5px"
+                        "top" : top,
+                        "left": left
                 }, 
                 1000
         );
@@ -3423,13 +3430,13 @@ function animate () {
 
   if(count == 0){
 
-    pawnDown("#ep3")
+    pawnDown("#ep3", "125")
     count++;
   }
 
 else if(count == 2) {
   // KnightUpTwoLeft("#ek1")
-KnightUpTwoLeft("#ek1")
+pawnDown("#ep4", "62.5")
 count++;
 }
 
@@ -3440,24 +3447,49 @@ else if(count == 4){
 }
 
 else if(count == 5){
- canMovePawn5 = function (toX, toY) {
-  const x = pawnPosition5[0];
-  const y = pawnPosition5[1];
+ canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
   const dx = toX - x;
   const dy = toY - y;
 
-  return (dy === -1 && dx === -1);
+  return ((dx) === -2 && (dy) === -1) 
+        
 }
 }
 else if(count == 6){
  
 
-KnightUpTwoLeft("#ek1")
+KnightMove("#ek2", "125" , "-62.5")
 count++
 
 
 
 }
+
+else if(count == 7){
+
+ canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === -2 && (dy) === -1) 
+        
+}
+
+
+}
+
+else if(count == 8){
+
+pawnDown("#ep7", "62.5")
+count++;
+
+}
+
+
 
 
 
