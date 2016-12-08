@@ -3,7 +3,7 @@ var WebpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('./../webpack.config.js');
 var path = require('path');
 var fs = require('fs');
-var stonewallPath = path.resolve(__dirname, '..', 'app', 'stonewall.js');
+var frenchPath = path.resolve(__dirname, '..', 'app', 'french.js');
 
 module.exports = function () {
 

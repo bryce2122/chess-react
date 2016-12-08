@@ -9,6 +9,49 @@ var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 3000;
 var publicPath = path.resolve(__dirname, 'public');
 
+var router = express.Router()
+
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+
+app.get('/piano',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/piano.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+app.get('/stonewall',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/stonewall.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+
+// app.get('/stonewall', function (req, res) {
+//   res.render('stonewall');
+// })
+
+app.get('/french-defense',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/french.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+app.get('/caro-kann',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/caro.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+app.get('/sicilian-dragon',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/index.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+
+
+
+app.get('/myRoute', function(request, response) {
+    response.sendFile( 'index.html'); //Since we have configured to use public folder for serving static files. We don't need to append public to the html file path.
+});
+
+
 app.use(express.static(publicPath));
 
 // We only want to run the workflow when not in production

@@ -270,7 +270,8 @@ return <span id="eb2" style={{
         fontSize: 50,
         fontWeight: 'bold',
         cursor: 'move',
-        position: 'relative'
+        position: 'relative',
+        zIndex: '20'
       }}>
       ♝</span>
 
@@ -632,8 +633,8 @@ var canMoveBishop2 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return ((dx) === -3 && (dy) === -3) 
+         
 }
 
 var movePawn1 = function (toX, toY) {
@@ -678,8 +679,8 @@ var canMovePawn3 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return ((dx) === 0 && (dy) === -1) 
+         
 }
 
 
@@ -710,7 +711,7 @@ var canMovePawn5 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (dy === -1 && dx === 0);
+  return (dy === -2 && dx === 0);
 }
 
 var movePawn6 = function (toX, toY) {
@@ -1906,9 +1907,9 @@ function collectme(connect, monitor) {
         </Square>
         {x == 4 && y == 6 && count == -1 && this.renderOverlay('blue')}
         {x == 6 && y == 7 && count == 0 && this.renderOverlay('blue')}
-        {x == 3 && y == 6 && count == 2 && this.renderOverlay('blue')}
-        {x == 5 && y == 5 && count == 5 && this.renderOverlay('blue')}
-        {x == 1 && y == 7 && count == 6 && this.renderOverlay('blue')}
+        {x == 5 && y == 7 && count == 3 && this.renderOverlay('blue')}
+        {x == 2 && y == 6 && count == 4 && this.renderOverlay('blue')}
+        {x == 2 && y == 6 && count == 5 && this.renderOverlay('blue')}
         {!isOver && canDrop && this.renderOverlay('blue')}
         {isOver && canDrop && this.renderOverlay('blue')}
       </div>
@@ -2572,11 +2573,16 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
 try{
 console.log("BBBBBBB")
-console.log($("#ep").offset().left)
-console.log($("#ep").offset().top)
+console.log(count)
 
-console.log(window.innerWidth)
-console.log(window.outerWidth)
+// console.log($("#ec2").position().left)
+// console.log($("#ec2").position().top)
+// console.log($("#ek2").position().left)
+// console.log($("#ek2").position().top)
+// console.log($("#ep8").position().left)
+// console.log($("#ep8").position().top)
+// console.log(window.innerWidth)
+// console.log(window.outerWidth)
 }
 
 catch(e){
@@ -3208,7 +3214,13 @@ var squares = [];
     for (let i = 0; i < 64; i++) {
       
 
-      if(count ==  0) {
+ if(count == -1){
+
+
+squares.push(this.renderSquare(i,PB5));
+      
+}
+      else if(count ==  0) {
         // console.log("the count is 0 push bs1")
         squares.push(this.renderSquare(i,BS2));}
 
@@ -3228,7 +3240,7 @@ var squares = [];
      
       else if (count == 3) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              squares.push(this.renderSquare(i,BishopBoard2));
 
       }
       
@@ -3237,7 +3249,7 @@ var squares = [];
       
       else if (count == 4) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              squares.push(this.renderSquare(i,PB3));
 
       }
   
@@ -3245,7 +3257,7 @@ var squares = [];
 
   else if (count == 5) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              squares.push(this.renderSquare(i,PB3));
 
       }
 
@@ -3465,7 +3477,22 @@ $(element).animate(
 
 
 
+function BishopMove(element,top,left){
 
+
+$(element).animate(
+                {
+                        
+                        
+                        "top" : top,
+                        "left": left
+                }, 
+                1000
+        );
+
+
+
+}
 
 
 
@@ -3493,7 +3520,7 @@ function animate () {
 
   if(count == 0){
 
-    pawnDown("#ep3", "125")
+    pawnDown("#ep5", "125")
    
     count++;
     console.log("FUCK")
@@ -3502,7 +3529,7 @@ function animate () {
 
 else if(count == 2) {
   // KnightUpTwoLeft("#ek1")
-pawnDown("#ep4", "62.5")
+KnightMove("#ek1", "125", "62.5")
 
 
 
@@ -3515,7 +3542,7 @@ canMoveKnight2 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return ((dx) === -2 && (dy) === -1 ) 
+  return ((dx) === -1 && (dy) === -2 ) 
         
 }
 
@@ -3532,7 +3559,7 @@ else if(count == 3){
 
 
 else if(count == 4){
- pawnCaptureRight("#ep3")
+ BishopMove("#eb2","187.5","-187.5")
  count++
  
 
@@ -3541,7 +3568,7 @@ else if(count == 4){
 }
 
 else if(count == 5){
- 
+
         
 
 }

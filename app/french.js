@@ -270,7 +270,8 @@ return <span id="eb2" style={{
         fontSize: 50,
         fontWeight: 'bold',
         cursor: 'move',
-        position: 'relative'
+        position: 'relative',
+        zIndex: '20'
       }}>
       ♝</span>
 
@@ -632,24 +633,31 @@ var canMoveBishop2 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return ((dx) === -3 && (dy) === -3) 
+         
 }
+
+
 
 var movePawn1 = function (toX, toY) {
   pawnPosition1 = [toX, toY];
   emitChange();
 }
 
-var canMovePawn1 = function (toX, toY) {
+
+var canMovePawn = function (toX, toY) {
   const x = pawnPosition1[0];
   const y = pawnPosition1[1];
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return (dy === -1 && dx === 0);
 }
+
+
+
+
+
 
 
 var movePawn2 = function (toX, toY) {
@@ -663,7 +671,7 @@ var canMovePawn2 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
- return (dy === -1 && dx === -1 || dy === -1 && dx === 0)
+ return (dy === -1 && dx === 1)
 }
 
 
@@ -678,8 +686,8 @@ var canMovePawn3 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-         (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  return ((dx) === 0 && (dy) === -2) 
+         
 }
 
 
@@ -882,11 +890,17 @@ var bishop2Source = {
   }
 };
 
+
 var pawn1Source = {
   beginDrag: function (props) {
     return {name: props.id};
   }
 };
+
+
+
+
+
 var pawn2Source = {
   beginDrag: function (props) {
     return {name: props.id};
@@ -1115,6 +1129,8 @@ var B2 = DragSource(b2, bishop2Source, collect)(Bishop2);
 
 
 
+
+
 var Pawn1 = React.createClass({
   propTypes: {
     connectDragSource: PropTypes.func.isRequired,
@@ -1132,7 +1148,7 @@ var Pawn1 = React.createClass({
         opacity: isDragging ? 0.5 : 1,
         color: "white",
         fontSize: 50,
-       
+        
         cursor: 'move',
         position: 'relative',
         zIndex: 3
@@ -1144,9 +1160,32 @@ var Pawn1 = React.createClass({
 });
 
 
-var p1 = "pawn1"
+var pp1 = "pawn1"
 
-var P1 = DragSource(p1, pawn1Source, collect)(Pawn1);
+var P1 = DragSource(pp1, pawn1Source, collect)(Pawn1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var Pawn2 = React.createClass({
   propTypes: {
@@ -1626,7 +1665,7 @@ var squareTargetB2 = {
 
 var squareTargetP1 = {
   canDrop: function (props) {
-    return canMovePawn1(props.x, props.y);
+    return canMovePawn(props.x, props.y);
   },
 
   drop: function (props) {
@@ -1906,9 +1945,9 @@ function collectme(connect, monitor) {
         </Square>
         {x == 4 && y == 6 && count == -1 && this.renderOverlay('blue')}
         {x == 6 && y == 7 && count == 0 && this.renderOverlay('blue')}
-        {x == 3 && y == 6 && count == 2 && this.renderOverlay('blue')}
-        {x == 5 && y == 5 && count == 5 && this.renderOverlay('blue')}
-        {x == 1 && y == 7 && count == 6 && this.renderOverlay('blue')}
+        {x == 5 && y == 7 && count == 3 && this.renderOverlay('blue')}
+        {x == 2 && y == 6 && count == 4 && this.renderOverlay('blue')}
+        {x == 2 && y == 6 && count == 5 && this.renderOverlay('blue')}
         {!isOver && canDrop && this.renderOverlay('blue')}
         {isOver && canDrop && this.renderOverlay('blue')}
       </div>
@@ -1957,7 +1996,7 @@ function collectme(connect, monitor) {
 
 var BishopBoard2 = DropTarget(b2, squareTargetB2, collectme)(BoardSquare)
     
-var PB1 =  DropTarget(p1, squareTargetP1, collectme)(BoardSquare)
+var PB1 =  DropTarget(pp1, squareTargetP1, collectme)(BoardSquare)
 var PB2 =  DropTarget(p2, squareTargetP2, collectme)(BoardSquare)
 var PB3 =  DropTarget(p3, squareTargetP3, collectme)(BoardSquare)
 var PB4 =  DropTarget(p4, squareTargetP4, collectme)(BoardSquare)
@@ -1988,9 +2027,71 @@ componentDidMount() {
 setInterval(this.checkposec1,100)
 setInterval(this.checkposek1,100)
 setInterval(this.checkposep3,100)
+setInterval(this.checkposeb2,100)
+
+},
+
+
+
+checkposeb2(){
+
+try { var eb2t = ($("#eb2").offset().top - 97) % 62.5 == 0
+var eb2l = ( $("#eb2").offset().left - ep3offsetxa) % 62.5 == 0
+    
+if(eb2offsetx != $("#eb2").offset().left && eb2t === true && eb2l === true ||
+eb2offsety != $("#eb2").offset().top && eb2t === true && eb2l === true){
+
+
+whosemove = "black"
+emitChange()
+
+    }
+
+  else {
+console.log("#$#$%#$%#$%#$%#$%GFDGDFGFDG")
+ console.log(ep2t)
+ console.log(eb2l)
+whosemove = "white"
+
+  }
+
+}
+
+
+
+
+catch(e){
+
+Eb2kill++;
+
+}
+
+
+
+
+
+
 
 
 },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 checkposep3(){
 
@@ -2572,11 +2673,16 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
 try{
 console.log("BBBBBBB")
-console.log($("#ep").offset().left)
-console.log($("#ep").offset().top)
+console.log(count)
 
-console.log(window.innerWidth)
-console.log(window.outerWidth)
+// console.log($("#ec2").position().left)
+// console.log($("#ec2").position().top)
+// console.log($("#ek2").position().left)
+// console.log($("#ek2").position().top)
+// console.log($("#ep8").position().left)
+// console.log($("#ep8").position().top)
+// console.log(window.innerWidth)
+// console.log(window.outerWidth)
 }
 
 catch(e){
@@ -2633,8 +2739,22 @@ if(pcheck.toString() != prevc.toString()){
 
   if (x === knightX && y === knightY && kkillcount == 0  ) {
   
-    return <K/>
-  }
+     var b = Xarray.some(function(c) {
+return c[0] == x && c[1] == y
+    })
+
+if(b === false){
+console.log("FSDFSFSFSFSFSDFSDF")
+
+  return <K/>
+}
+else {
+
+  kkillcount++;
+}
+
+
+}
 else if(x == knight2X && y == knight2Y) {
 
 return <K2/>
@@ -3048,8 +3168,23 @@ else if(x == ECASTLE2X && y == ECASTLE2y){
 
 else if (x === knightX && y === knightY && kkillcount == 0  ) {
   
-    return <K/>
-  }
+ 
+     var b = Xarray.some(function(c) {
+return c[0] == x && c[1] == y
+    })
+
+if(b === false){
+console.log("FSDFSFSFSFSFSDFSDF")
+ 
+ console.log(kkillcount)
+  return <K/>
+}
+else {
+
+  // kkillcount++;
+}
+  
+}
 else if(x == knight2X && y == knight2Y) {
 
 return <K2/>
@@ -3208,27 +3343,33 @@ var squares = [];
     for (let i = 0; i < 64; i++) {
       
 
-      if(count ==  0) {
+ if(count == -1){
+
+
+squares.push(this.renderSquare(i,PB5));
+      
+}
+      else if(count ==  0) {
         // console.log("the count is 0 push bs1")
-        squares.push(this.renderSquare(i,BS2));}
+        squares.push(this.renderSquare(i,PB4));}
 
         else if (count == 1) {
           // console.log("the count is 1 push bs2")
-          squares.push(this.renderSquare(i,BS2));
+          squares.push(this.renderSquare(i,PB4));
 
         
         }
     
       else if (count == 2) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB4));
+              squares.push(this.renderSquare(i,BS1));
 
       }
       
      
       else if (count == 3) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              squares.push(this.renderSquare(i,BS1));
 
       }
       
@@ -3237,7 +3378,7 @@ var squares = [];
       
       else if (count == 4) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              squares.push(this.renderSquare(i,PB5));
 
       }
   
@@ -3245,21 +3386,35 @@ var squares = [];
 
   else if (count == 5) {
               // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BS2));
+              squares.push(this.renderSquare(i,PB5));
 
       }
 
 
 
-     else if (count == 6) {
+     else if (count == 7) {
 
-      squares.push(this.renderSquare(i,BS1));
+      squares.push(this.renderSquare(i,PB1));
+
+     }
+ else if (count == 8) {
+
+      squares.push(this.renderSquare(i,PB1));
+
+     }
+   
+ else if (count == 9) {
+
+      squares.push(this.renderSquare(i,PB2));
 
      }
 
+
+
+
     else {
 
-      squares.push(this.renderSquare(i,PB5));
+      squares.push(this.renderSquare(i,PB1));
 
     }
 
@@ -3465,7 +3620,22 @@ $(element).animate(
 
 
 
+function BishopMove(element,top,left){
 
+
+$(element).animate(
+                {
+                        
+                        
+                        "top" : top,
+                        "left": left
+                }, 
+                1000
+        );
+
+
+
+}
 
 
 
@@ -3493,7 +3663,7 @@ function animate () {
 
   if(count == 0){
 
-    pawnDown("#ep3", "125")
+    pawnDown("#ep5", "62.5")
    
     count++;
     console.log("FUCK")
@@ -3502,7 +3672,7 @@ function animate () {
 
 else if(count == 2) {
   // KnightUpTwoLeft("#ek1")
-pawnDown("#ep4", "62.5")
+KnightMove("#ep4", "125")
 
 
 
@@ -3515,7 +3685,7 @@ canMoveKnight2 = function (toX, toY) {
   const dx = toX - x;
   const dy = toY - y;
 
-  return ((dx) === -2 && (dy) === -1 ) 
+  return ((dx) === -1 && (dy) === -2 ) 
         
 }
 
@@ -3532,7 +3702,7 @@ else if(count == 3){
 
 
 else if(count == 4){
- pawnCaptureRight("#ep3")
+ BishopMove("#eb2","250","-250")
  count++
  
 
@@ -3541,24 +3711,24 @@ else if(count == 4){
 }
 
 else if(count == 5){
- 
+
         
 
 }
 else if(count == 6){
  
 
-KnightMove("#ek2", "125" , "-62.5")
+pawnDown("#ep3", "125" )
 count++
 
 
 
 }
 
-else if(count == 10){
+else if(count == 8){
 
-
-
+BishopMove("#eb2", "62.5", "62.5")
+count++;
 
 }
 
