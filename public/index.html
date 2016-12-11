@@ -6,8 +6,36 @@
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     
+ 
+
+
+
+
+
+
+
+
     <link href="styles.css" rel="stylesheet" type="text/css">
 
 
@@ -15,8 +43,46 @@
 
 </head>
 <body>
-  <div id="container"></div>
-  <script src="/build/bundle.js"></script>
+  
+
+<div class="panel panel-default">
+  <div class="panel-heading" id="m">Chesstart</div>
+  <div class="panel-body" id="basic">Learning Chess Openings Interactively</div> 
+
+</div>
+ 
+
+  <div id="train" class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="checkbox" checked autocomplete="off"> Train Mode
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox" autocomplete="off"> Test Mode
+  </label>
+ 
+</div>
+
+  
+
+
+
+
+
+
+
+
+  <div class="dropdown open" id="dd">
+  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   OPENINGS
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+     <a class="dropdown-item" href="/">Home</a>
+    <a class="dropdown-item" href="/sicilian-dragon">Sicilian</a>
+    <a class="dropdown-item" href="/stonewall">Stonewall-Attack</a>
+    <a class="dropdown-item" href="/french-defense">French-Defense</a>
+  </div>
+</div>
+
 
 </body>
 </html>

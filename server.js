@@ -40,7 +40,7 @@ app.get('/caro-kann',function(req,res){
 });
 
 app.get('/sicilian-dragon',function(req,res){
-  res.sendFile(path.join(__dirname+'/public/index.html'));
+  res.sendFile(path.join(__dirname+'/public/sicilian.html'));
   //__dirname : It will resolve to your project folder.
 });
 

@@ -6,6 +6,25 @@
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     
  
@@ -26,13 +45,56 @@
 <body>
   
 
-
+<div class="panel panel-default">
+  <div class="panel-heading" id="p">The Stonewall Attack</div>
  
+</div>
+ <div class="dropdown open" id="drop">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   OPENINGS
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+     <a class="dropdown-item" href="/">Home</a>
+    <a class="dropdown-item" href="/sicilian-dragon">Sicilian</a>
+    <a class="dropdown-item" href="/french-defense">French-Defense</a>
+    <a class="dropdown-item" href="/piano">Giuoco Piano</a>
+  </div>
+</div>
 
 
 
   <div id="container"></div>
   <script src="/build/stonewall.js"></script>
+
+
+<div class="container">
+ <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="box">
+                        <div class="box-content">
+                            <h1 class="tag-title">Introduction</h1>
+                            <hr />
+                            <p>As the name implies, the Stonewall setup is a solid formation which is hard to overrun by force. If Black fails to react energetically to the Stonewall setup, White may launch a lethal attack on the black king, typically by playing the knight from f3 to e5/ Traditionally, chess computers have been vulnerable to the Stonewall because the positions are usually without clear tactical lines. White simply prepares for an assault by bringing pieces to aggressive posts, without making immediate tactical threats. By the time the computer realizes that its king is under attack, it is often too late. 
+</p>
+                            <br />
+                            <a href="https://en.wikipedia.org/wiki/Stonewall_Attack" class="btn btn-block btn-primary">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+               </div>
+              
+
+
+
+
+  <a href="/stonewall" id="b" class="btn btn-info" role="button">Reload</a>
+
+
+
+
+
+
+
 
 </body>
 </html>

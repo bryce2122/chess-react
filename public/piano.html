@@ -6,6 +6,25 @@
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     
  
@@ -26,13 +45,59 @@
 <body>
   
 
-
+<div class="panel panel-default">
+  <div class="panel-heading" id="p">Giuoco Piano</div>
  
+</div>
+ <div class="dropdown open" id="drop">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   OPENINGS
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+     <a class="dropdown-item" href="/">Home</a>
+    <a class="dropdown-item" href="/sicilian-dragon">Sicilian</a>
+    <a class="dropdown-item" href="/stonewall">Stonewall-Attack</a>
+    <a class="dropdown-item" href="/french-defense">French-Defense</a>
+  </div>
+</div>
 
 
 
   <div id="container"></div>
   <script src="/build/piano.js"></script>
+
+
+<div class="container">
+ <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="box">
+                        <div class="box-content">
+                            <h1 class="tag-title">Introduction</h1>
+                            <hr />
+                            <p>The Giuoco Piano is one of the oldest recorded openings. The Portuguese Damiano played it at the beginning of the 16th century and the Italian Greco played it at the beginning of the 17th century. The opening is also known as the Italian Game (Pinski 2005:5), although that name is also used to describe all games starting with 1.e4 e5 2.Nf3 Nc6 3.Bc4, regardless of Black's third move (Gufeld & Stetsko 1996:5). The Giuoco Piano was popular through the 19th century, but modern refinements in defensive play have led most chess masters towards openings like the Ruy Lopez that offer White greater chances for long term initiative.
+</p>
+                            <br />
+                            <a href="https://en.wikipedia.org/wiki/Giuoco_Piano">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+               </div>
+              
+
+
+
+
+
+
+
+
+
+
+<a href="/piano" id="b" class="btn btn-info" role="button">Reload</a>
+
+
+
+
 
 </body>
 </html>

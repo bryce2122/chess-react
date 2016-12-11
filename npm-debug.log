@@ -26,7 +26,7 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid chessnode@1.0.0
 16 verbose cwd /Users/lj/Desktop/chesstart/chess-react
-17 error Darwin 14.5.0
+17 error Darwin 16.1.0
 18 error argv "/usr/local/Cellar/node/7.1.0/bin/node" "/usr/local/bin/npm" "start"
 19 error node v7.1.0
 20 error npm  v3.10.9
