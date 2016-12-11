@@ -180,9 +180,11 @@ var ECASTLE1y
 var ECASTLE2X
 var ECASTLE2y
 
+var EQUEENX
+var EQUEENY
 
-
-
+var EKINGX
+var EKINGY
 
 
 
@@ -192,7 +194,7 @@ var ECASTLE2y
 
 var whitemove = [ 'd4', 'c4', 'Knightc3', 'e4' ]
 
-var blackmove = [ 'd6', 'g6', 'Bishopg7', 'Castleh5']
+var blackmove = [ 'dxe6', 'h6', 'Bishopg7', 'Kingf8']
 
 // Components 
 
@@ -383,7 +385,8 @@ return <span id ="eq" style={{
         fontSize: 50,
         fontWeight: 'bold',
         cursor: 'move',
-        position: 'relative'
+        position: 'relative',
+        zIndex: '20'
       }}>
       ♛</span>
 
@@ -2261,9 +2264,9 @@ renderPiece: function (x, y) {
 
   try {
 
-    var EQUEENX = ($("#q").offset().left - 433) / 62.5 
+     EQUEENX = ($("#q").offset().left - 433) / 62.5 
   
-  var EQUEENY = ($("#q").offset().top - 97) / 62.5
+     EQUEENY = ($("#q").offset().top - 97) / 62.5
 
 
   }
@@ -2271,9 +2274,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var EQUEENX = (eqoffsetx - 433) / 62.5 
+     EQUEENX = (eqoffsetx - 433) / 62.5 
   
-  var EQUEENY = (eqoffsety - 97) / 62.5
+     EQUEENY = (eqoffsety - 97) / 62.5
 
 
   }
@@ -2283,9 +2286,9 @@ renderPiece: function (x, y) {
 
   try {
 
-    var EKINGX = ($("#ek").offset().left - 433) / 62.5 
+     EKINGX = ($("#ek").offset().left - 433) / 62.5 
   
-  var EKINGY = ($("#ek").offset().top - 97) / 62.5
+     EKINGY = ($("#ek").offset().top - 97) / 62.5
 
 
   }
@@ -2293,9 +2296,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var EKINGX = (ekoffsetx - 433) / 62.5 
+     EKINGX = (ekoffsetx - 433) / 62.5 
   
-  var EKINGY = (ekoffsety - 97) / 62.5
+     EKINGY = (ekoffsety - 97) / 62.5
 
 
   }
@@ -3580,6 +3583,8 @@ var piece = blackmove[number]
 
  if (piece.charAt(0) == 'a'){
 
+   var which =  pawnArrayx.filter(c => c[0] == 0)
+  
 
   if(/0/.test(piece) == true) {
 
@@ -3634,6 +3639,9 @@ else if(/7/.test(piece) == true) {
  }
 
  else if(piece.charAt(0) == 'b'){
+
+   var which =  pawnArrayx.filter(c => c[0] == 1)
+
 
   if(/0/.test(piece) == true) {
 
@@ -3695,6 +3703,9 @@ else if(/7/.test(piece) == true) {
  }
 
 else if(piece.charAt(0) == 'c'){
+
+   var which =  pawnArrayx.filter(c => c[0] == 2)
+
 
   if(/0/.test(piece) == true) {
 
@@ -3771,10 +3782,156 @@ else if(piece.charAt(0) == 'd'){
 
  else if(/1/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -3782,10 +3939,158 @@ else if(/2/.test(piece) == true) {
 else if(/3/.test(piece) == true) {
 
 
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3802,6 +4107,86 @@ else if(/4/.test(piece) == true) {
 }
 
 else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -3848,7 +4233,7 @@ else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
   var element = "#ep7"
 }
 
-else if(this_pawn[0] == PAWN8X && this_pawn[1] == EPAWN8Y){
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
 
   var element = "#ep8"
 }
@@ -3856,7 +4241,7 @@ else if(this_pawn[0] == PAWN8X && this_pawn[1] == EPAWN8Y){
 console.log("THHIIIIIIISSSSS")
 console.log(element)
 
-var distance = (3 - this_pawn[1]) * 62.5 
+var distance = (2 - this_pawn[1]) * 62.5 
 
 
 pawnDown(element, distance.toString())
@@ -3872,164 +4257,44 @@ pawnDown(element, distance.toString())
 else if(/7/.test(piece) == true) {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
+else if(/8/.test(piece) == true) {
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- }
+}
 
 
 else if(piece.charAt(0) == 'e'){
 
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- }
-
-else if(piece.charAt(0) == 'f'){
-
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- }
-
-else if(piece.charAt(0) == 'g'){
-
-    var which =  pawnArrayx.filter(c => c[0] == 6)
+ var which =  pawnArrayx.filter(c => c[0] == 4)
   
 
+
+
   if(/0/.test(piece) == true) {
 
 
@@ -4037,34 +4302,7 @@ else if(piece.charAt(0) == 'g'){
 
  else if(/1/.test(piece) == true) {
 
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-var this_piece = which.filter(c => c[1] == 1)
+var this_piece = which.filter(c => c[1] == 6)
 
 
 var this_pawn = this_piece[0]
@@ -4104,7 +4342,332 @@ else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
   var element = "#ep7"
 }
 
-else if(this_pawn[0] == PAWN8X && this_pawn[1] == EPAWN8Y){
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
 
   var element = "#ep8"
 }
@@ -4146,6 +4709,65 @@ pawnDown(element, distance.toString())
 
 
 
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
 
 
 
@@ -4155,30 +4777,42 @@ pawnDown(element, distance.toString())
 else if(/7/.test(piece) == true) {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
- 
+else if(/8/.test(piece) == true) {
 
 
+}
+
+}
 
 
+else if(piece.charAt(0) == 'f'){
 
+ var which =  pawnArrayx.filter(c => c[0] == 5)
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
- }
-
-else if(piece.charAt(0) == 'h'){
 
 
   if(/0/.test(piece) == true) {
@@ -4188,10 +4822,156 @@ else if(piece.charAt(0) == 'h'){
 
  else if(/1/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -4199,20 +4979,317 @@ else if(/2/.test(piece) == true) {
 else if(/3/.test(piece) == true) {
 
 
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 else if(/4/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
 
 else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
 
 
 }
@@ -4220,12 +5297,6272 @@ else if(/6/.test(piece) == true) {
 else if(/7/.test(piece) == true) {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+}
+
+}
+
+
+
+else if(piece.charAt(0) == 'g'){
+
+ var which =  pawnArrayx.filter(c => c[0] == 6)
+  
+
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+}
+
+}
+
+
+else if(piece.charAt(0) == 'h'){
+
+ var which =  pawnArrayx.filter(c => c[0] == 7)
+  
+
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+}
+
+}
+}
+
+
+else if(piece.length == 4){
+
+
+if(/ax/.test(piece) == true){
+  var which =  pawnArrayx.filter(c => c[0] == 0)
+  
+  if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+ 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+pieceMove(element, "62.5","62.5")
+
+
+
+}
+ 
+
+
+}
+
+
+
+else if(/bx/.test(piece) == true){
+ var which =  pawnArrayx.filter(c => c[0] == 1)
+
+if(/a/.test(piece) == true) {
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+
+
+}
+
+
+else if(/c/.test(piece) == true){
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","62.5")
+
+
+ 
+
+
+}
+
+} //c ends here
+
+
+} //bx ends
+
+
+else if(/cx/.test(piece) == true){
+
+if(/b/.test(piece) == true){
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+}// end of b
+
+
+
+
+else if(/d/.test(piece) == true){
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","62.5")
+
+
+
+}
+ 
+
+
+} // end of d
+
+
+} //end of cx
+
+
+
+else if(/dx/.test(piece) == true){
+console.log("TRUETRUETRUE")
+var which =  pawnArrayx.filter(c => c[0] == 3)
+
+
+if(/c/.test(piece) == true){
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+
+}// end of c
+
+
+else if(/e/.test(piece) == true){
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","62.5")
+
+
+
+}
+ 
+
+
+
+}//end of e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}//end of dx
+
+else if(/ex/.test(piece) == true){
+var which =  pawnArrayx.filter(c => c[0] == 4)
+
+if(/d/.test(piece) == true){
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+
+
+
+
+
+}// end of d
+
+
+else if(/f/.test(piece) == true){
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","62.5")
+
+
+
+}
+ 
+
+
+
+}// end of f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}// end of ex
+
+
+
+else if(/fx/.test(piece) == true){
+
+var which = pawnArrayx.filter(c => c[0] == 5)
+
+
+if(/e/.test(piece) == true){
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+
+
+} // end of e
+
+
+else if(/g/.test(piece) == true){
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","62.5")
+
+
 }
 
 
 
 
 
+}// end of g
+
+
+
+
+
+
+} // end of fx
+
+
+else if(/gx/.test(piece) == true) {
+
+var which = pawnArrayx.filter(c => c[0] == 6)
+
+
+if(/f/.test(piece) == true) {
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
 
 
 
@@ -4243,12 +11580,1224 @@ else if(/7/.test(piece) == true) {
 
 
 
-
- }
 
 
 
 }
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+
+}// end of f
+
+
+else if(/h/.test(piece) == true) {
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","62.5")
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "62.5")
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","62.5")
+
+
+
+
+ 
+
+
+}
+
+
+
+
+}// end of h
+
+
+
+
+} // end of gx
+
+
+
+else if(/hx/.test(piece) == true) {
+
+var which = pawnArrayx.filter(c => c[0] == 7)
+
+
+if(/g/.test(piece) == true) {
+
+
+if(/1/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 6)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 4 )
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 3)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element,"62.5","-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5", "-62.5")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+console.log("THHIIIIIIISSSSS")
+console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pieceMove(element, "62.5","-62.5")
+
+
+
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // end of g
+
+
+
+} //end of hx
+
+
+
+
+}
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 else {
 
@@ -10687,7 +19236,10 @@ pieceMove(element, distance_top, distance_left)
 
 
 else if(/Queen/.test(piece)== true){
-if (piece.charAt(0) == 'a'){
+var element = "#eq"
+var this_piece = [EQUEENX,EQUEENY]
+
+if (/a/.test(piece) == true){
 
 
   if(/0/.test(piece) == true) {
@@ -10698,14 +19250,46 @@ if (piece.charAt(0) == 'a'){
  else if(/1/.test(piece) == true) {
 
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
 }
 
 else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
 
 
 }
 
 else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
 
 
 }
@@ -10713,15 +19297,50 @@ else if(/3/.test(piece) == true) {
 
 else if(/4/.test(piece) == true) {
 
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 
 }
 
 else if(/5/.test(piece) == true) {
 
 
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 }
 
 else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 
 
 }
@@ -10729,33 +19348,100 @@ else if(/6/.test(piece) == true) {
 else if(/7/.test(piece) == true) {
 
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 }
  
+else if(/8/.test(piece) == true) {
 
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
 
 
 
 
  }
 
- else if(piece.charAt(0) == 'b'){
+ else if(/b/.test(piece) == true){
 
   if(/0/.test(piece) == true) {
+
+
+
+
 
 
 }
 
  else if(/1/.test(piece) == true) {
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 
 }
 
 else if(/2/.test(piece) == true) {
 
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
 
 
 }
@@ -10763,66 +19449,16 @@ else if(/3/.test(piece) == true) {
 
 else if(/4/.test(piece) == true) {
 
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
 
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
-
- 
+pieceMove(element, distance_top, distance_left)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
- }
-
-else if(piece.charAt(0) == 'c'){
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
 
 
 }
@@ -10830,17 +19466,10 @@ else if(/4/.test(piece) == true) {
 else if(/5/.test(piece) == true) {
 
 
-}
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
 
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
+pieceMove(element, distance_top, distance_left)
 
 
 
@@ -10848,63 +19477,16 @@ else if(/7/.test(piece) == true) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- }
-
-else if(piece.charAt(0) == 'd'){
-
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
 
 
 }
 
 else if(/6/.test(piece) == true) {
 
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
 
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
+pieceMove(element, distance_top, distance_left)
 
 
 
@@ -10912,133 +19494,42 @@ else if(/7/.test(piece) == true) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- }
-
-
-else if(piece.charAt(0) == 'e'){
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
 
 
 }
  
 else if(/7/.test(piece) == true) {
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
 
-}
-
- 
-
-
+pieceMove(element, distance_top, distance_left)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- }
-
-else if(piece.charAt(0) == 'f'){
-
-
-  if(/0/.test(piece) == true) {
 
 
 }
 
- else if(/1/.test(piece) == true) {
+else if(/8/.test(piece) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 
 
 }
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
-
-
-
 
 
 
@@ -11057,7 +19548,7 @@ else if(/7/.test(piece) == true) {
 
  }
 
-else if(piece.charAt(0) == 'g'){
+else if(/c/.test(piece) == true){
 
   if(/0/.test(piece) == true) {
 
@@ -11067,9 +19558,29 @@ else if(piece.charAt(0) == 'g'){
  else if(/1/.test(piece) == true) {
 
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
 }
 
 else if(/2/.test(piece) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
 
 
 }
@@ -11077,30 +19588,127 @@ else if(/2/.test(piece) == true) {
 else if(/3/.test(piece) == true) {
 
 
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
 
 else if(/5/.test(piece) == true) {
 
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
  
 else if(/7/.test(piece) == true) {
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 
 }
 
- 
+else if(/8/.test(piece) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -11121,7 +19729,7 @@ else if(/7/.test(piece) == true) {
 
  }
 
-else if(piece.charAt(0) == 'h'){
+else if(/d/.test(piece) == true){
 
 
   if(/0/.test(piece) == true) {
@@ -11132,14 +19740,488 @@ else if(piece.charAt(0) == 'h'){
  else if(/1/.test(piece) == true) {
 
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
 }
 
 else if(/2/.test(piece) == true) {
 
 
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ }
+
+
+else if(/(e\d)/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ }
+
+else if(/f/.test(piece) == true){
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ }
+
+else if(/g/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
 
 
 }
@@ -11148,14 +20230,44 @@ else if(/3/.test(piece) == true) {
 else if(/4/.test(piece) == true) {
 
 
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
 }
 
+
 else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
 
 
 }
 
 else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
 
 
 }
@@ -11163,10 +20275,236 @@ else if(/6/.test(piece) == true) {
 else if(/7/.test(piece) == true) {
 
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ }
+
+else if(/h/.test(piece) == true){
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
+else if(/4/.test(piece) == true) {
 
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/8/.test(piece) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -15345,140 +24683,21 @@ var distance_left = (7 - this_piece[0]) * 62.5
 
 pieceMove(element, distance_top, distance_left)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
-
-
-
-
-
 }
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
 else if(/King/.test(piece)== true){
 
-if (piece.charAt(0) == 'a'){
+var element = "#ek"
+
+var this_piece = [EKINGX,EKINGY]
+
+
+
+if (/a/.test(piece) == true){
 
 
   if(/0/.test(piece) == true) {
@@ -15489,14 +24708,54 @@ if (piece.charAt(0) == 'a'){
  else if(/1/.test(piece) == true) {
 
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
 }
 
 else if(/2/.test(piece) == true) {
 
 
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 
 
 }
@@ -15505,9 +24764,35 @@ else if(/3/.test(piece) == true) {
 else if(/4/.test(piece) == true) {
 
 
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 }
 
 else if(/5/.test(piece) == true) {
+
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 
 
 }
@@ -15515,17 +24800,71 @@ else if(/5/.test(piece) == true) {
 else if(/6/.test(piece) == true) {
 
 
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 }
  
 else if(/7/.test(piece) == true) {
 
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 }
  
+else if(/8/.test(piece) == true) {
+
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
- else if(piece.charAt(0) == 'b'){
+
+
+
+
+
+
+
+
+
+}
+
+ else if(/b/.test(piece) == true){
 
   if(/0/.test(piece) == true) {
 
@@ -15535,14 +24874,46 @@ else if(/7/.test(piece) == true) {
  else if(/1/.test(piece) == true) {
 
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
 }
 
 else if(/2/.test(piece) == true) {
 
 
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
 
 
 }
@@ -15551,9 +24922,32 @@ else if(/3/.test(piece) == true) {
 else if(/4/.test(piece) == true) {
 
 
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 }
 
 else if(/5/.test(piece) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
 
 
 }
@@ -15561,17 +24955,523 @@ else if(/5/.test(piece) == true) {
 else if(/6/.test(piece) == true) {
 
 
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 }
  
 else if(/7/.test(piece) == true) {
 
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+
+ else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+else if(/c/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+}
+
+else if(/d/.test(piece) == true){
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+
+
+
+}
+
+
+else if(/e/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/5/.test(piece) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 }
 
  
+
+
 }
 
-else if(piece.charAt(0) == 'c'){
+else if(/f/.test(piece) == true){
+
 
   if(/0/.test(piece) == true) {
 
@@ -15581,14 +25481,46 @@ else if(piece.charAt(0) == 'c'){
  else if(/1/.test(piece) == true) {
 
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
 }
 
 else if(/2/.test(piece) == true) {
 
 
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
 
 
 }
@@ -15597,9 +25529,37 @@ else if(/3/.test(piece) == true) {
 else if(/4/.test(piece) == true) {
 
 
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
 }
 
 else if(/5/.test(piece) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
 
 
 }
@@ -15607,18 +25567,220 @@ else if(/5/.test(piece) == true) {
 else if(/6/.test(piece) == true) {
 
 
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
 }
  
 else if(/7/.test(piece) == true) {
 
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 
+
+
+
+
+
+
 }
 
-else if(piece.charAt(0) == 'd'){
+else if(/(g\d)/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+ 
+
+}
+
+else if(/h/.test(piece) == true){
 
 
   if(/0/.test(piece) == true) {
@@ -15628,53 +25790,15 @@ else if(piece.charAt(0) == 'd'){
 
  else if(/1/.test(piece) == true) {
 
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
 
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
+pieceMove(element, distance_top, distance_left)
 
 
 
-}
 
 
-else if(piece.charAt(0) == 'e'){
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
 
 
 }
@@ -15682,9 +25806,39 @@ else if(piece.charAt(0) == 'e'){
 else if(/2/.test(piece) == true) {
 
 
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -15692,54 +25846,18 @@ else if(/3/.test(piece) == true) {
 
 else if(/4/.test(piece) == true) {
 
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
 
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
+pieceMove(element, distance_top, distance_left)
 
 
-}
- 
-else if(/7/.test(piece) == true) {
 
 
-}
-
- 
 
 
-}
-
-else if(piece.charAt(0) == 'f'){
 
 
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
 
 
 }
@@ -15747,112 +25865,77 @@ else if(/4/.test(piece) == true) {
 else if(/5/.test(piece) == true) {
 
 
-}
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
 
-else if(/6/.test(piece) == true) {
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
+pieceMove(element, distance_top, distance_left)
 
 
 
-}
-
-else if(piece.charAt(0) == 'g'){
-
-  if(/0/.test(piece) == true) {
 
 
-}
-
- else if(/1/.test(piece) == true) {
 
 
-}
-
-else if(/2/.test(piece) == true) {
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
 
 
 }
 
 else if(/6/.test(piece) == true) {
 
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
 
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-}
-
- 
-
-}
-
-else if(piece.charAt(0) == 'h'){
+pieceMove(element, distance_top, distance_left)
 
 
-  if(/0/.test(piece) == true) {
 
 
-}
-
- else if(/1/.test(piece) == true) {
 
 
-}
-
-else if(/2/.test(piece) == true) {
 
 
-}
-
-else if(/3/.test(piece) == true) {
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-}
-
-else if(/6/.test(piece) == true) {
 
 
 }
  
 else if(/7/.test(piece) == true) {
 
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
 
 }
+else if(/8/.test(piece) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
 
 }
 
