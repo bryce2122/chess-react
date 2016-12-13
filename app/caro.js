@@ -4,6 +4,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var DragDropContext = require('react-dnd').DragDropContext
 var square;
+var PIECE;
 var i;
 var checkmecount = 0
 var HTML5Backend = require('react-dnd-html5-backend');
@@ -15,6 +16,7 @@ var BS1;
 var dragstate;
 var kkillcount = 0;
 var arr = []
+var count_number = 0
 var prevept;
 var prevepl;
 var kntop = 0
@@ -188,11 +190,71 @@ var EKINGY
 
 
 
+   var knightX = 1
+   var knightY = 7
+  var knight2X = 6
+  var knight2Y = 7
+  var bishopX = 2
+  var bishopY = 7
+  var bishop2X = 5
+  var bishop2Y = 7 
+  var pawn1X =  0
+  var pawn1Y =  6
+  var pawn2X =  1
+  var pawn2Y =  6
+  var pawn3X =  2
+  var pawn3Y = 6
+  var pawn4X = 3
+  var pawn4Y = 6
+  var pawn5X = 4
+  var pawn5Y = 6
+  var pawn6X = 5
+  var pawn6Y = 6
+  var pawn7X = 6
+  var pawn7Y = 6
+  var pawn8X = 7
+  var pawn8Y = 6
+  var castle1X = 0
+  var castle1Y = 7
+  var castle2X = 7
+  var castle2Y = 7
+  var queenX = 3
+  var queenY = 7
+  var kingX = 4
+  var kingY = 7
+  var drag_piece;
+ var xOverlay;
+ var yOverlay;
+
+ var overlayCount = -1
 
 
 
 
-var whitemove = [ 'd4', 'c4', 'Knightc3', 'e4' ]
+var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var whitemove = [ 'e4', 'Knightf3', 'd4', 'c3' ]
 
 var blackmove = [ 'dxe6', 'h6', 'Bishopg7', 'Kingf8']
 
@@ -207,7 +269,8 @@ var Yarray = []
 
 
 
-
+var pawnArrayy = [[pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4X],[pawn5X,pawn5Y],
+                  [pawn6X,pawn6Y],[pawn7X,pawn7Y],[pawn8X,pawn8Y]]
 
 
 
@@ -620,6 +683,7 @@ function emitChange() {
 
 var moveKnight = function (toX, toY) {
   knightPosition = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -634,6 +698,46 @@ var canMoveKnight = function (toX, toY) {
 
 var moveKnight2 = function (toX, toY) {
   knightPosition2 = [toX, toY];
+   count_number++
+  
+
+   if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -649,6 +753,7 @@ var canMoveKnight2 = function (toX, toY) {
 
 var moveBishop = function (toX, toY) {
   bishopPosition = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -670,6 +775,7 @@ var canMoveBishop = function (toX, toY) {
 
 var moveBishop2 = function (toX, toY) {
   bishopPosition2 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -685,6 +791,7 @@ var canMoveBishop2 = function (toX, toY) {
 
 var movePawn1 = function (toX, toY) {
   pawnPosition1 = [toX, toY];
+  count_number++;
   emitChange();
 }
 
@@ -701,6 +808,7 @@ var canMovePawn1 = function (toX, toY) {
 
 var movePawn2 = function (toX, toY) {
   pawnPosition2 = [toX, toY];
+  count_number++
   emitChange();
 }
 
@@ -716,6 +824,7 @@ var canMovePawn2 = function (toX, toY) {
 
 var movePawn3 = function (toX, toY) {
   pawnPosition3 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -732,6 +841,7 @@ var canMovePawn3 = function (toX, toY) {
 
 var movePawn4 = function (toX, toY) {
   pawnPosition4 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -748,7 +858,31 @@ var canMovePawn4 = function (toX, toY) {
 
 var movePawn5 = function (toX, toY) {
   pawnPosition5 = [toX, toY];
-  emitChange();
+   count_number++
+  
+
+    if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+emitChange();
 }
 
 var canMovePawn5 = function (toX, toY) {
@@ -762,6 +896,7 @@ var canMovePawn5 = function (toX, toY) {
 
 var movePawn6 = function (toX, toY) {
   pawnPosition6 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -779,6 +914,7 @@ var canMovePawn6 = function (toX, toY) {
 
 var movePawn7 = function (toX, toY) {
   pawnPosition7 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -795,6 +931,7 @@ var canMovePawn1 = function (toX, toY) {
 
 var movePawn8 = function (toX, toY) {
   pawnPosition8 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -813,6 +950,7 @@ var canMovePawn1 = function (toX, toY) {
 
 var moveQueen = function (toX, toY) {
   queenPosition = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -829,6 +967,7 @@ var canMoveQueen = function (toX, toY) {
 
 var moveKing = function (toX, toY) {
   kingPosition = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -845,6 +984,7 @@ var canMoveKing = function (toX, toY) {
 
 var moveCastle1 = function (toX, toY) {
   castlePosition1 = [toX, toY];
+  count_number++
   emitChange();
 }
 
@@ -860,6 +1000,7 @@ var canMoveCastle1 = function (toX, toY) {
 
 var moveCastle2 = function (toX, toY) {
   castlePosition2 = [toX, toY];
+   count_number++
   emitChange();
 }
 
@@ -1942,6 +2083,8 @@ function collectme(connect, monitor) {
     var isOver = this.props.isOver;
     var black = (x + y) % 2 === 1;
     var canDrop = this.props.canDrop
+  
+
     return connectDropTarget(
       <div style={{
         position: 'relative',
@@ -1951,11 +2094,11 @@ function collectme(connect, monitor) {
         <Square black={black}>
           {this.props.children}
         </Square>
-        {x == 4 && y == 6 && count == -1 && this.renderOverlay('blue')}
-        {x == 6 && y == 7 && count == 0 && this.renderOverlay('blue')}
-        {x == 5 && y == 7 && count == -5 && this.renderOverlay('blue')}
-        {x == 3 && y == 6 && count == 2 && this.renderOverlay('blue')}
-        {x == 2 && y == 6 && count == 5 && this.renderOverlay('blue')}
+      
+        {x == xOverlay && y == yOverlay && count == overlayCount && this.renderOverlay('blue')}
+      
+      
+        {x == 2 && y == 6 && count == 4 && this.renderOverlay('blue')}
         {!isOver && canDrop && this.renderOverlay('blue')}
         {isOver && canDrop && this.renderOverlay('blue')}
       </div>
@@ -2160,23 +2303,258 @@ renderSquare: function (i,BS) {
   
   // var black = (x + y) % 2 === 1;
 
+  var whiteone = whitemove[count_number]
+
+    if(whiteone.length < 3){
+      console.log("JJJJJJJJSJFDSJFSDFSDFSDFSD")
+    if(/e/.test(whiteone) == true){
+    xOverlay = 4
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 4)
+
+      if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
 
 
+
+      }
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    }
+    
+  
+
+
+
+
+  }
+
+
+  else {
+
+    if(/Knight/.test(whiteone) == true){
+
+
+      if(/f/.test(whiteone) == true){
 
      
 
+      if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(5 - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(5 - c[0]) == 2)
+
+// if(knight_Ol_filter[0][0] == EKNIGHT1X && knight_filter[0][1] == EKNIGHT1Y){
+
+// var element = "#ek1"
+
+// var this_piece = knight_filter[0]
+
+// }
+
+
+// else if(knight_filter[0][0] == EKNIGHT2X && knight_filter[0][1] == EKNIGHT2Y){
+
+// var element = "#ek2"
+
+// var this_piece = knight_filter[0]
+
+// }
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
       
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  }
+
+else if(knight2X = this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 3
+
+} //end of f
+
+
+
+
+
+// count_number++
+
+
+    }// end of knight
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  if(drag_piece == "PB5" ){
+
+
+    PIECE = PB5}
+
+    
+ else if(drag_piece == "BS1") {
+
+  drag_piece = BS1
+ }
+
+
+ else if(drag_piece == "BS2"){
+
+  PIECE = BS2
+ }
+
+
+    else {
+
+      PIECE = PB6
+    }
+
+
+
+  // }
+
+
+     
+  console.log("XXXXXXX")
+  console.log(drag_piece)
+      
+  
+
+
   return (
     <div key={i}
          style={{ width: '12.5%', height: '12.5%', color: "red",  backgroundColor: "blue",
          position: 'relative', zIndex: -{i}}}>
       <span id ={i} style={{position:'relative', zIndex: 0}}>
 
-      <BS x = {x} 
+      <PIECE x = {x} 
           y = {y}>
         {this.renderPiece(x, y)}
               
-      </BS>
+      </PIECE>
       
     </span>
     </div>
@@ -2184,38 +2562,38 @@ renderSquare: function (i,BS) {
 },
 
 renderPiece: function (x, y) {
-  var knightX = this.props.knightPosition[0]
-  var knightY = this.props.knightPosition[1];
-  var knight2X = this.props.knightPosition2[0]
-  var knight2Y = this.props.knightPosition2[1]
-  var bishopX = this.props.bishopPosition[0]
-  var bishopY = this.props.bishopPosition[1]
-  var bishop2X = this.props.bishopPosition2[0]
-  var bishop2Y = this.props.bishopPosition2[1]
-  var pawn1X = this.props.pawnPosition1[0]
-  var pawn1Y = this.props.pawnPosition1[1]
-  var pawn2X = this.props.pawnPosition2[0]
-  var pawn2Y = this.props.pawnPosition2[1]
-  var pawn3X = this.props.pawnPosition3[0]
-  var pawn3Y = this.props.pawnPosition3[1]
-  var pawn4X = this.props.pawnPosition4[0]
-  var pawn4Y = this.props.pawnPosition4[1]
-  var pawn5X = this.props.pawnPosition5[0]
-  var pawn5Y = this.props.pawnPosition5[1]
-  var pawn6X = this.props.pawnPosition6[0]
-  var pawn6Y = this.props.pawnPosition6[1]
-  var pawn7X = this.props.pawnPosition7[0]
-  var pawn7Y = this.props.pawnPosition7[1]
-  var pawn8X = this.props.pawnPosition8[0]
-  var pawn8Y = this.props.pawnPosition8[1]
-  var castle1X = this.props.castlePosition1[0]
-  var castle1Y = this.props.castlePosition1[1]
-  var castle2X = this.props.castlePosition2[0]
-  var castle2Y = this.props.castlePosition2[1]
-  var queenX = this.props.queenPosition[0]
-  var queenY = this.props.queenPosition[1]
-  var kingX = this.props.kingPosition[0]
-  var kingY = this.props.kingPosition[1]
+   knightX = this.props.knightPosition[0]
+   knightY = this.props.knightPosition[1];
+   knight2X = this.props.knightPosition2[0]
+   knight2Y = this.props.knightPosition2[1]
+   bishopX = this.props.bishopPosition[0]
+   bishopY = this.props.bishopPosition[1]
+   bishop2X = this.props.bishopPosition2[0]
+   bishop2Y = this.props.bishopPosition2[1]
+   pawn1X = this.props.pawnPosition1[0]
+   pawn1Y = this.props.pawnPosition1[1]
+   pawn2X = this.props.pawnPosition2[0]
+   pawn2Y = this.props.pawnPosition2[1]
+   pawn3X = this.props.pawnPosition3[0]
+   pawn3Y = this.props.pawnPosition3[1]
+   pawn4X = this.props.pawnPosition4[0]
+   pawn4Y = this.props.pawnPosition4[1]
+   pawn5X = this.props.pawnPosition5[0]
+   pawn5Y = this.props.pawnPosition5[1]
+   pawn6X = this.props.pawnPosition6[0]
+   pawn6Y = this.props.pawnPosition6[1]
+   pawn7X = this.props.pawnPosition7[0]
+   pawn7Y = this.props.pawnPosition7[1]
+   pawn8X = this.props.pawnPosition8[0]
+   pawn8Y = this.props.pawnPosition8[1]
+   castle1X = this.props.castlePosition1[0]
+   castle1Y = this.props.castlePosition1[1]
+   castle2X = this.props.castlePosition2[0]
+   castle2Y = this.props.castlePosition2[1]
+   queenX = this.props.queenPosition[0]
+   queenY = this.props.queenPosition[1]
+   kingX = this.props.kingPosition[0]
+   kingY = this.props.kingPosition[1]
   
   Xarray = []
   Yarray = []
@@ -2620,7 +2998,9 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 try{
 console.log("BBBBBBB")
 console.log(count)
-
+console.log(overlayCount)
+console.log(drag_piece)
+console.log("Break")
 // console.log($("#ec2").position().left)
 // console.log($("#ec2").position().top)
 // console.log($("#ek2").position().left)
@@ -3261,66 +3641,63 @@ var squares = [];
     for (let i = 0; i < 64; i++) {
       
 
- if(count == -1){
-
-
-squares.push(this.renderSquare(i,PB5));
+ squares.push(this.renderSquare(i));
       
-}
-      else if(count ==  0) {
-        // console.log("the count is 0 push bs1")
-        squares.push(this.renderSquare(i,BS2));}
 
-        else if (count == 1) {
-          // console.log("the count is 1 push bs2")
-          squares.push(this.renderSquare(i,BS2));
+  //     else if(count ==  0) {
+  //       // console.log("the count is 0 push bs1")
+  //       squares.push(this.renderSquare(i,BS2));}
+
+  //       else if (count == 1) {
+  //         // console.log("the count is 1 push bs2")
+  //         squares.push(this.renderSquare(i,BS2));
 
         
-        }
+  //       }
     
-      else if (count == 2) {
-              // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB4));
+  //     else if (count == 2) {
+  //             // console.log("the count is 2 push bs1")
+  //             squares.push(this.renderSquare(i,PB4));
 
-      }
+  //     }
       
      
-      else if (count == 3) {
-              // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,BishopBoard2));
+  //     else if (count == 3) {
+  //             // console.log("the count is 2 push bs1")
+  //             squares.push(this.renderSquare(i,BishopBoard2));
 
-      }
+  //     }
       
        
 
       
-      else if (count == 4) {
-              // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB3));
+  //     else if (count == 4) {
+  //             // console.log("the count is 2 push bs1")
+  //             squares.push(this.renderSquare(i,PB3));
 
-      }
+  //     }
   
 
 
-  else if (count == 5) {
-              // console.log("the count is 2 push bs1")
-              squares.push(this.renderSquare(i,PB3));
+  // else if (count == 5) {
+  //             // console.log("the count is 2 push bs1")
+  //             squares.push(this.renderSquare(i,PB3));
 
-      }
+  //     }
 
 
 
-     else if (count == 6) {
+  //    else if (count == 6) {
 
-      squares.push(this.renderSquare(i,BS1));
+  //     squares.push(this.renderSquare(i,BS1));
 
-     }
+  //    }
 
-    else {
+  //   else {
 
-      squares.push(this.renderSquare(i,PB5));
+  //     squares.push(this.renderSquare(i,PB5));
 
-    }
+    // }
 
     
 
@@ -3505,6 +3882,15 @@ $(element).animate(
 
 count++
 
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -3560,6 +3946,10 @@ $(element).animate(
         );
 
 count++;
+
+
+
+
 }
 
 
@@ -6236,6 +6626,7 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
 console.log("THHIIIIIIISSSSS")
 console.log(element)
 
+var distance = (3 - this_pawn[1]) * 62.5 
 
 
 pawnDown(element, distance.toString())
@@ -6322,7 +6713,7 @@ console.log("THHIIIIIIISSSSS")
 console.log(element)
 
 
-
+var distance = (2 - this_pawn[1]) * 62.5 
 
 pawnDown(element, distance.toString())
 
@@ -25957,7 +26348,9 @@ setInterval(animate, 100);
 
 
 function checkOffset(){
-
+console.log("KDFSKFSDKF")
+console.log(overlayCount)
+console.log(count_number)
 try {
   ec2offsety = $("#ec2").offset().top
   ec2offsetx = $("#ec2").offset().left
