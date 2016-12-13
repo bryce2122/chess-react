@@ -254,7 +254,7 @@ var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
 
 
 
-var whitemove = [ 'e4', 'Knightf3', 'd4', 'c3' ]
+var whitemove = [ 'h4', 'Knightf3', 'Knighth4', 'e4' ]
 
 var blackmove = [ 'dxe6', 'h6', 'Bishopg7', 'Kingf8']
 
@@ -722,23 +722,8 @@ var moveKnight2 = function (toX, toY) {
   overlayCount += 2
  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  emitChange();
+emitChange();
+  
 }
 
 var canMoveKnight2 = function (toX, toY) {
@@ -792,6 +777,40 @@ var canMoveBishop2 = function (toX, toY) {
 var movePawn1 = function (toX, toY) {
   pawnPosition1 = [toX, toY];
   count_number++;
+  
+     if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -809,6 +828,36 @@ var canMovePawn1 = function (toX, toY) {
 var movePawn2 = function (toX, toY) {
   pawnPosition2 = [toX, toY];
   count_number++
+  
+     if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -825,6 +874,41 @@ var canMovePawn2 = function (toX, toY) {
 var movePawn3 = function (toX, toY) {
   pawnPosition3 = [toX, toY];
    count_number++
+  
+
+  
+
+   if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -842,6 +926,37 @@ var canMovePawn3 = function (toX, toY) {
 var movePawn4 = function (toX, toY) {
   pawnPosition4 = [toX, toY];
    count_number++
+  
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -897,6 +1012,37 @@ var canMovePawn5 = function (toX, toY) {
 var movePawn6 = function (toX, toY) {
   pawnPosition6 = [toX, toY];
    count_number++
+ 
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -915,10 +1061,42 @@ var canMovePawn6 = function (toX, toY) {
 var movePawn7 = function (toX, toY) {
   pawnPosition7 = [toX, toY];
    count_number++
+  
+   
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+   
+
+
+
+
+
+
+
   emitChange();
 }
 
-var canMovePawn1 = function (toX, toY) {
+var canMovePawn7 = function (toX, toY) {
   const x = pawnPosition7[0];
   const y = pawnPosition7[1];
   const dx = toX - x;
@@ -932,10 +1110,39 @@ var canMovePawn1 = function (toX, toY) {
 var movePawn8 = function (toX, toY) {
   pawnPosition8 = [toX, toY];
    count_number++
+  
+
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
   emitChange();
 }
 
-var canMovePawn1 = function (toX, toY) {
+var canMovePawn8 = function (toX, toY) {
   const x = pawnPosition8[0];
   const y = pawnPosition8[1];
   const dx = toX - x;
@@ -2299,25 +2506,110 @@ renderSquare: function (i,BS) {
   var x = i % 8;
   var y = Math.floor(i / 8);
   var kn = this.renderPiece(x,y)
+  knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
+  pawnArrayy = [[pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4Y],[pawn5X,pawn5Y],
+                  [pawn6X,pawn6Y],[pawn7X,pawn7Y],[pawn8X,pawn8Y]]
+
  // console.log(kn)
   
   // var black = (x + y) % 2 === 1;
 
   var whiteone = whitemove[count_number]
-
+  var ydiff;
+  var xdiff; 
     if(whiteone.length < 3){
       console.log("JJJJJJJJSJFDSJFSDFSDFSDFSD")
-    if(/e/.test(whiteone) == true){
-    xOverlay = 4
-    var pawnx_filter = pawnArrayy.filter(c => c[0] == 4)
+    
+         if(/a/.test(whiteone) == true){
+    xOverlay = 0
+     xdiff = xOverlay
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 0)
 
-      if(/4/.test(whiteone) == true){
+      
 
-    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+       if(/1/.test(whiteone) == true){
 
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
 
 
       }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
 
 
  var pawn_piece = pawny_filter[0]
@@ -2327,6 +2619,30 @@ renderSquare: function (i,BS) {
 
     drag_piece = "PB1"
 
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
    }
 
 
@@ -2334,15 +2650,66 @@ renderSquare: function (i,BS) {
 
     drag_piece = "PB2"
 
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
    }
 
  else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
 
     drag_piece = "PB3"
 
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
    }
 
  else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
 
     drag_piece = "PB4"
 
@@ -2350,11 +2717,56 @@ renderSquare: function (i,BS) {
 
  else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
 
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
     drag_piece = "PB5"
 
    }
 
   else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
 
     drag_piece = "PB6"
 
@@ -2363,11 +2775,49 @@ renderSquare: function (i,BS) {
     
 else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
 
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
     drag_piece = "PB7"
 
    }
     
 else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
 
     drag_piece = "PB8"
 
@@ -2376,6 +2826,10 @@ else {
 
   drag_piece = "PB5"
 }
+
+
+
+    
 
 
 
@@ -2388,7 +2842,338 @@ else {
     // count_number++;
 
     
-    }
+    
+    
+  
+
+
+
+
+  }
+
+ else if(/b/.test(whiteone) == true){
+    xOverlay = 1
+     xdiff = xOverlay
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 1)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
     
   
 
@@ -2398,6 +3183,2156 @@ else {
   }
 
 
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         else if(/c/.test(whiteone) == true){
+    xOverlay = 2
+    var xdiff = xOverlay
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 2)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = 2 - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+else if(/d/.test(whiteone) == true){
+    xOverlay = 3
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRyyyRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 3)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+else if(/e/.test(whiteone) == true){
+    xOverlay = 4
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 4)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+    
+
+
+  else if(/h/.test(whiteone) == true){
+    xOverlay = 7
+     xdiff = xOverlay
+    console.log("YYYYYY")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 7)
+    console.log(pawnx_filter)
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+
+else if(/g/.test(whiteone) == true){
+    xOverlay = 6
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 6)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+
+
+else if(/d/.test(whiteone) == true){
+    xOverlay = 3
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 3)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   else {
 
     if(/Knight/.test(whiteone) == true){
@@ -2405,8 +5340,9 @@ else {
 
       if(/f/.test(whiteone) == true){
 
-     
-
+     console.log("FFFFFFFF")
+     console.log("F is true")
+     console.log(knOlArray)
       if(/3/.test(whiteone) == true){
 
 
@@ -2464,6 +5400,87 @@ else if(knight2X = this_knight[0] && knight2Y == this_knight[1]){
 } //end of f
 
 
+else if(/h\d/.test(whiteone) == true){
+
+console.log("ADFJORIEJGWJGEWRJOGREJ{OWGWE")
+console.log("h is true")
+
+      if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(7 - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(7 - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+ var ydis = 4 - knight2Y
+ var xdis = 7 - knight2X
+  drag_piece = "BS2"
+}
+
+  
+      console.log("HHHHH")
+      console.log(knight2X)
+      console.log(knight2Y)
+      console.log(xdis)
+      console.log(ydis)
+      canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+      }//end of 3
+
+
+
+
+
+
+
+
+
+
+
+}// end ofz
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2498,23 +5515,62 @@ else if(knight2X = this_knight[0] && knight2Y == this_knight[1]){
 
 
 
+   if(drag_piece == "PB1" ){
+
+
+    PIECE = PB1}
+
+
+ else if(drag_piece == "PB2" ){
+
+
+    PIECE = PB2}
 
 
 
 
 
+ else if(drag_piece == "PB3" ){
 
 
+    PIECE = PB3}
 
 
+ else if(drag_piece == "PB4" ){
 
 
-  if(drag_piece == "PB5" ){
+    PIECE = PB4}
+  
+
+
+  else if(drag_piece == "PB5" ){
 
 
     PIECE = PB5}
 
-    
+   else if(drag_piece == "PB6" ){
+
+
+    PIECE = PB6}  
+ 
+
+
+     else if(drag_piece == "PB7" ){
+
+
+    PIECE = PB7}
+ 
+
+ else if(drag_piece == "PB8" ){
+
+
+    PIECE = PB8}
+
+
+
+
+
+
  else if(drag_piece == "BS1") {
 
   drag_piece = BS1
@@ -2528,7 +5584,8 @@ else if(knight2X = this_knight[0] && knight2Y == this_knight[1]){
 
 
     else {
-
+      console.log("ELSE IS TRUE")
+      console.log(drag_piece)
       PIECE = PB6
     }
 
@@ -26349,6 +29406,7 @@ setInterval(animate, 100);
 
 function checkOffset(){
 console.log("KDFSKFSDKF")
+console.log(drag_piece)
 console.log(overlayCount)
 console.log(count_number)
 try {
