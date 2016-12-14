@@ -23058,10 +23058,9 @@ if (/a/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+   ydiff = (7 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 
 
 
@@ -23069,22 +23068,20 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
+   ydiff = (6 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 
 
 }
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
+   ydiff = (5 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 
 
 }
@@ -23105,22 +23102,16 @@ else if(/4/.test(whiteone) == true) {
 else if(/5/.test(whiteone) == true) {
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
-
-
+   ydiff = (3 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 }
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+   ydiff = (2 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 
 
 }
@@ -23128,10 +23119,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+   ydiff = (1 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 
 
 }
@@ -23140,10 +23130,9 @@ else if(/8/.test(whiteone) == true) {
 
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+   ydiff = (0 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
 
 
 }
@@ -23162,10 +23151,9 @@ pieceMove(element, distance_top, distance_left)
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+   ydiff = (7 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
 
 
@@ -23173,10 +23161,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+   ydiff = (6 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
 
 
@@ -23185,51 +23171,45 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+   ydiff = (5 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
 }
 
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
+   ydiff = (4 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 }
 
 else if(/5/.test(whiteone) == true) {
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
+   ydiff = (3 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
 
 else if(/6/.test(whiteone) == true) {
+   
+   ydiff = (2 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
 
 
 }
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+   ydiff = (1 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
+
 
 
 
@@ -23239,10 +23219,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/8/.test(whiteone) == true) {
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+   ydiff = (0 - this_piece[1]) 
+   xdiff = (1 - this_piece[0]) 
 
 
 
@@ -23256,7 +23234,7 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/c/.test(whiteone) == true){
 
-  if(/0/.test(piece) == true) {
+  if(/0/.test(whiteone) == true) {
 
 
 }
@@ -23264,10 +23242,9 @@ else if(/c/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+   ydiff = (7 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23276,10 +23253,10 @@ pieceMove(element, distance_top, distance_left)
 else if(/2/.test(whiteone) == true) {
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+   ydiff = (6 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
+
 
 
 
@@ -23288,10 +23265,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+   ydiff = (5 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23300,10 +23276,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+   ydiff = (4 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23312,10 +23287,12 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+   ydiff = (3 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
+
+
+
 
 
 
@@ -23324,10 +23301,10 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+   ydiff = (2 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
+
 
 
 
@@ -23335,10 +23312,10 @@ pieceMove(element, distance_top, distance_left)
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+   ydiff = (1 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
+
 
 
 
@@ -23347,10 +23324,10 @@ pieceMove(element, distance_top, distance_left)
 else if(/8/.test(whiteone) == true) {
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+   ydiff = (0 - this_piece[1]) 
+   xdiff = (2 - this_piece[0]) 
 
 
 }
@@ -23370,10 +23347,9 @@ else if(/d/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23383,20 +23359,20 @@ pieceMove(element, distance_top, distance_left)
 else if(/2/.test(whiteone) == true) {
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
+
 
 }
 
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
+
 
 
 
@@ -23406,20 +23382,19 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
+
 
 
 }
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -23432,10 +23407,9 @@ else if(/6/.test(whiteone) == true) {
 
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23443,10 +23417,9 @@ pieceMove(element, distance_top, distance_left)
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -23454,10 +23427,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -23478,10 +23450,9 @@ else if(/(e\d)/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23492,10 +23463,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23503,11 +23473,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23516,11 +23484,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23529,10 +23495,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23543,10 +23508,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23557,10 +23521,9 @@ pieceMove(element, distance_top, distance_left)
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -23570,10 +23533,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 }
@@ -23591,10 +23553,9 @@ else if(/f/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -23605,10 +23566,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23618,10 +23578,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23634,10 +23593,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -23650,19 +23607,17 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 }
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23677,10 +23632,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
@@ -23688,11 +23642,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/8/.test(whiteone) == true) {
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -23711,10 +23662,9 @@ else if(/g/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23722,10 +23672,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23733,10 +23682,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
@@ -23745,11 +23693,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
 
@@ -23760,20 +23705,18 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23782,20 +23725,18 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
 
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23817,10 +23758,9 @@ else if(/h/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -23829,10 +23769,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/2/.test(whiteone) == true) {
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 
@@ -23842,10 +23781,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 
@@ -23856,11 +23794,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 
@@ -23871,10 +23807,9 @@ else if(/5/.test(whiteone) == true) {
 
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 
@@ -23885,11 +23820,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/6/.test(whiteone) == true) {
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 
@@ -23898,10 +23831,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
@@ -23910,10 +23842,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/8/.test(whiteone) == true) {
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
@@ -23959,10 +23890,10 @@ if (/a/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
+
 
 
 }
@@ -23970,10 +23901,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/2/.test(whiteone) == true) {
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
 
 }
@@ -23982,10 +23911,9 @@ else if(/3/.test(whiteone) == true) {
 
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
@@ -23994,10 +23922,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -24007,10 +23934,8 @@ else if(/5/.test(whiteone) == true) {
 
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
 
 
@@ -24019,10 +23944,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/6/.test(whiteone) == true) {
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -24031,10 +23955,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
@@ -24043,10 +23966,8 @@ else if(/8/.test(whiteone) == true) {
 
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (0 - this_piece[0]) 
 
 
 
@@ -24067,21 +23988,17 @@ pieceMove(element, distance_top, distance_left)
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 }
 
 else if(/2/.test(whiteone) == true) {
 
-
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 }
@@ -24089,10 +24006,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 }
@@ -24101,10 +24016,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 
@@ -24113,10 +24026,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/5/.test(whiteone) == true) {
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 
@@ -24125,10 +24036,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/6/.test(whiteone) == true) {
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 }
@@ -24136,20 +24045,16 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 }
 
  else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (1 - this_piece[0]) 
 
 
 }
@@ -24167,21 +24072,17 @@ else if(/c/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 }
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 
@@ -24190,10 +24091,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 
@@ -24203,31 +24102,26 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 }
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 }
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 
@@ -24235,21 +24129,18 @@ pieceMove(element, distance_top, distance_left)
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 }
 
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (2 - this_piece[0]) 
 
 
 
@@ -24269,21 +24160,17 @@ else if(/d/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 }
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -24291,10 +24178,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -24303,10 +24188,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -24315,10 +24198,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -24327,11 +24208,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -24339,11 +24217,8 @@ pieceMove(element, distance_top, distance_left)
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 
@@ -24352,10 +24227,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/8/.test(whiteone) == true) {
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (3 - this_piece[0]) 
 
 
 }
@@ -24374,20 +24247,16 @@ else if(/e/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 }
 
 else if(/2/.test(whiteone) == true) {
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -24395,11 +24264,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 }
@@ -24407,10 +24273,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -24419,10 +24283,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/5/.test(whiteone) == true) {
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -24430,21 +24292,16 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 }
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 
@@ -24452,11 +24309,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (4 - this_piece[0]) 
 
 
 }
@@ -24477,11 +24331,8 @@ else if(/f/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 }
@@ -24500,10 +24351,9 @@ xdiff =  5 - this_piece[0]
 else if(/3/.test(whiteone) == true) {
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -24513,10 +24363,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -24526,10 +24375,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/5/.test(whiteone) == true) {
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -24539,10 +24387,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/6/.test(whiteone) == true) {
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -24552,10 +24399,9 @@ pieceMove(element, distance_top, distance_left)
 else if(/7/.test(whiteone) == true) {
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -24563,10 +24409,9 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (5 - this_piece[0]) 
 
 
 
@@ -24586,10 +24431,10 @@ else if(/(g\d)/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
+
 
 
 
@@ -24598,20 +24443,16 @@ pieceMove(element, distance_top, distance_left)
 else if(/2/.test(whiteone) == true) {
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
 }
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
 
@@ -24619,11 +24460,8 @@ pieceMove(element, distance_top, distance_left)
 
 
 else if(/4/.test(whiteone) == true) {
-
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
 
@@ -24632,10 +24470,8 @@ pieceMove(element, distance_top, distance_left)
 else if(/5/.test(whiteone) == true) {
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
 
@@ -24643,33 +24479,28 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
 
 }
  
 else if(/7/.test(whiteone) == true) {
+ 
+
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
 
 
 
 }
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (6 - this_piece[0]) 
 
 }
  
@@ -24686,10 +24517,8 @@ else if(/h/.test(whiteone) == true){
 
  else if(/1/.test(whiteone) == true) {
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+ ydiff = (7 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
@@ -24697,22 +24526,16 @@ pieceMove(element, distance_top, distance_left)
 else if(/2/.test(whiteone) == true) {
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (6 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
 
 else if(/3/.test(whiteone) == true) {
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (5 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
@@ -24720,11 +24543,8 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(whiteone) == true) {
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (4 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
@@ -24732,44 +24552,30 @@ pieceMove(element, distance_top, distance_left)
 else if(/5/.test(whiteone) == true) {
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (3 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
 
 else if(/6/.test(whiteone) == true) {
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
+ ydiff = (2 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 }
  
 else if(/7/.test(whiteone) == true) {
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
+ ydiff = (1 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 }
 else if(/8/.test(whiteone) == true) {
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
+ ydiff = (0 - this_piece[1]) 
+ xdiff = (7 - this_piece[0]) 
 
 
 
