@@ -18610,72 +18610,126 @@ if (/(a\d)/.test(whiteone) == true){
  else if(/1/.test(whiteone) == true) {
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 0)
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 0)
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec1"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 }
 
 else if(/2/.test(whiteone) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 0)
-
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 0)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
@@ -18683,35 +18737,63 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(whiteone) == true) {
 
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 0)
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 0)
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec1"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
@@ -18721,7 +18803,7 @@ pieceMove(element, distance_top, distance_left)
 else if(/4/.test(whiteone) == true) {
 
 
-var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 0)
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 0)
 
 if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
@@ -18846,508 +18928,329 @@ yOverlay = this_piece[1]
 
 }
 
-else if(/6/.test(piece) == true) {
+else if(/6/.test(whiteone) == true) {
 
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 0)
-
-
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 0)
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 }
  
-else if(/7/.test(piece) == true) {
+else if(/7/.test(whiteone) == true) {
 
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 0)
-
-
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 0)
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec2"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-}
- 
-else if(/8/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 0)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (0 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
- 
-}
-
- else if(/b/.test(piece) == true){
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
 
 
 
 
 }
 
-else if(/2/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-
-}
-
-else if(/8/.test(piece) == true) {
-
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 1)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (1 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 }
  
 
-}
-
-else if(/c/.test(piece) == true){
-
-  if(/0/.test(piece) == true) {
+else if(/8/.test(whiteone) == true){
 
 
-}
-
- else if(/1/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 2)
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 0)
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec1"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
 
 
 
 
 }
 
-else if(/2/.test(piece) == true) {
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 2)
-
-
-
+}
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+}
 
-var element = "#ec1"
+ else if(/b/.test(whiteone) == true){
+
+ 
+
+  if(/1/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
@@ -19356,36 +19259,66 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(piece) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 2)
-
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 1)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
@@ -19395,149 +19328,839 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/4/.test(piece) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 2)
-
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 1)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 2)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+}
+
+
+
+else if(/5/.test(whiteone) == true){
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
 
 
 
 }
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+}
+
+
+
+
 
 else if(/6/.test(piece) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 2)
-
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 1)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
 
 
 
 }
  
-else if(/7/.test(piece) == true) {
+else if(/7/.test(whiteone) == true) {
 
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 2)
-
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 1)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+}
+ 
+
+}
+
+else if(/c/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
 
 
 
@@ -19546,36 +20169,67 @@ pieceMove(element, distance_top, distance_left)
 else if(/8/.test(piece) == true) {
 
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 2)
-
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 2)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (2 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
 
 
 
@@ -19587,46 +20241,77 @@ pieceMove(element, distance_top, distance_left)
 
  }
 
-else if(/d/.test(piece) == true){
+else if(/d/.test(whiteone) == true){
 
 
-  if(/0/.test(piece) == true) {
+  if(/0/.test(whiteone) == true) {
 
 
 }
 
- else if(/1/.test(piece) == true) {
+ else if(/1/.test(whiteone) == true) {
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 3)
-
-
-
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 3)
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
@@ -19634,39 +20319,70 @@ pieceMove(element, distance_top, distance_left)
 
 }
 
-else if(/2/.test(piece) == true) {
+else if(/2/.test(whiteone) == true) {
 
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 3)
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 3)
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec1"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
@@ -19674,191 +20390,347 @@ pieceMove(element, distance_top, distance_left)
 
 }
 
-else if(/3/.test(piece) == true) {
+else if(/3/.test(whiteone) == true) {
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 3)
-
-
-
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 3)
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
 }
 
 
-else if(/4/.test(piece) == true) {
+else if(/4/.test(whiteone) == true) {
 
 
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 3)
-
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 3)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
 
 
 }
 
-else if(/5/.test(piece) == true) {
-
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 3)
-
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
 
 
 }
 
-else if(/6/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 3)
-
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
 
 }
  
-else if(/7/.test(piece) == true) {
+else if(/7/.test(whiteone) == true) {
 
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 3)
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 3)
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec1"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
@@ -19868,85 +20740,145 @@ else if(/8/.test(piece) == true) {
 
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 3)
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 3)
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (3 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-
-
-}
-
-
-else if(/(e\d)/.test(piece) == true){
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+}
+
+
+
+}
+
+
+else if(/(e\d)/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
 
 
 
@@ -19957,259 +20889,460 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/2/.test(piece) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 4)
-
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 4)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-else if(/7/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+}
+else if(/7/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-else if(/8/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 4)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (4 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
@@ -20221,84 +21354,719 @@ pieceMove(element, distance_top, distance_left)
 
  }
 
-else if(/f/.test(piece) == true){
+else if(/f/.test(whiteone) == true){
 
 
-  if(/0/.test(piece) == true) {
+  if(/0/.test(whiteone) == true) {
 
 
 }
 
- else if(/1/.test(piece) == true) {
+ else if(/1/.test(whiteone) == true) {
 
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 5)
-
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 5)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
 
 
 }
 
-else if(/2/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 5)
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+}
 
-var element = "#ec1"
+else if(/2/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+
+
+
+}
+
+else if(/g/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
 
 
 
@@ -20309,189 +22077,260 @@ pieceMove(element, distance_top, distance_left)
 
 else if(/3/.test(piece) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 5)
-
+var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 6)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 5)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 5)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 5)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
- 
-else if(/7/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 5)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
 
 
 
@@ -20499,306 +22338,81 @@ pieceMove(element, distance_top, distance_left)
 
 }
 
-else if(/8/.test(piece) == true) {
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 5)
 
 
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (5 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-
-
-}
-
-else if(/g/.test(piece) == true){
-
-  if(/0/.test(piece) == true) {
-
-
-}
-
- else if(/1/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 6)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-else if(/2/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 6)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-else if(/3/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 6)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-
-else if(/4/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 6)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-
-}
-
-else if(/5/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 6)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
-
-
-
-}
-
-else if(/6/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 6)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
-
-var this_piece = castle_filter[0]
-
-}
-
-
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
 
 
 
 
 }
  
-else if(/7/.test(piece) == true) {
+else if(/7/.test(whiteone) == true) {
 
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 6)
-
-
+var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 6)
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
 
 
 
@@ -20806,36 +22420,68 @@ pieceMove(element, distance_top, distance_left)
 }
 else if(/8/.test(piece) == true) {
 
-
-var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 6)
-
+var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 6)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
 
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (6 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
 
 
 
@@ -20844,119 +22490,212 @@ pieceMove(element, distance_top, distance_left)
 
 }
 
-else if(/h/.test(piece) == true){
+else if(/h/.test(whiteone) == true){
 
 
-  if(/0/.test(piece) == true) {
+  if(/0/.test(whiteone) == true) {
 
 
 }
 
- else if(/1/.test(piece) == true) {
+ else if(/1/.test(whiteone) == true) {
 
-  var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 7)
-
-
+  var castle_filter = cArray.filter(c =>  c[1] == 7 || c[0] == 7)
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (7 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
 
 
 }
 
-else if(/2/.test(piece) == true) {
-
-
-var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 7)
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+}
 
-var element = "#ec1"
+else if(/2/.test(whiteone) == true) {
+
+ var castle_filter = cArray.filter(c =>  c[1] == 6 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (6 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
-
-pieceMove(element, distance_top, distance_left)
 
 
 
 
 }
 
-else if(/3/.test(piece) == true) {
-
- var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 7)
-
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+  var castle_filter = cArray.filter(c =>  c[1] == 5 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (5 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
 
 
 
@@ -20964,182 +22703,337 @@ pieceMove(element, distance_top, distance_left)
 }
 
 
-else if(/4/.test(piece) == true) {
+else if(/4/.test(whiteone) == true) {
 
-
- var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 7)
-
-
+ var castle_filter = cArray.filter(c =>  c[1] == 4 || c[0] == 7)
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (4 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
 
 
 
 }
 
-else if(/5/.test(piece) == true) {
-
- var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 7)
-
-console.log("YEEESSSSSS")
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
+ 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+  var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (3 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
 
 
 }
 
-else if(/6/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 7)
-
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+}
 
-var element = "#ec1"
+else if(/6/.test(whiteone) == true) {
+ var castle_filter = cArray.filter(c =>  c[1] == 2 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-var element = "#ec2"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-var distance_top = (2 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
 
-pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
 
 
 
 }
  
-else if(/7/.test(piece) == true) {
-
-var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 7)
-
+else if(/7/.test(whiteone) == true) {
+ var castle_filter = cArray.filter(c =>  c[1] == 1 || c[0] == 7)
 
 
 
 
 
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
 
-var element = "#ec1"
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
 
-var this_piece = castle_filter[0]
-
-}
-
-
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
-
-var element = "#ec2"
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (1 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
-
-
-}
-
-else if(/8/.test(piece) == true) {
-
-
-
- var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 7)
-
-
-
-
-
-
-if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
-
-var element = "#ec1"
+drag_piece = "CB2"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
 }
 
 
-else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
 
-var element = "#ec2"
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+ var castle_filter = cArray.filter(c =>  c[1] == 0 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
 
 var this_piece = castle_filter[0]
 
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
 }
 
 
-var distance_top = (0 - this_piece[1]) * 62.5
-var distance_left = (7 - this_piece[0]) * 62.5
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
 
-pieceMove(element, distance_top, distance_left)
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+ 
 
 }
 
