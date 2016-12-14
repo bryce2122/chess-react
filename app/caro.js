@@ -254,7 +254,7 @@ var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
 
 
 
-var whitemove = [ 'h4', 'Knightf3', 'Knighth4', 'e4' ]
+var whitemove = [ 'Knighta3', 'Knightf3', 'Knighth4', 'Knightb5', 'a3' ]
 
 var blackmove = [ 'dxe6', 'h6', 'Bishopg7', 'Kingf8']
 
@@ -683,7 +683,29 @@ function emitChange() {
 
 var moveKnight = function (toX, toY) {
   knightPosition = [toX, toY];
-   count_number++
+  count_number++
+  
+
+   if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
   emitChange();
 }
 
@@ -2305,7 +2327,7 @@ function collectme(connect, monitor) {
         {x == xOverlay && y == yOverlay && count == overlayCount && this.renderOverlay('blue')}
       
       
-        {x == 2 && y == 6 && count == 4 && this.renderOverlay('blue')}
+        
         {!isOver && canDrop && this.renderOverlay('blue')}
         {isOver && canDrop && this.renderOverlay('blue')}
       </div>
@@ -4288,13 +4310,13 @@ else {
     
 
 
-  else if(/h/.test(whiteone) == true){
-    xOverlay = 7
+  else if(/f/.test(whiteone) == true){
+    xOverlay = 5
      xdiff = xOverlay
     console.log("YYYYYY")
     console.log(pawn4X)
     console.log(pawn4Y)
-    var pawnx_filter = pawnArrayy.filter(c => c[0] == 7)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 5)
     console.log(pawnx_filter)
       
 
@@ -4965,13 +4987,13 @@ else {
 
 
 
-else if(/d/.test(whiteone) == true){
-    xOverlay = 3
+else if(/h/.test(whiteone) == true){
+    xOverlay = 7
      xdiff = xOverlay
     console.log("HHHEEEEERRRRREEE")
     console.log(pawn4X)
     console.log(pawn4Y)
-    var pawnx_filter = pawnArrayy.filter(c => c[0] == 3)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 7)
 
       
 
@@ -5306,7 +5328,4741 @@ else {
 
 
 
+else if(whiteone.length == 4){
 
+
+
+if(/ax/.test(whiteone) == true){
+    xOverlay = 0
+     xdiff = xOverlay
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 0)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+ else if(/bx/.test(whiteone) == true){
+    xOverlay = 1
+     xdiff = xOverlay
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 1)
+
+      if(/a/.test(whiteone) == true){
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+}
+
+else if(/c/.test(whiteone) == true){
+
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+         
+
+
+
+
+
+
+
+
+else if(/cx/.test(whiteone) == true){
+    xOverlay = 2
+    var xdiff = xOverlay
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 2)
+
+      if(/b/.test(whiteone) == true) {
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = 2 - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+}
+
+else if(/d/.test(whiteone) == true){
+
+      if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+    
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = 2 - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+    
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+else if(/dx/.test(whiteone) == true){
+    xOverlay = 3
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRyyyRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 3)
+
+      if(/c/.test(whiteone) == true) {
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+}
+
+
+else if(/e/.test(whiteone) == true){
+
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+else if(/ex/.test(whiteone) == true){
+    xOverlay = 4
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 4)
+
+      if(/d/.test(whiteone) == true){
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+}
+
+else if(/f/.test(whiteone) == true){
+
+  if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1&& (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+    
+
+
+  else if(/fx/.test(whiteone) == true){
+    xOverlay = 5
+     xdiff = xOverlay
+    console.log("YYYYYY")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 5)
+    console.log(pawnx_filter)
+      
+      if(/e/.test(whiteone) == true) {
+       
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+}
+
+
+    else if(/g/.test(whiteone) == true){
+
+          if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+
+else if(/gx/.test(whiteone) == true){
+    xOverlay = 6
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 6)
+
+      if(/f/.test(whiteone) == true) {
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+}
+
+
+
+else if(/h/.test(whiteone) == true){
+
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis + 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+
+
+else if(/hx/.test(whiteone) == true){
+    xOverlay = 7
+     xdiff = xOverlay
+    console.log("HHHEEEEERRRRREEE")
+    console.log(pawn4X)
+    console.log(pawn4Y)
+    var pawnx_filter = pawnArrayy.filter(c => c[0] == 7)
+
+      
+
+       if(/1/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 7 )
+    ydiff = 7
+
+
+      }
+
+
+
+
+
+     else if(/2/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 6 )
+    ydiff = 6
+
+
+      }
+
+
+
+      else if(/3/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c =>  c[1] == 6 )
+    ydiff = 5
+
+
+      }
+
+
+  
+     else  if(/4/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 5 || c[1] == 6 )
+    ydiff = 4
+
+
+      }
+
+
+
+    else if(/5/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 4 )
+    ydiff = 3
+
+
+      }
+
+
+
+
+   else if(/6/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 3 )
+    ydiff = 2
+
+
+      }
+
+
+  else if(/7/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 2 )
+    ydiff = 1
+
+
+      }
+
+
+ else if(/8/.test(whiteone) == true){
+
+    var pawny_filter = pawnx_filter.filter(c => c[1] == 1 )
+    ydiff = 0
+
+
+      }
+ 
+
+
+
+
+
+
+ var pawn_piece = pawny_filter[0]
+   console.log("NO HERE")
+   console.log(pawnx_filter) 
+
+   if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
+
+    drag_piece = "PB1"
+
+  var xdis = xdiff - pawn1X
+   var ydis = ydiff - pawn1Y
+
+     canMovePawn1 = function (toX, toY) {
+  const x = pawnPosition1[0];
+  const y = pawnPosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+  else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
+
+    drag_piece = "PB2"
+
+   var xdis = xdiff - pawn2X
+   var ydis = ydiff - pawn2Y
+
+     canMovePawn2 = function (toX, toY) {
+  const x = pawnPosition2[0];
+  const y = pawnPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn3X && pawn_piece[1] == pawn3Y){
+
+    drag_piece = "PB3"
+
+   var xdis = xdiff - pawn3X
+   var ydis = ydiff - pawn3Y
+
+     canMovePawn3 = function (toX, toY) {
+  const x = pawnPosition3[0];
+  const y = pawnPosition3[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+   }
+
+ else if(pawn_piece[0] == pawn4X && pawn_piece[1] == pawn4Y){
+
+  var xdis = xdiff - pawn4X
+   var ydis = ydiff - pawn4Y
+
+     canMovePawn4 = function (toX, toY) {
+  const x = pawnPosition4[0];
+  const y = pawnPosition4[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB4"
+
+   }
+
+ else if(pawn_piece[0] == pawn5X && pawn_piece[1] == pawn5Y){
+
+    
+    var xdis = xdiff - pawn5X
+   var ydis = ydiff - pawn5Y
+
+     canMovePawn5 = function (toX, toY) {
+  const x = pawnPosition5[0];
+  const y = pawnPosition5[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+    drag_piece = "PB5"
+
+   }
+
+  else if(pawn_piece[0] == pawn6X && pawn_piece[1] == pawn6Y){
+
+   
+   var xdis = xdiff - pawn6X
+   var ydis = ydiff - pawn6Y
+
+     canMovePawn6 = function (toX, toY) {
+  const x = pawnPosition6[0];
+  const y = pawnPosition6[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+
+    drag_piece = "PB6"
+
+   }
+
+    
+else if(pawn_piece[0] == pawn7X && pawn_piece[1] == pawn7Y){
+
+   
+    var xdis = xdiff - pawn7X
+   var ydis = ydiff - pawn7Y
+
+     canMovePawn7 = function (toX, toY) {
+  const x = pawnPosition7[0];
+  const y = pawnPosition7[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+
+    drag_piece = "PB7"
+
+   }
+    
+else if(pawn_piece[0] == pawn8X && pawn_piece[1] == pawn8Y){
+
+    var xdis = xdiff - pawn8X
+   var ydis = ydiff - pawn8Y
+
+     canMovePawn8 = function (toX, toY) {
+  const x = pawnPosition8[0];
+  const y = pawnPosition8[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis - 1 && (dy) === ydis) 
+         
+}
+
+
+
+
+
+
+    drag_piece = "PB8"
+
+   }
+else {
+
+  drag_piece = "PB5"
+}
+
+
+
+    
+
+
+
+    yOverlay = pawn_piece[1]
+    console.log("MMMMMMMMM")
+    console.log(drag_piece)
+    console.log(yOverlay)
+    console.log(xOverlay)
+    console.log(overlayCount)
+    // count_number++;
+
+    
+    
+    
+  
+
+
+
+
+  }
+
+
+
+
+}
 
 
 
@@ -5338,12 +10094,16 @@ else {
     if(/Knight/.test(whiteone) == true){
 
 
-      if(/f/.test(whiteone) == true){
+      
 
-     console.log("FFFFFFFF")
-     console.log("F is true")
-     console.log(knOlArray)
-      if(/3/.test(whiteone) == true){
+      
+      if(/a\d/.test(whiteone) == true){
+
+
+  var xfactor = 0
+
+      
+       if(/1/.test(whiteone) == true){
 
 
     
@@ -5351,25 +10111,9 @@ else {
 
 
 
-     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(5 - c[0]) == 1
-|| Math.abs(5 - c[1]) == 1 && Math.abs(5 - c[0]) == 2)
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
 
-// if(knight_Ol_filter[0][0] == EKNIGHT1X && knight_filter[0][1] == EKNIGHT1Y){
-
-// var element = "#ek1"
-
-// var this_piece = knight_filter[0]
-
-// }
-
-
-// else if(knight_filter[0][0] == EKNIGHT2X && knight_filter[0][1] == EKNIGHT2Y){
-
-// var element = "#ek2"
-
-// var this_piece = knight_filter[0]
-
-// }
 
 
 
@@ -5384,69 +10128,48 @@ yOverlay = this_knight[1]
 
 
     drag_piece = "BS1"
-  }
+  
 
-else if(knight2X = this_knight[0] && knight2Y == this_knight[1]){
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
 
 
-  drag_piece = "BS2"
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
 }
 
 
 
 
-      }//end of 3
-
-} //end of f
-
-
-else if(/h\d/.test(whiteone) == true){
-
-console.log("ADFJORIEJGWJGEWRJOGREJ{OWGWE")
-console.log("h is true")
-
-      if(/4/.test(whiteone) == true){
-
-
-    
-
-
-
-
-     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(7 - c[0]) == 1
-|| Math.abs(4 - c[1]) == 1 && Math.abs(7 - c[0]) == 2)
 
 
 
 
 
-var this_knight = knight_Ol_filter[0]
-xOverlay = this_knight[0]
-yOverlay = this_knight[1]
-      
-
-
-
-  if(knightX == this_knight[0] && knightY == this_knight[1]){
-
-
-    drag_piece = "BS1"
   }
 
 else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
- var ydis = 4 - knight2Y
- var xdis = 7 - knight2X
-  drag_piece = "BS2"
-}
 
-  
-      console.log("HHHHH")
-      console.log(knight2X)
-      console.log(knight2Y)
-      console.log(xdis)
-      console.log(ydis)
-      canMoveKnight2 = function (toX, toY) {
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
   const x = knightPosition2[0];
   const y = knightPosition2[1];
   const dx = toX - x;
@@ -5458,9 +10181,531 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
 
 
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
       }//end of 3
 
 
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
 
 
 
@@ -5470,7 +10715,5693 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
 
 
-}// end ofz
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
+
+
+
+
+else if(/b\d/.test(whiteone) == true){
+
+
+  var xfactor = 1
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      else if(/c\d/.test(whiteone) == true){
+
+
+  var xfactor = 2
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    console.log("ROGER ROGER WE GOT A PROBLEM")
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      else if(/d\d/.test(whiteone) == true){
+
+
+  var xfactor = 3
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+else if(/e\d/.test(whiteone) == true){
+
+
+  var xfactor = 4
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      else if(/f/.test(whiteone) == true){
+
+     console.log("FFFFFFFF")
+     console.log("F is true")
+     console.log(knOlArray)
+      var xfactor = 5
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+} //end of f
+
+
+
+
+
+else if(/g\d/.test(whiteone) == true){
+
+
+  var xfactor = 6
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+else if(/h\d/.test(whiteone) == true){
+
+
+  var xfactor = 7
+
+      
+       if(/1/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(7 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(7 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 7 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 7 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 1
+
+
+
+
+
+else if(/2/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(6 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(6 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+var this_knight = knight_Ol_filter[0]
+xOverlay = this_knight[0]
+yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+
+  var ydis = 6 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+  var ydis = 6 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 2
+
+
+
+
+
+else if(/3/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(5 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(5 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+      var this_knight = knight_Ol_filter[0]
+      xOverlay = this_knight[0]
+      yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+     var ydis = 5 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 5 - knight2Y
+ var xdis = xfactor - knight2X
+
+console.log("YAAAKYIKKK")
+console.log(xdis)
+console.log(ydis)
+console.log(knight2X)
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+}
+
+
+
+
+      }//end of 3
+
+
+  else if(/4/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(4 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(4 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+  var ydis = 4 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+   var ydis = 4 - knight2Y
+  var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 4
+
+
+  else if(/5/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(3 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+ var ydis = 3 - knightY
+ var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+  var ydis = 3 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 5
+
+
+  else if(/6/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(2 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+  
+    var ydis = 2 - knightY
+    var xdis = xfactor - knightX
+
+      canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+
+
+ 
+
+
+
+ var ydis = 2 - knight2Y
+ var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+}
+
+
+
+
+      }//end of 6
+
+
+  else if(/7/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(1 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(1 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 1 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  
+   var ydis = 1 - knight2Y
+   var xdis = xfactor - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+
+
+
+  drag_piece = "BS2"
+}
+
+
+
+
+      }//end of 7
+
+
+  else if(/8/.test(whiteone) == true){
+
+
+    
+
+
+
+
+     var knight_Ol_filter = knOlArray.filter(c => Math.abs(0 - c[1]) == 2 && Math.abs(xfactor - c[0]) == 1
+|| Math.abs(0 - c[1]) == 1 && Math.abs(xfactor - c[0]) == 2)
+
+
+    var this_knight = knight_Ol_filter[0]
+    xOverlay = this_knight[0]
+    yOverlay = this_knight[1]
+      
+
+
+
+  if(knightX == this_knight[0] && knightY == this_knight[1]){
+
+
+    drag_piece = "BS1"
+    var ydis = 0 - knightY
+    var xdis = xfactor - knightX
+
+
+
+
+
+   canMoveKnight = function (toX, toY) {
+  const x = knightPosition[0];
+  const y = knightPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+  
+
+
+
+
+  }
+
+else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
+
+
+  drag_piece = "BS2"
+  var ydis = 0 - knight2Y
+  var xdis = 5 - knight2X
+
+
+
+
+
+   canMoveKnight2 = function (toX, toY) {
+  const x = knightPosition2[0];
+  const y = knightPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdis && (dy) === ydis ) 
+        
+}
+
+
+
+
+
+
+}
+
+
+
+
+      }//end of 8
+
+
+
+
+
+
+
+}// end of h
 
 
 
@@ -5573,7 +16504,7 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
  else if(drag_piece == "BS1") {
 
-  drag_piece = BS1
+  PIECE = BS1
  }
 
 
