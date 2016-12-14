@@ -29,6 +29,7 @@ var epleft = 133
 var epkillcount = 0;
 var moveArray = []
 var a;
+var bArray;
 var grid = []
 var killsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
 var prevkillsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
@@ -234,6 +235,7 @@ var EKINGY
 var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
 
 
+var cArray;
 
 
 
@@ -253,10 +255,9 @@ var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
 
 
 
+var whitemove = [ 'Kingf2', 'Castlea4', 'Bishopd3', 'a3' ]
 
-var whitemove = [ 'Knighta3', 'Knightf3', 'Knighth4', 'Knightb5', 'a3' ]
-
-var blackmove = [ 'dxe6', 'h6', 'Bishopg7', 'Kingf8']
+var blackmove = [ 'e6', 'h6', 'Bishopg7', 'Knightf6']
 
 // Components 
 
@@ -761,6 +762,42 @@ var canMoveKnight2 = function (toX, toY) {
 var moveBishop = function (toX, toY) {
   bishopPosition = [toX, toY];
    count_number++
+  
+
+    if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -783,6 +820,43 @@ var canMoveBishop = function (toX, toY) {
 var moveBishop2 = function (toX, toY) {
   bishopPosition2 = [toX, toY];
    count_number++
+  
+    if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -1180,6 +1254,39 @@ var canMovePawn8 = function (toX, toY) {
 var moveQueen = function (toX, toY) {
   queenPosition = [toX, toY];
    count_number++
+  
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -1196,7 +1303,39 @@ var canMoveQueen = function (toX, toY) {
 
 var moveKing = function (toX, toY) {
   kingPosition = [toX, toY];
-   count_number++
+   
+
+      count_number++
+
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+   
   emitChange();
 }
 
@@ -1214,6 +1353,36 @@ var canMoveKing = function (toX, toY) {
 var moveCastle1 = function (toX, toY) {
   castlePosition1 = [toX, toY];
   count_number++
+  
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -1230,6 +1399,37 @@ var canMoveCastle1 = function (toX, toY) {
 var moveCastle2 = function (toX, toY) {
   castlePosition2 = [toX, toY];
    count_number++
+  
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+
+
+
+
   emitChange();
 }
 
@@ -2531,6 +2731,10 @@ renderSquare: function (i,BS) {
   knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
   pawnArrayy = [[pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4Y],[pawn5X,pawn5Y],
                   [pawn6X,pawn6Y],[pawn7X,pawn7Y],[pawn8X,pawn8Y]]
+
+  bArray = [[bishopX,bishopY],[bishop2X,bishop2Y]]
+
+  cArray = [[castle1X,castle1Y],[castle2X,castle2Y]]
 
  // console.log(kn)
   
@@ -16422,17 +16626,6287 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
 
 
+else if(/Bishop/.test(whiteone) == true){
+
+if (/a/.test(whiteone) == true){
 
 
-  }
-
-
-
-
-
+  if(/0/.test(whiteone) == true) {
 
 
 
+var this_piece = bishopArray[0]
+var element = "#eb"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard1"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard1"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard1"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard1"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+ 
+else if(/8/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+}
+
+ else if(/b/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+var this_piece = bishopArray[1]
+var element = "#eb2"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (1 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+
+ 
+
+
+ }
+
+else if(/c/.test(whiteone) == 'c'){
+
+  if(/0/.test(whiteone) == true) {
+
+
+
+var this_piece = bishopArray[0]
+var element = "#eb"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (2 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+}
+
+else if(/d/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+var this_piece = bishopArray[1]
+var element = "#eb2"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (3 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+}
+
+
+else if(/e/.test(whiteone) == true ){
+
+  if(/0/.test(whiteone) == true) {
+
+
+var this_piece = bishopArray[0]
+var element = "#eb"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+}
+
+ 
+else if(/8/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (4 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+
+
+
+
+
+}
+
+else if(/f/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+var this_piece = bishopArray[1]
+var element = "#eb2"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+
+else if(/8/.test(whiteone) == true) {
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (5 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+
+}
+
+else if(/g/.test(whiteone) == true){
+
+  console.log("GGGGGGG")
+  if(/0/.test(piece) == true) {
+var this_piece = bishopArray[0]
+var element = "#eb"
+
+var distance_top = (8 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+
+ 
+else if(/8/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (6 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+}
+
+
+}
+
+else if(/h/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+    var this_piece = bishopArray[1]
+var element = "#eb2"
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (8 - this_piece[0]) * 62.5
+
+console.log(distance_left)
+pieceMove(element, distance_top, distance_left)
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (7 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (6 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (5 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (2 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var this_piece = bArray[1]
+drag_piece = "BishopBoard2"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (1 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop2 = function (toX, toY) {
+  const x = bishopPosition2[0];
+  const y = bishopPosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+
+var this_piece = bArray[0]
+drag_piece = "BishopBoard"
+ 
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+var ydiff = (0 - this_piece[1]) 
+var xdiff = (7 - this_piece[0]) 
+
+
+canMoveBishop = function (toX, toY) {
+  const x = bishopPosition[0];
+  const y = bishopPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff)
+        
+}
+
+
+
+
+
+
+}
+
+
+}
+
+
+}//end of Bishop
+
+  
+
+else if(/Castle/.test(whiteone) == true){
+
+if (/(a\d)/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 0)
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (4 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var castle_filter = cArray.filter(c =>  c[1] == 3 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == castle1X && castle_filter[0][1] == castle1Y){
+
+drag_piece = "CB1"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle1 = function (toX, toY) {
+  const x = castlePosition1[0];
+  const y = castlePosition1[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+}
+
+
+else if(castle_filter[0][0] == castle2X && castle_filter[0][1] == castle2Y){
+
+drag_piece = "CB2"
+
+var this_piece = castle_filter[0]
+
+var ydiff = (3 - this_piece[1]) 
+var xdiff = (0 - this_piece[0]) 
+
+canMoveCastle2 = function (toX, toY) {
+  const x = castlePosition2[0];
+  const y = castlePosition2[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff  && (dy) === ydiff) 
+        
+}
+
+
+
+
+
+
+}
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+
+
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+else if(/8/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 0)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+}
+
+ else if(/b/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 1)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+
+}
+
+else if(/c/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 2)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+
+
+ }
+
+else if(/d/.test(piece) == true){
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 3)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+
+}
+
+
+else if(/(e\d)/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+else if(/7/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 4)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+
+
+ }
+
+else if(/f/.test(piece) == true){
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 5)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+
+}
+
+else if(/g/.test(piece) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+else if(/8/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 6)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+
+}
+
+else if(/h/.test(piece) == true){
+
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(piece) == true) {
+
+  var castle_filter = castleArray.filter(c =>  c[1] == 7 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(piece) == true) {
+
+
+var castle_filter = castleArray.filter(c =>  c[1] == 6 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/3/.test(piece) == true) {
+
+ var castle_filter = castleArray.filter(c =>  c[1] == 5 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(piece) == true) {
+
+
+ var castle_filter = castleArray.filter(c =>  c[1] == 4 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(piece) == true) {
+
+ var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 7)
+
+console.log("YEEESSSSSS")
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/6/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 2 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(piece) == true) {
+
+var castle_filter = castleArray.filter(c =>  c[1] == 1 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/8/.test(piece) == true) {
+
+
+
+ var castle_filter = castleArray.filter(c =>  c[1] == 0 || c[0] == 7)
+
+
+
+
+
+
+if(castle_filter[0][0] == ECASTLE1X && castle_filter[0][1] == ECASTLE1y){
+
+var element = "#ec1"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+else if(castle_filter[0][0] == ECASTLE2X && castle_filter[0][1] == ECASTLE2y){
+
+var element = "#ec2"
+
+var this_piece = castle_filter[0]
+
+}
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+}
+
+}
+
+} //End Of Castle
+
+
+else if(/Queen/.test(whiteone) == true){
+drag_piece = "QB"
+var this_piece = [queenX,queenY]
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+if (/a/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+   ydiff = (4 - this_piece[1]) 
+   xdiff = (0 - this_piece[0]) 
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+else if(/8/.test(whiteone) == true) {
+
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+
+
+ }
+
+ else if(/b/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+
+
+
+}
+
+else if(/c/.test(whiteone) == true){
+
+  if(/0/.test(piece) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+
+}
+
+else if(/d/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+
+}
+
+
+else if(/(e\d)/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+
+}
+
+else if(/f/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+}
+
+else if(/g/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+} 
+
+
+
+
+}
+
+else if(/h/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+else if(/8/.test(whiteone) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+}
+
+ canMoveQueen = function (toX, toY) {
+  const x = queenPosition[0];
+  const y = queenPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff) 
+      
+}
+
+
+
+
+}// End Of Queen
+
+
+
+
+else if(/King/.test(whiteone) == true){
+
+drag_piece = "KB"
+
+var this_piece = [kingX,kingY]
+
+xOverlay = this_piece[0]
+yOverlay = this_piece[1]
+
+if (/a/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+else if(/8/.test(whiteone) == true) {
+
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (0 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+
+}
+
+ else if(/b/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+ else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (1 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+
+}
+
+else if(/c/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (2 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+
+}
+
+else if(/d/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (3 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+
+
+}
+
+
+else if(/e/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/5/.test(whiteone) == true) {
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (4 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+ 
+
+
+}
+
+else if(/f/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+ydiff =  6 - this_piece[1] 
+xdiff =  5 - this_piece[0] 
+
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (5 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+
+
+}
+
+else if(/(g\d)/.test(whiteone) == true){
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (6 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+ 
+
+}
+
+else if(/h/.test(whiteone) == true){
+
+
+  if(/0/.test(whiteone) == true) {
+
+
+}
+
+ else if(/1/.test(whiteone) == true) {
+
+var distance_top = (7 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+}
+
+else if(/2/.test(whiteone) == true) {
+
+
+var distance_top = (6 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/3/.test(whiteone) == true) {
+
+var distance_top = (5 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+
+else if(/4/.test(whiteone) == true) {
+
+var distance_top = (4 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/5/.test(whiteone) == true) {
+
+
+var distance_top = (3 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+
+else if(/6/.test(whiteone) == true) {
+
+var distance_top = (2 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+ 
+else if(/7/.test(whiteone) == true) {
+
+var distance_top = (1 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+}
+else if(/8/.test(whiteone) == true) {
+
+var distance_top = (0 - this_piece[1]) * 62.5
+var distance_left = (7 - this_piece[0]) * 62.5
+
+pieceMove(element, distance_top, distance_left)
+
+
+
+
+}
+
+
+
+
+}
+
+canMoveKing = function (toX, toY) {
+  const x = kingPosition[0];
+  const y = kingPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === xdiff && (dy) === ydiff) 
+        
+}
+  
+
+
+
+  }// END of King
+
+
+
+
+
+
+}
 
 
 
@@ -16512,6 +22986,38 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
   PIECE = BS2
  }
+
+
+ else if(drag_piece == "BishopBoard1"){
+
+  PIECE = BishopBoard1
+ }
+
+else if(drag_piece == "BishopBoard2"){
+
+  PIECE = BishopBoard2
+ }
+
+ else if(drag_piece == "CB1"){
+
+  PIECE = CB1
+ }  
+
+else if(drag_piece == "CB2"){
+
+  PIECE = CB2
+ }
+
+ else if(drag_piece == "QB"){
+
+  PIECE = QB
+ }
+    
+else if(drag_piece == "KB"){
+
+  PIECE = KB
+ }
+  
 
 
     else {
