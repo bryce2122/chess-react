@@ -1,16 +1,68 @@
+
+
+
+
+
 import {Motion, spring} from 'react-motion';
 import range from 'lodash.range';
 var React = require('react');
 var ReactDOM = require('react-dom');
 var DragDropContext = require('react-dnd').DragDropContext
+
+var fs = require('fs')
+
+
+
+
+
+
+
+
+
+
 var square;
 var PIECE;
 var i;
+var Ep1kill = 0
+var Ep2kill = 0
+var Ep4kill = 0
+var Ep6kill = 0
+var Ep7kill = 0
+var Ep8kill = 0
+
+var Ep5kill = 0;
+var Ec1kill = 0;
+var Ec2kill = 0;
+var Eb1kill = 0;
+var Eb2kill = 0;
+var Ek1kill = 0;
+var Ek2kill = 0;
+var Eqkill = 0;
+var Ekkill = 0
+
+var C2kill = 0;
+var B2kill = 0;
+var B1kill = 0;
+var Qkill = 0;
+var Kkill = 0;
+var K1kill = 0;
+var K2kill = 0;
+
+
+
+
+
+
+
+
+
 var checkmecount = 0
 var HTML5Backend = require('react-dnd-html5-backend');
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
 var flow = require('lodash/flow');
+$.get('/ajax', function(res) {
+
 var count = -1;
 var BS1;
 var dragstate;
@@ -35,8 +87,8 @@ var killsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
 var prevkillsquare = [0,1,2,3,4,5,6,7,8,9,10,12,13,14,15]
 var prevc = []
 var pcheck = [1,7,6,7,2,7,5,7,0,6,1,6,2,6,3,6,4,6,5,6,6,6,7,6,0,7,7,7,3,7,4,7]
- 
-var whosemove;
+var window_difference = (1366 - window.innerWidth) * 0.5 
+var whosemove = "black"
 var C1kill = 0;
 var P1kill = 0;
 var P2kill = 0;
@@ -48,17 +100,26 @@ var P7kill = 0;
 var P8kill = 0;
 var ECastle1kill = 0;
 var ec1offsetx = 433
+var c1_pixel_subtract = 433 - window_difference
 var ec1offsety = 97
+var ec1offsetxa = 433
 var ec2offsetx = 870.5
+var c2_pixel_subtract = 870.5 - window_difference
+var ec2offsetxa = 870.5
 var ec2offsety = 97
 var C2kill = 0;
 
 var knightArray = []
 var eb1offsetx = 558
+var eb1offsetxa = 558
+var b1_pixel_subtract = 558 - window_difference
 var eb1offsety = 97
 var Eb1kill = 0;
 
 var eb2offsetx = 745.5
+var eb2offsetxa = 745.5
+var b2_pixel_subtract = 745.5 - window_difference
+
 var eb2offsety = 97
 var Eb2kill = 0;
 
@@ -70,9 +131,9 @@ var Ep1kill = 0;
 
 var ep1offsety = 159.5
 
-var ep1offsetx;
+var ep1offsetx = 433;
 
-var window_difference = (1366 - window.innerWidth) * 0.5
+
 var pawn1_pixel_subtract = 433 - window_difference
 var ep1offsetxa = pawn1_pixel_subtract
 
@@ -92,13 +153,13 @@ var ep5offsetxa = pawn5_pixel_subtract
 
 
 var pawn6_pixel_subtract = 745.5 - window_difference
-var e6offsetxa = pawn5_pixel_subtract
+var ep6offsetxa = pawn6_pixel_subtract
 
 var pawn7_pixel_subtract = 808 - window_difference
-var ep7offsetxa = pawn6_pixel_subtract
+var ep7offsetxa = pawn7_pixel_subtract
 
 var pawn8_pixel_subtract = 870.5 - window_difference
-var ep8offsetxa = pawn7_pixel_subtract
+var ep8offsetxa = pawn8_pixel_subtract
 
 
 
@@ -129,6 +190,8 @@ var Ep8kill = 0;
 
 
 var eqoffsetx = 620.5
+var eqoffsetxa = 620.5
+var q_pixel_subtract = 620.5 - window_difference
 var eqoffsety = 97;
 var Eqkill = 0;
 
@@ -136,6 +199,8 @@ var Eqkill = 0;
 
 
 var ekoffsetx = 683
+var ekoffsetxa = 683
+var k_pixel_subtract = 683 - window_difference
 var ekoffsety = 97;
 var Ekkill = 0;
 
@@ -144,9 +209,13 @@ var Ekkill = 0;
 
 
 var ek1offsetx = 495.5
+var ek1offsetxa = 495.5
+var k1_pixel_subtract = 495.5 - window_difference
 var ek1offsety = 97
 var Ek1kill = 0;
 var ek2offsetx = 808
+var ek2offsetxa = 808
+var k2_pixel_subtract = 808 - window_difference
 var ek2offsety = 97
 var Ek2kill = 0;
 
@@ -226,10 +295,10 @@ var EKINGY
   var drag_piece;
  var xOverlay;
  var yOverlay;
-
+var data;
  var overlayCount = -1
-
-
+var whitemove;
+var blackmove;
 
 
 var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
@@ -238,6 +307,24 @@ var knOlArray = [[knightX,knightY],[knight2X,knight2Y]]
 var cArray;
 
 
+// fs.readFile('/uploads/', 'utf8', function (err,data) {
+//   if (err) {
+//     return console.log(err);
+//   }
+//   console.log(data);
+// });
+
+
+            console.log(res)
+            data = res.replace(/\d\./g, "")
+            console.log(data)
+            data = data.split(" ")
+            console.log(data)
+            whitemove = data.filter((c,i) => i % 2 == 0 )
+            blackmove = data.filter((c,i) => i % 2 != 0)
+            console.log(whitemove)
+            console.log(blackmove)
+       
 
 
 
@@ -249,15 +336,9 @@ var cArray;
 
 
 
+console.log(whitemove)
 
 
-
-
-
-
-var whitemove = [ 'Kingf2', 'Castlea4', 'Bishopd3', 'a3' ]
-
-var blackmove = [ 'e6', 'h6', 'Bishopg7', 'Knightf6']
 
 // Components 
 
@@ -281,8 +362,8 @@ var pawnArrayy = [[pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4X
 
 
 
-console.log("XXXX")
-console.log(winx)
+// console.log("XXXX")
+// console.log(winx)
 
 
 
@@ -295,7 +376,41 @@ function pawn1_Window_Update() {
  window_difference = (1366 - window.innerWidth) * 0.5
  pawn1_pixel_subtract = 433 - window_difference
  ep1offsetxa = pawn1_pixel_subtract
+ pawn2_pixel_subtract = 495.5 - window_difference
+ ep2offsetxa = pawn2_pixel_subtract
+ pawn3_pixel_subtract = 558 - window_difference
  ep3offsetxa = pawn3_pixel_subtract
+ pawn4_pixel_subtract = 620.5 - window_difference
+ ep4offsetxa = pawn4_pixel_subtract
+
+ pawn5_pixel_subtract = 683 - window_difference
+ ep5offsetxa = pawn5_pixel_subtract
+ pawn6_pixel_subtract = 745.5 - window_difference
+ ep6offsetxa = pawn6_pixel_subtract
+ pawn7_pixel_subtract = 808 - window_difference
+ ep7offsetxa = pawn7_pixel_subtract
+ pawn8_pixel_subtract = 870.5 - window_difference
+ ep8offsetxa = pawn8_pixel_subtract
+ c1_pixel_subtract = 433 - window_difference
+ ec1offsetxa = c1_pixel_subtract
+ k1_pixel_subtract = 495.5 - window_difference
+ ek1offsetxa = k1_pixel_subtract
+ b1_pixel_subtract = 558 - window_difference
+ eb1offsetxa = b1_pixel_subtract
+ q_pixel_subtract = 620.5 - window_difference
+ eqoffsetxa = q_pixel_subtract
+ k_pixel_subtract = 683 - window_difference
+ ekoffsetxa = k_pixel_subtract
+ b2_pixel_subtract = 745.5 - window_difference
+ eb2offsetxa = b2_pixel_subtract
+ k2_pixel_subtract = 808 - window_difference
+ ek2offsetxa = k2_pixel_subtract
+ c2_pixel_subtract = 870.5 - window_difference
+ ec2offsetxa - c2_pixel_subtract
+
+
+
+
 }
 
 
@@ -707,6 +822,8 @@ var moveKnight = function (toX, toY) {
 
   overlayCount += 2
  }
+  
+  whosemove = "white"
   emitChange();
 }
 
@@ -745,6 +862,7 @@ var moveKnight2 = function (toX, toY) {
   overlayCount += 2
  }
 
+ whosemove = "white"
 emitChange();
   
 }
@@ -793,7 +911,7 @@ var moveBishop = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
 
@@ -854,7 +972,7 @@ var moveBishop2 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
   emitChange();
@@ -903,7 +1021,7 @@ var movePawn1 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
 
@@ -951,7 +1069,7 @@ var movePawn2 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
   emitChange();
@@ -1002,7 +1120,7 @@ var movePawn3 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
   emitChange();
@@ -1032,14 +1150,10 @@ var movePawn4 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
 
 
-  overlayCount = 0
- }
 
-
- else if(count_number > 1) {
+ else  {
 
 
   overlayCount += 2
@@ -1050,7 +1164,7 @@ var movePawn4 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
   emitChange();
@@ -1093,6 +1207,7 @@ var movePawn5 = function (toX, toY) {
   overlayCount += 2
  }
 
+ whosemove = "white"
 emitChange();
 }
 
@@ -1137,7 +1252,7 @@ var movePawn6 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
   emitChange();
 }
@@ -1185,7 +1300,7 @@ var movePawn7 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
 
@@ -1233,7 +1348,7 @@ var movePawn8 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
   emitChange();
 }
@@ -1284,7 +1399,7 @@ var moveQueen = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
   emitChange();
@@ -1333,7 +1448,7 @@ var moveKing = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
    
   emitChange();
@@ -1380,7 +1495,7 @@ var moveCastle1 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
   emitChange();
@@ -1426,7 +1541,7 @@ var moveCastle2 = function (toX, toY) {
 
 
 
-
+ whosemove = "white"
 
 
 
@@ -2604,32 +2719,95 @@ var Board = React.createClass({
 
 componentDidMount() {
 
+setInterval(this.checkposeb1,100)
+setInterval(this.checkposeb2,100)
 setInterval(this.checkposec1,100)
+setInterval(this.checkposec2,100)
 setInterval(this.checkposek1,100)
-setInterval(this.checkposep3,100)
+setInterval(this.checkposek2,100)
+setInterval(this.checkposep1,100)
+
+setInterval(this.checkposeq,100)
+setInterval(this.checkposek,100)
 
 
 },
 
-checkposep3(){
+
+checkposep1() {
+
+try { 
+
+
+
+var t = ($("#ep").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep").offset().left- 433) % 62.5 == 0
+
+if(ep1offsetx != $("#ep").offset().left && t === true && l === true ||
+ep1offsety != $("#ep").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+  console.log("CHANGE PAWN1")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ep1kill++;
+
+
+}
+
+
+try { 
+
+
+
+var t = ($("#ep2").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep2").offset().left- 433) % 62.5 == 0
+
+if(ep2offsetx != $("#ep2").offset().left && t === true && l === true ||
+ep2offsety != $("#ep2").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE PAWN2")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ep2kill++;
+
+
+}
+
 
 try { var ep3t = ($("#ep3").offset().top - 97) % 62.5 == 0
-var ep3l = ( $("#ep3").offset().left- ep3offsetxa) % 62.5 == 0
+var ep3l = ( $("#ep3").offset().left- ep1offsetxa) % 62.5 == 0
     
 if(ep3offsetx != $("#ep3").offset().left && ep3t === true && ep3l === true ||
 ep3offsety != $("#ep3").offset().top && ep3t === true && ep3l === true){
 
 
-whosemove = "black"
+// whosemove = "black"
+ console.log("CHANGE PAWN3")
 emitChange()
 
     }
 
-  else {
-
-whosemove = "white"
-
-  }
+  
 
 }
 
@@ -2639,17 +2817,160 @@ whosemove = "white"
 catch(e){
 
 Ep3kill++;
+console.log(e)
+console.log("BREAK")
+}
+
+
+
+try { 
+
+
+
+var t = ($("#ep4").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep4").offset().left- 433) % 62.5 == 0
+
+if(ep4offsetx != $("#ep4").offset().left && t === true && l === true ||
+ep4offsety != $("#ep4").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE PAWN4")
+  emitChange()
+  
 
 }
 
 
 
+}
+
+catch(e){
+
+Ep4kill++;
 
 
+}
+
+try {
+var t = ($("#ep5").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep5").offset().left- 433) % 62.5 == 0
+
+if(ep5offsetx != $("#ep5").offset().left && t === true && l === true ||
+ep5offsety != $("#ep5").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE PAWN5")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ep5kill++;
+
+
+}
+
+
+
+try { 
+
+
+
+var t = ($("#ep6").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep6").offset().left- 433) % 62.5 == 0
+
+if(ep6offsetx != $("#ep6").offset().left && t === true && l === true ||
+ep6offsety != $("#ep6").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE PAWN6")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ep6kill++;
+
+
+}
+
+
+try { 
+
+
+
+var t = ($("#ep7").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep7").offset().left- 433) % 62.5 == 0
+
+if(ep7offsetx != $("#ep7").offset().left && t === true && l === true ||
+ep7offsety != $("#ep7").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE PAWN7")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ep7kill++;
+
+
+}
+
+
+try { 
+
+
+
+var t = ($("#ep8").offset().top - 97) % 62.5 == 0
+var l = ( $("#ep8").offset().left- 433) % 62.5 == 0
+
+if(ep8offsetx != $("#ep8").offset().left && t === true && l === true ||
+ep8offsety != $("#ep8").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE PAWN8")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ep8kill++;
+
+
+}
 
 
 
 },
+
+
+
+
 
 
 
@@ -2664,22 +2985,19 @@ var ek1l = ( $("#ek1").offset().left- 433) % 62.5 == 0
 if(ek1offsetx != $("#ek1").offset().left && ek1t === true && ek1l === true ||
 ek1offsety != $("#ek1").offset().top && ek1t === true && ek1l === true) {
 
-whosemove = "black"
+// whosemove = "black"
+console.log("CHANGE KNIGHT1")
 emitChange()
 }
 
-else {
 
-whosemove = "white"
-
-}
   
 }
 
 catch(e){
 
 Ek1kill++;
-whosemove = "white"
+
 
 }
 
@@ -2699,28 +3017,241 @@ var l = ( $("#ec1").offset().left- 433) % 62.5 == 0
 if(ec1offsetx != $("#ec1").offset().left && t === true && l === true ||
 ec1offsety != $("#ec1").offset().top && t === true && l === true ){
 
+  // whosemove = "black"
+   console.log("CHANGE CASTLE1")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ec1kill++;
+
+}
+
+
+},
+
+
+checkposec2() {
+
+try { 
+
+
+
+var t = ($("#ec2").offset().top - 97) % 62.5 == 0
+var l = ( $("#ec2").offset().left- 433) % 62.5 == 0
+
+if(ec2offsetx != $("#ec2").offset().left && t === true && l === true ||
+ec2offsety != $("#ec2").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE CASTLE2")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ec2kill++;
+
+
+}
+
+
+},
+
+
+
+checkposeb1() {
+
+try { 
+
+
+
+var t = ($("#eb").offset().top - 97) % 62.5 == 0
+var l = ( $("#eb").offset().left- 433) % 62.5 == 0
+
+if(eb1offsetx != $("#eb").offset().left && t === true && l === true ||
+eb1offsety != $("#eb").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE Bishop1")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Eb1kill++;
+
+
+}
+
+
+},
+
+checkposeb2() {
+
+try { 
+
+
+
+var t = ($("#eb2").offset().top - 97) % 62.5 == 0
+var l = ( $("#eb2").offset().left- 433) % 62.5 == 0
+
+if(eb2offsetx != $("#eb2").offset().left && t === true && l === true ||
+eb2offsety != $("#eb2").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE Bishop2")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Eb2kill++;
+
+
+}
+
+
+},
+
+
+
+checkposek2() {
+
+try { 
+
+
+
+var t = ($("#ek2").offset().top - 97) % 62.5 == 0
+var l = ( $("#ek2").offset().left- 433) % 62.5 == 0
+
+if(ek2offsetx != $("#ek2").offset().left && t === true && l === true ||
+ek2offsety != $("#ek2").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE KNIGHT2")
   whosemove = "black"
   emitChange()
   
 
 }
 
-else {
 
-  whosemove = "white"
-}
 
 }
 
 catch(e){
 
-Ep3kill++;
-whosemove = "white"
+Ek2kill++;
+
 
 }
 
 
 },
+
+
+checkposeq() {
+
+try { 
+
+
+
+var t = ($("#eq").offset().top - 97) % 62.5 == 0
+var l = ( $("#eq").offset().left- 433) % 62.5 == 0
+
+if(eqoffsetx != $("#eq").offset().left && t === true && l === true ||
+eqoffsety != $("#eq").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE Queen")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Eqkill++;
+
+
+}
+
+
+},
+
+
+checkposek() {
+
+try { 
+
+
+
+var t = ($("#ek").offset().top - 97) % 62.5 == 0
+var l = ( $("#ek").offset().left- 433) % 62.5 == 0
+
+if(ekoffsetx != $("#ek").offset().left && t === true && l === true ||
+ekoffsety != $("#ek").offset().top && t === true && l === true ){
+
+  // whosemove = "black"
+   console.log("CHANGE KING")
+  emitChange()
+  
+
+}
+
+
+
+}
+
+catch(e){
+
+Ekkill++;
+
+
+}
+
+
+},
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2743,8 +3274,31 @@ renderSquare: function (i,BS) {
   var whiteone = whitemove[count_number]
   var ydiff;
   var xdiff; 
-    if(whiteone.length < 3){
-      console.log("JJJJJJJJSJFDSJFSDFSDFSDFSD")
+   try {
+  if(/O-O/.test(whiteone) == true){
+
+drag_piece = "KB"
+castlePosition2 = [4, 7];
+
+canMoveKing = function (toX, toY) {
+  const x = kingPosition[0];
+  const y = kingPosition[1];
+  const dx = toX - x;
+  const dy = toY - y;
+
+  return ((dx) === 2 && (dy) === 0) 
+        
+}
+
+
+
+
+  }
+
+
+
+   else if(whiteone.length < 3){
+      // console.log("JJJJJJJJSJFDSJFSDFSDFSDFSD")
     
          if(/a/.test(whiteone) == true){
     xOverlay = 0
@@ -3060,11 +3614,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -3190,17 +3744,7 @@ else {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-   }
+ }
 
 
   else if(pawn_piece[0] == pawn2X && pawn_piece[1] == pawn2Y){
@@ -3391,11 +3935,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -3411,101 +3955,7 @@ else {
 
          
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         else if(/c/.test(whiteone) == true){
+else if(/c/.test(whiteone) == true){
     xOverlay = 2
     var xdiff = xOverlay
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 2)
@@ -3819,11 +4269,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -3841,9 +4291,9 @@ else {
 else if(/d/.test(whiteone) == true){
     xOverlay = 3
      xdiff = xOverlay
-    console.log("HHHEEEEERRRyyyRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRyyyRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 3)
 
       
@@ -3934,8 +4384,8 @@ else if(/d/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -4156,11 +4606,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -4178,9 +4628,9 @@ else {
 else if(/e/.test(whiteone) == true){
     xOverlay = 4
      xdiff = xOverlay
-    console.log("HHHEEEEERRRRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 4)
 
       
@@ -4271,8 +4721,8 @@ else if(/e/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -4493,11 +4943,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -4517,11 +4967,11 @@ else {
   else if(/f/.test(whiteone) == true){
     xOverlay = 5
      xdiff = xOverlay
-    console.log("YYYYYY")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("YYYYYY")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 5)
-    console.log(pawnx_filter)
+    // console.log(pawnx_filter)
       
 
        if(/1/.test(whiteone) == true){
@@ -4610,8 +5060,8 @@ else {
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -4832,11 +5282,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -4855,9 +5305,9 @@ else {
 else if(/g/.test(whiteone) == true){
     xOverlay = 6
      xdiff = xOverlay
-    console.log("HHHEEEEERRRRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 6)
 
       
@@ -4948,8 +5398,8 @@ else if(/g/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -5170,11 +5620,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -5194,9 +5644,9 @@ else {
 else if(/h/.test(whiteone) == true){
     xOverlay = 7
      xdiff = xOverlay
-    console.log("HHHEEEEERRRRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 7)
 
       
@@ -5287,8 +5737,8 @@ else if(/h/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -5509,11 +5959,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -5850,11 +6300,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -6515,11 +6965,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -7207,11 +7657,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -7229,9 +7679,9 @@ else {
 else if(/dx/.test(whiteone) == true){
     xOverlay = 3
      xdiff = xOverlay
-    console.log("HHHEEEEERRRyyyRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRyyyRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 3)
 
       if(/c/.test(whiteone) == true) {
@@ -7322,8 +7772,8 @@ else if(/dx/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -7628,8 +8078,8 @@ else if(/e/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -7877,11 +8327,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -7899,9 +8349,9 @@ else {
 else if(/ex/.test(whiteone) == true){
     xOverlay = 4
      xdiff = xOverlay
-    console.log("HHHEEEEERRRRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 4)
 
       if(/d/.test(whiteone) == true){
@@ -7992,8 +8442,8 @@ else if(/ex/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -8296,8 +8746,8 @@ else if(/f/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -8535,11 +8985,11 @@ else {
 
 }
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -8559,11 +9009,11 @@ else {
   else if(/fx/.test(whiteone) == true){
     xOverlay = 5
      xdiff = xOverlay
-    console.log("YYYYYY")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("YYYYYY")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 5)
-    console.log(pawnx_filter)
+    // console.log(pawnx_filter)
       
       if(/e/.test(whiteone) == true) {
        
@@ -8653,8 +9103,8 @@ else {
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -8958,8 +9408,8 @@ else {
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -9228,11 +9678,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -9251,9 +9701,9 @@ else {
 else if(/gx/.test(whiteone) == true){
     xOverlay = 6
      xdiff = xOverlay
-    console.log("HHHEEEEERRRRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 6)
 
       if(/f/.test(whiteone) == true) {
@@ -9344,8 +9794,8 @@ else if(/gx/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -9652,8 +10102,8 @@ else if(/h/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -9907,11 +10357,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -9931,9 +10381,9 @@ else {
 else if(/hx/.test(whiteone) == true){
     xOverlay = 7
      xdiff = xOverlay
-    console.log("HHHEEEEERRRRREEE")
-    console.log(pawn4X)
-    console.log(pawn4Y)
+    // console.log("HHHEEEEERRRRREEE")
+    // console.log(pawn4X)
+    // console.log(pawn4Y)
     var pawnx_filter = pawnArrayy.filter(c => c[0] == 7)
 
       
@@ -10024,8 +10474,8 @@ else if(/hx/.test(whiteone) == true){
 
 
  var pawn_piece = pawny_filter[0]
-   console.log("NO HERE")
-   console.log(pawnx_filter) 
+   // console.log("NO HERE")
+   // console.log(pawnx_filter) 
 
    if(pawn_piece[0] == pawn1X && pawn_piece[1] == pawn1Y){
 
@@ -10246,11 +10696,11 @@ else {
 
 
     yOverlay = pawn_piece[1]
-    console.log("MMMMMMMMM")
-    console.log(drag_piece)
-    console.log(yOverlay)
-    console.log(xOverlay)
-    console.log(overlayCount)
+    // console.log("MMMMMMMMM")
+    // console.log(drag_piece)
+    // console.log(yOverlay)
+    // console.log(xOverlay)
+    // console.log(overlayCount)
     // count_number++;
 
     
@@ -10556,10 +11006,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -11273,10 +11723,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -12024,7 +12474,7 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 else if(/3/.test(whiteone) == true){
 
 
-    console.log("ROGER ROGER WE GOT A PROBLEM")
+    // console.log("ROGER ROGER WE GOT A PROBLEM")
 
 
 
@@ -12082,10 +12532,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -12901,10 +13351,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -13698,10 +14148,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -14278,9 +14728,9 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
       else if(/f/.test(whiteone) == true){
 
-     console.log("FFFFFFFF")
-     console.log("F is true")
-     console.log(knOlArray)
+     // console.log("FFFFFFFF")
+     // console.log("F is true")
+     // console.log(knOlArray)
       var xfactor = 5
 
       
@@ -14533,10 +14983,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -15246,10 +15696,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -16148,10 +16598,10 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
   var ydis = 5 - knight2Y
  var xdis = xfactor - knight2X
 
-console.log("YAAAKYIKKK")
-console.log(xdis)
-console.log(ydis)
-console.log(knight2X)
+// console.log("YAAAKYIKKK")
+// console.log(xdis)
+// console.log(ydis)
+// console.log(knight2X)
 
 
    canMoveKnight2 = function (toX, toY) {
@@ -16641,7 +17091,7 @@ var element = "#eb"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -16924,7 +17374,7 @@ var element = "#eb2"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (2 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -17164,7 +17614,7 @@ var element = "#eb"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (3 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -17401,7 +17851,7 @@ var element = "#eb2"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (4 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -17642,7 +18092,7 @@ var element = "#eb"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (4 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -17889,7 +18339,7 @@ var element = "#eb2"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (5 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -18117,15 +18567,15 @@ canMoveBishop = function (toX, toY) {
 
 else if(/g/.test(whiteone) == true){
 
-  console.log("GGGGGGG")
-  if(/0/.test(piece) == true) {
+  // console.log("GGGGGGG")
+  if(/0/.test(whiteone) == true) {
 var this_piece = bishopArray[0]
 var element = "#eb"
 
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (6 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -18359,7 +18809,7 @@ var element = "#eb2"
 var distance_top = (2 - this_piece[1]) * 62.5
 var distance_left = (8 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 }
@@ -24609,7 +25059,13 @@ canMoveKing = function (toX, toY) {
 }
 
 
+}
 
+catch(e){
+
+  console.log(e)
+  overlayCount = 0
+}
 
 
 
@@ -24721,8 +25177,8 @@ else if(drag_piece == "KB"){
 
 
     else {
-      console.log("ELSE IS TRUE")
-      console.log(drag_piece)
+      // console.log("ELSE IS TRUE")
+      // console.log(drag_piece)
       PIECE = PB6
     }
 
@@ -24732,8 +25188,8 @@ else if(drag_piece == "KB"){
 
 
      
-  console.log("XXXXXXX")
-  console.log(drag_piece)
+  // console.log("XXXXXXX")
+  // console.log(drag_piece)
       
   
 
@@ -24794,7 +25250,7 @@ renderPiece: function (x, y) {
   pawnArrayx = []
   try {
 
-     ECASTLE1X = ($("#ec1").offset().left - winx) / 62.5 
+     ECASTLE1X = ($("#ec1").offset().left - ep1offsetxa) / 62.5 
   
      ECASTLE1y = ($("#ec1").offset().top  - 97) / 62.5
 
@@ -24804,7 +25260,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-    ECASTLE1X = (ec1offsetx - winx) / 62.5 
+    ECASTLE1X = (ec1offsetxa - ep1offsetxa) / 62.5 
   
     ECASTLE1y = (ec1offsety - 97) / 62.5
   
@@ -24814,7 +25270,7 @@ renderPiece: function (x, y) {
   
   try {
 
-     ECASTLE2X = ($("#ec2").offset().left - 433) / 62.5 
+     ECASTLE2X = ($("#ec2").offset().left - ep1offsetxa) / 62.5 
   
      ECASTLE2y = ($("#ec2").offset().top - 97) / 62.5
 
@@ -24824,7 +25280,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-      ECASTLE2X = (ec2offsetx - 433) / 62.5 
+      ECASTLE2X = (ec2offsetxa - ep1offsetxa) / 62.5 
   
       ECASTLE2y = (ec2offsety - 97) / 62.5
 
@@ -24836,7 +25292,7 @@ renderPiece: function (x, y) {
 
   try {
 
-     EQUEENX = ($("#q").offset().left - 433) / 62.5 
+     EQUEENX = ($("#q").offset().left - ep1offsetxa) / 62.5 
   
      EQUEENY = ($("#q").offset().top - 97) / 62.5
 
@@ -24846,7 +25302,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-     EQUEENX = (eqoffsetx - 433) / 62.5 
+     EQUEENX = (eqoffsetxa - ep1offsetxa) / 62.5 
   
      EQUEENY = (eqoffsety - 97) / 62.5
 
@@ -24858,7 +25314,7 @@ renderPiece: function (x, y) {
 
   try {
 
-     EKINGX = ($("#ek").offset().left - 433) / 62.5 
+     EKINGX = ($("#ek").offset().left - ep1offsetxa) / 62.5 
   
      EKINGY = ($("#ek").offset().top - 97) / 62.5
 
@@ -24868,7 +25324,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-     EKINGX = (ekoffsetx - 433) / 62.5 
+     EKINGX = (ekoffsetxa - ep1offsetxa) / 62.5 
   
      EKINGY = (ekoffsety - 97) / 62.5
 
@@ -24892,7 +25348,7 @@ renderPiece: function (x, y) {
 
   try {
 
-     EKNIGHT1X = ($("#ek1").offset().left - 433) / 62.5 
+     EKNIGHT1X = ($("#ek1").offset().left - ep1offsetxa) / 62.5 
   
    EKNIGHT1Y = ($("#ek1").offset().top - 97) / 62.5
 
@@ -24902,7 +25358,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-  EKNIGHT1X = (ek1offsetx - 433) / 62.5 
+  EKNIGHT1X = (ek1offsetxa - ep1offsetxa) / 62.5 
   
    EKNIGHT1Y = (ek1offsety - 97) / 62.5
 
@@ -24912,7 +25368,7 @@ renderPiece: function (x, y) {
 
  try {
 
-     EKNIGHT2X = ($("#ek2").offset().left - 433) / 62.5 
+     EKNIGHT2X = ($("#ek2").offset().left - ep1offsetxa) / 62.5 
   
    EKNIGHT2Y = ($("#ek2").offset().top - 97) / 62.5
 
@@ -24922,7 +25378,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-  EKNIGHT2X = (ek2offsetx - 433) / 62.5 
+  EKNIGHT2X = (ek2offsetxa - ep1offsetxa) / 62.5 
   
    EKNIGHT2Y = (ek2offsety - 97) / 62.5
 
@@ -24946,7 +25402,7 @@ renderPiece: function (x, y) {
 
  try {
 
-     EBISHOP1X = ($("#eb").offset().left - 433) / 62.5 
+     EBISHOP1X = ($("#eb").offset().left - ep1offsetxa) / 62.5 
   
    EBISHOP1Y = ($("#eb").offset().top - 97) / 62.5
 
@@ -24955,7 +25411,7 @@ renderPiece: function (x, y) {
 
   catch(e) {
  
- EBISHOP1X = (eb1offsetx - 433) / 62.5
+ EBISHOP1X = (eb1offsetxa - ep1offsetxa) / 62.5
 
    EBISHOP1Y = (eb1offsety - 97) / 62.5
   }
@@ -24964,7 +25420,7 @@ renderPiece: function (x, y) {
 
 try {
 
-     EBISHOP2X = ($("#eb2").offset().left - 433) / 62.5 
+     EBISHOP2X = ($("#eb2").offset().left - ep1offsetxa) / 62.5 
   
    EBISHOP2Y = ($("#eb2").offset().top - 97) / 62.5
 
@@ -24973,7 +25429,7 @@ try {
 
   catch(e) {
  
-EBISHOP2X = (eb2offsetx - 433) / 62.5
+EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
    EBISHOP2Y = (eb2offsety - 97) / 62.5
   }
@@ -24999,7 +25455,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
       try {
 
-     EPAWN1X = ($("#ep").offset().left - 433) / 62.5 
+     EPAWN1X = ($("#ep").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN1Y = ($("#ep").offset().top - 97) / 62.5
 
@@ -25019,7 +25475,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-     EPAWN2X = ($("#ep2").offset().left - 433) / 62.5 
+     EPAWN2X = ($("#ep2").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN2Y = ($("#ep2").offset().top - 97) / 62.5
 
@@ -25029,7 +25485,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
-  EPAWN2X = (ep2offsetx - 433) / 62.5 
+  EPAWN2X = (ep2offsetxa - ep1offsetxa) / 62.5 
   
    EPAWN2Y = (ep2offsety - 97) / 62.5
 
@@ -25039,7 +25495,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
     
     try {
 
-     EPAWN3X = ($("#ep3").offset().left - 433) / 62.5 
+     EPAWN3X = ($("#ep3").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN3Y = ($("#ep3").offset().top - 97) / 62.5
 
@@ -25074,7 +25530,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-     EPAWN4X = ($("#ep4").offset().left - 433) / 62.5 
+     EPAWN4X = ($("#ep4").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN4Y = ($("#ep4").offset().top - 97) / 62.5
 
@@ -25084,7 +25540,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
-  EPAWN4X = (ep4offsetx - 433) / 62.5 
+  EPAWN4X = (ep4offsetxa - ep1offsetxa) / 62.5 
   
    EPAWN4Y = (ep4offsety - 97) / 62.5
 
@@ -25094,7 +25550,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-     EPAWN5X = ($("#ep5").offset().left - 433) / 62.5 
+     EPAWN5X = ($("#ep5").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN5Y = ($("#ep5").offset().top - 97) / 62.5
 
@@ -25104,7 +25560,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
-  EPAWN5X = (ep5offsetx - 433) / 62.5 
+  EPAWN5X = (ep5offsetxa - ep1offsetxa) / 62.5 
   
    EPAWN5Y = (ep5offsety - 97) / 62.5
 
@@ -25113,7 +25569,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-     EPAWN6X = ($("#ep6").offset().left - 433) / 62.5 
+     EPAWN6X = ($("#ep6").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN6Y = ($("#ep6").offset().top - 97) / 62.5
 
@@ -25123,7 +25579,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
-  EPAWN6X = (ep6offsetx - 433) / 62.5 
+  EPAWN6X = (ep6offsetxa - ep1offsetxa) / 62.5 
   
    EPAWN6Y = (ep6offsety - 97) / 62.5
 
@@ -25133,7 +25589,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-     EPAWN7X = ($("#ep7").offset().left - 433) / 62.5 
+     EPAWN7X = ($("#ep7").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN7Y = ($("#ep7").offset().top - 97) / 62.5
 
@@ -25143,7 +25599,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
-  EPAWN7X = (ep7offsetx - 433) / 62.5 
+  EPAWN7X = (ep7offsetxa - ep1offsetxa) / 62.5 
   
    EPAWN7Y = (ep7offsety - 97) / 62.5
 
@@ -25155,7 +25611,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-     EPAWN8X = ($("#ep8").offset().left - 433) / 62.5 
+     EPAWN8X = ($("#ep8").offset().left - ep1offsetxa) / 62.5 
   
    EPAWN8Y = ($("#ep8").offset().top - 97) / 62.5
 
@@ -25165,7 +25621,7 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
-  EPAWN8X = (ep8offsetx - 433) / 62.5 
+  EPAWN8X = (ep8offsetxa - ep1offsetxa) / 62.5 
   
    EPAWN8Y = (ep8offsety - 97) / 62.5
 
@@ -25190,11 +25646,11 @@ EBISHOP2X = (eb2offsetx - 433) / 62.5
 
 
 try{
-console.log("BBBBBBB")
-console.log(count)
-console.log(overlayCount)
-console.log(drag_piece)
-console.log("Break")
+// console.log("BBBBBBB")
+// console.log(count)
+// console.log(overlayCount)
+// console.log(drag_piece)
+// console.log("Break")
 // console.log($("#ec2").position().left)
 // console.log($("#ec2").position().top)
 // console.log($("#ek2").position().left)
@@ -25207,7 +25663,7 @@ console.log("Break")
 
 catch(e){
 
-  console.log("MMMMMMM")
+  // console.log("MMMMMMM")
 }
 
 
@@ -25222,7 +25678,7 @@ catch(e){
   [pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4Y],[pawn5X,pawn5Y],[pawn6X,
   pawn6Y],[pawn7X,pawn7Y],[pawn8X,pawn8Y],[castle1X,castle1Y],[castle2X,castle2Y],[queenX,queenY],[kingX,kingY])
 
- pawnArrayx.push([EPAWN1X,EPAWN1Y],[EPAWN2X,EPAWN2Y],[EPAWN3X,EPAWN3X],[EPAWN4X,EPAWN4Y],[EPAWN5X,EPAWN5Y],[EPAWN6X,EPAWN6Y],
+ pawnArrayx.push([EPAWN1X,EPAWN1Y],[EPAWN2X,EPAWN2Y],[EPAWN3X,EPAWN3Y],[EPAWN4X,EPAWN4Y],[EPAWN5X,EPAWN5Y],[EPAWN6X,EPAWN6Y],
   [EPAWN7X,EPAWN7Y],[EPAWN8X,EPAWN8Y])
 
 
@@ -25256,49 +25712,127 @@ if(pcheck.toString() != prevc.toString()){
 
   if(whosemove == "white"){
 
-  
 
-  if (x === knightX && y === knightY && kkillcount == 0  ) {
+  if (x === knightX && y === knightY && K1kill == 0  ) {
   
-    return <K/>
+      var a = Xarray.some(function(c) {
+return c[0] == knightX && c[1] == knightY
+    })
+
+if(a === false){
+
+  return <K/>
+}
+else {
+
+  K1kill++;
+}
   }
-else if(x == knight2X && y == knight2Y) {
+else if(x == knight2X && y == knight2Y && K2kill == 0) {
 
-return <K2/>
+  var a = Xarray.some(function(c) {
+return c[0] == knight2X && c[1] == knight2Y
+    })
+
+if(a === false){
+
+  return <K2/>
+}
+else {
+
+  K2kill++;
+}
   
 }
 
-else if(x == bishopX && y == bishopY){
+else if(x == bishopX && y == bishopY && B1kill == 0){
   
+    var a = Xarray.some(function(c) {
+return c[0] == bishopX && c[1] == bishopY
+    })
+
+if(a === false){
+
   return <B1/>
+}
+else {
+
+  B1kill++;
+}
   
 }
 
-else if(x == bishop2X && y == bishop2Y){
+else if(x == bishop2X && y == bishop2Y && B2kill == 0){
+
+   var a = Xarray.some(function(c) {
+return c[0] == bishop2X && c[1] == bishop2Y
+    })
+
+if(a === false){
 
   return <B2/>
+}
+else {
+
+  B2kill++;
+}
 
   
 }
 
 
-else if(x == pawn1X && y == pawn1Y){
+else if(x == pawn1X && y == pawn1Y && P1kill == 0){
 
+
+    var a = Xarray.some(function(c) {
+return c[0] == pawn1X && c[1] == pawn1Y
+    })
+
+if(a === false){
 
   return <P1/>
 }
+else {
 
-else if(x == pawn2X && y == pawn2Y){
+  P1kill++;
+}
+}
 
+else if(x == pawn2X && y == pawn2Y && P2kill == 0){
+
+  var a = Xarray.some(function(c) {
+return c[0] == pawn2X && c[1] == pawn2Y
+    })
+
+if(a === false){
 
   return <P2/>
 }
+else {
+
+  P2kill++;
+}
+  
+}
 
 
-else if(x == pawn3X && y == pawn3Y){
+else if(x == pawn3X && y == pawn3Y && P3kill == 0){
 
+//   var a = Xarray.some(function(c) {
+// return c[0] == pawn3X && c[1] == pawn3Y
+//     })
 
-  return <P3/>
+// if(a === false){
+
+//   return <P3/>
+// }
+// else {
+
+//   P3kill++;
+// }
+  
+return <P3/>
+
 }
 
 else if(x == pawn4X && y == pawn4Y && P4kill == 0){
@@ -25325,37 +25859,77 @@ else {
 else if(x == pawn5X && y == pawn5Y && P5kill == 0){
 
 
-//   let p = Xarray.some(function(c) {
-// return c[0] == pawn5X && c[1] == pawn5Y
-//     })
+  var a = Xarray.some(function(c) {
+return c[0] == pawn5X && c[1] == pawn5Y
+    })
 
-// if(p === false){
+if(a === false){
 
   return <P5/>
-// }
-// else {
+}
+else {
 
-//   P5kill++;
-// }
+  P5kill++;
 }
 
-else if(x == pawn6X && y == pawn6Y){
 
+
+
+
+
+
+}
+
+else if(x == pawn6X && y == pawn6Y && P6kill == 0){
+
+
+    var a = Xarray.some(function(c) {
+return c[0] == pawn6X && c[1] == pawn6Y
+    })
+
+if(a === false){
 
   return <P6/>
 }
+else {
 
-else if(x == pawn7X && y == pawn7Y){
+  P6kill++;
+}
+}
 
+else if(x == pawn7X && y == pawn7Y && P7kill == 0){
+
+
+    var a = Xarray.some(function(c) {
+return c[0] == pawn7X && c[1] == pawn7Y
+    })
+
+if(a === false){
 
   return <P7/>
 }
+else {
+
+  P7kill++;
+}
+}
 
 
-else if(x == pawn8X && y == pawn8Y){
+else if(x == pawn8X && y == pawn8Y && P8kill == 0){
 
+
+    var a = Xarray.some(function(c) {
+return c[0] == pawn8X && c[1] == pawn8Y
+    })
+
+if(a === false){
 
   return <P8/>
+}
+else {
+
+  P8kill++;
+}
 }
 
 else if(x == castle1X && y == castle1Y && C1kill == 0){
@@ -25376,22 +25950,62 @@ else {
 
 }
 
-else if(x == castle2X && y == castle2Y){
+else if(x == castle2X && y == castle2Y && C2kill == 0){
 
+  var a = Xarray.some(function(c) {
+return c[0] == castle2X && c[1] == castle2Y
+    })
+
+if(a === false){
 
   return <C2/>
 }
+else {
 
-else if(x == queenX && y == queenY){
+  C2kill++;
+}
+  
 
+
+
+}
+
+else if(x == queenX && y == queenY && Qkill == 0){
+
+
+  var a = Xarray.some(function(c) {
+return c[0] == queenX && c[1] == queenY
+    })
+
+if(a === false){
 
   return <Q/>
 }
+else {
 
-else if(x == kingX && y == kingY){
+  Qkill++;
+}
 
+
+
+
+}
+
+else if(x == kingX && y == kingY && Kkill == 0){
+
+
+    var a = Xarray.some(function(c) {
+return c[0] == kingX && c[1] == kingY
+    })
+
+if(a === false){
 
   return <KING/>
+}
+else {
+
+  Kkill++;
+}
 }
 
 
@@ -25409,13 +26023,13 @@ return <EKnight/>
 
 
 
-else if( x == 0 && y == 1) {
+else if( x == EPAWN1X && y == EPAWN1Y && Ep1kill == 0) {
 
 
   return <EPawn/>
 }
 
-else if( x == 1 && y == 1) {
+else if( x == EPAWN2X && y == EPAWN2Y && Ep2kill == 0) {
 
 
   return <EPawn2/>
@@ -25429,34 +26043,34 @@ else if( x == EPAWN3X && y == EPAWN3Y && Ep3kill == 0) {
 }
 
 
-else if( x == EPAWN4X && y == EPAWN4Y) {
+else if( x == EPAWN4X && y == EPAWN4Y && Ep4kill == 0) {
 
 
   return <EPawn4/>
 }
 
 
-else if( x == EPAWN5X && y == EPAWN5Y) {
+else if( x == EPAWN5X && y == EPAWN5Y && Ep5kill == 0) {
 
 
   return <EPawn5/>
 }
 
 
-else if( x == EPAWN6X && y == EPAWN6Y) {
+else if( x == EPAWN6X && y == EPAWN6Y && Ep6kill == 0) {
 
 
   return <EPawn6/>
 }
 
-else if( x == EPAWN7X  && y == EPAWN7Y) {
+else if( x == EPAWN7X  && y == EPAWN7Y && Ep7kill == 0) {
 
 
   return <EPawn7/>
 }
 
 
-else if( x == EPAWN8X && y == EPAWN8Y) {
+else if( x == EPAWN8X && y == EPAWN8Y && Ep8kill == 0) {
 
 
   return <EPawn8/>
@@ -25472,7 +26086,7 @@ else if( x == EPAWN8X && y == EPAWN8Y) {
 
 
 
-else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0){
+else if(x == ECASTLE1X && y == ECASTLE1y && Ec1kill == 0){
 
 
 
@@ -25481,7 +26095,7 @@ else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0){
 
 }
 
-else if(x == EBISHOP1X && y == EBISHOP1Y){
+else if(x == EBISHOP1X && y == EBISHOP1Y && Eb1kill == 0){
 return <EBishop/>
 
 }
@@ -25489,31 +26103,31 @@ return <EBishop/>
 
 
 
-else if(x == EKINGX && y == EKINGY ){
+else if(x == EKINGX && y == EKINGY && Ekkill == 0 ){
 
 return <EKing/>
  
 }
 
-else if(x == EQUEENX && y == EQUEENY){
+else if(x == EQUEENX && y == EQUEENY && Eqkill == 0){
 
   return <EQueen/>
 }
 
 
-else if(x == EKNIGHT2X && y == EKNIGHT2Y){
+else if(x == EKNIGHT2X && y == EKNIGHT2Y && Ek2kill == 0){
 
   return <EKnight2/>
 }
 
 
-else if(x == EBISHOP2X && y == EBISHOP2Y){
+else if(x == EBISHOP2X && y == EBISHOP2Y && Eb2kill == 0){
 
   return <EBishop2/>
 }
 
 
-else if(x == ECASTLE2X && y == ECASTLE2y){
+else if(x == ECASTLE2X && y == ECASTLE2y && Ec2kill == 0){
 
   return <ECastle2/>
 }
@@ -25556,14 +26170,15 @@ else if(x == ECASTLE2X && y == ECASTLE2y){
 }
 else {
 
-
- if( x == EPAWN1X && y == EPAWN1Y) {
+console.log(whosemove)
+console.log("WHOSEMOVEWHOSEMOVE")
+ if( x == EPAWN1X && y == EPAWN1Y && Ep1kill == 0) {
 
 
   return <EPawn/>
 }
 
-else if( x == EPAWN2X && y == EPAWN2Y) {
+else if( x == EPAWN2X && y == EPAWN2Y && Ep2kill == 0) {
 
 
   return <EPawn2/>
@@ -25577,34 +26192,34 @@ else if( x == EPAWN3X && y == EPAWN3Y && Ep3kill == 0) {
 }
 
 
-else if( x == EPAWN4X && y == EPAWN4Y) {
+else if( x == EPAWN4X && y == EPAWN4Y && Ep4kill == 0 ) {
 
 
   return <EPawn4/>
 }
 
 
-else if( x == EPAWN5X && y == EPAWN5Y) {
+else if( x == EPAWN5X && y == EPAWN5Y && Ep5kill == 0) {
 
 
   return <EPawn5/>
 }
 
 
-else if( x == EPAWN6X && y == EPAWN6Y) {
+else if( x == EPAWN6X && y == EPAWN6Y && Ep6kill == 0) {
 
 
   return <EPawn6/>
 }
 
-else if( x == EPAWN7X && y == EPAWN7Y) {
+else if( x == EPAWN7X && y == EPAWN7Y && Ep7kill == 0) {
 
 
   return <EPawn7/>
 }
 
 
-else if( x == EPAWN8X && y == EPAWN8Y) {
+else if( x == EPAWN8X && y == EPAWN8Y && Ep8kill == 0) {
 
 
   return <EPawn8/>
@@ -25613,7 +26228,7 @@ else if( x == EPAWN8X && y == EPAWN8Y) {
 
 
 
-else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0  ){
+else if(x == ECASTLE1X && y == ECASTLE1y && Ec1kill == 0  ){
 
  // console.log("CASTLEBLACK")
  //  console.log(Yarray)
@@ -25628,7 +26243,7 @@ else if(x == ECASTLE1X && y == ECASTLE1y && ECastle1kill == 0  ){
 
 }
 
-else if(x == EBISHOP1X && y == EBISHOP1Y){
+else if(x == EBISHOP1X && y == EBISHOP1Y && Eb1kill == 0){
 return <EBishop/>
 
 }
@@ -25641,19 +26256,19 @@ return <EKnight/>
 
 }
 
-else if(x == EQUEENX && y == EQUEENY ){
+else if(x == EQUEENX && y == EQUEENY && Eqkill == 0 ){
 
 return <EQueen/>
  
 }
 
-else if(x == EKINGX && y == EKINGY){
+else if(x == EKINGX && y == EKINGY && Ekkill == 0){
 
   return <EKing/>
 }
 
 
-else if(x == EKNIGHT2X  && y == EKNIGHT2Y){
+else if(x == EKNIGHT2X  && y == EKNIGHT2Y && Ek2kill == 0){
 
   
   return <EKnight2/>
@@ -25661,19 +26276,19 @@ else if(x == EKNIGHT2X  && y == EKNIGHT2Y){
 }
 
 
-else if(x == EBISHOP2X && y == EBISHOP2Y){
+else if(x == EBISHOP2X && y == EBISHOP2Y && Eb2kill == 0){
 
   return <EBishop2/>
 }
 
 
-else if(x == ECASTLE2X && y == ECASTLE2y){
+else if(x == ECASTLE2X && y == ECASTLE2y && Ec2kill == 0){
 
   return <ECastle2/>
 }
 
 
-else if (x === knightX && y === knightY && kkillcount == 0  ) {
+else if (x === knightX && y === knightY && K1kill == 0  ) {
   
     return <K/>
   }
@@ -25688,13 +26303,13 @@ else if(x == 7 && y == 3){
   
 }
 
-else if(x == bishopX && y == bishopY){
+else if(x == bishopX && y == bishopY && B1kill == 0){
   
   return <B1/>
   
 }
 
-else if(x == bishop2X && y == bishop2Y){
+else if(x == bishop2X && y == bishop2Y && B2kill == 0){
 
   return <B2/>
 
@@ -25702,23 +26317,39 @@ else if(x == bishop2X && y == bishop2Y){
 }
 
 
-else if(x == pawn1X && y == pawn1Y){
+else if(x == pawn1X && y == pawn1Y && P1kill == 0){
 
 
   return <P1/>
 }
 
-else if(x == pawn2X && y == pawn2Y){
+else if(x == pawn2X && y == pawn2Y && P2kill == 0){
 
 
   return <P2/>
 }
 
 
-else if(x == pawn3X && y == pawn3Y){
+else if(x == pawn3X && y == pawn3Y && P3kill == 0){
 
+
+  
+  var a = Xarray.some(function(c) {
+return c[0] == pawn3X && c[1] == pawn3Y
+    })
+
+if(a === false){
 
   return <P3/>
+}
+else {
+
+  P3kill++;
+}
+
+
+
+
 }
 
 else if(x == pawn4X && y == pawn4Y && P4kill == 0) {
@@ -25759,20 +26390,20 @@ else {
 
 }
 
-else if(x == pawn6X && y == pawn6Y){
+else if(x == pawn6X && y == pawn6Y && P6kill == 0){
 
 
   return <P6/>
 }
 
-else if(x == pawn7X && y == pawn7Y){
+else if(x == pawn7X && y == pawn7Y && P7kill == 0){
 
 
   return <P7/>
 }
 
 
-else if(x == pawn8X && y == pawn8Y){
+else if(x == pawn8X && y == pawn8Y && P8kill == 0){
 
 
   return <P8/>
@@ -25784,19 +26415,19 @@ else if(x == castle1X && y == castle1Y && C1kill == 0){
   return <C1/>
 }
 
-else if(x == castle2X && y == castle2Y){
+else if(x == castle2X && y == castle2Y && C2kill == 0){
 
 
   return <C2/>
 }
 
-else if(x == queenX && y == queenY){
+else if(x == queenX && y == queenY && Qkill == 0){
 
 
   return <Q/>
 }
 
-else if(x == kingX && y == kingY){
+else if(x == kingX && y == kingY && Kkill == 0){
 
 
   return <KING/>
@@ -25830,7 +26461,7 @@ var squares = [];
     // console.log("rerendering")
     // console.log(BS1)
     
- console.log("the count is " + " " + count)
+ // console.log("the count is " + " " + count)
 
     for (let i = 0; i < 64; i++) {
       
@@ -26153,8 +26784,8 @@ var number = 0
 
 
 function animate () {
-console.log("COUNT")
-console.log(count)
+// console.log("COUNT")
+// console.log(count)
 
 if (count == m){
 
@@ -26177,10 +26808,155 @@ var piece = blackmove[number]
 
  else if(/1/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 6)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/2/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 5)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -26191,21 +26967,335 @@ else if(/2/.test(piece) == true) {
 
 else if(/3/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 4)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 
 else if(/4/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 3)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/5/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -26234,15 +27324,233 @@ else if(/7/.test(piece) == true) {
 
  else if(/1/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 6)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/2/.test(piece) == true) {
 
 
+var this_piece = which.filter(c => c[1] == 5)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 4)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -26250,15 +27558,229 @@ else if(/3/.test(piece) == true) {
 
 else if(/4/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 3)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/5/.test(piece) == true) {
 
 
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 else if(/6/.test(piece) == true) {
+
+
+var this_piece = which.filter(c => c[1] == 1)
+
+
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -26298,15 +27820,249 @@ else if(piece.charAt(0) == 'c'){
 
  else if(/1/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 6)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (7 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/2/.test(piece) == true) {
 
 
+var this_piece = which.filter(c => c[1] == 5)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (6 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 else if(/3/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 4)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (5 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -26314,15 +28070,236 @@ else if(/3/.test(piece) == true) {
 
 else if(/4/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 3)
+var this_pawn = this_piece[0]
+console.log(EPAWN1X)
+console.log(EPAWN1Y)
+console.log(this_pawn)
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+  console.log("YES")
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSSA6")
+// console.log(element)
+
+var distance = (4 - this_pawn[1]) * 62.5 
+// console.log(distance)
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/5/.test(piece) == true) {
 
+var this_piece = which.filter(c => c[1] == 1 || c[1] == 2)
+
+console.log("PIIIEEEECCEEE")
+console.log(this_piece)
+console.log(EPAWN3X)
+console.log(EPAWN3Y)
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
+
+var distance = (3 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
 else if(/6/.test(piece) == true) {
+
+var this_piece = which.filter(c => c[1] == 1)
+
+console.log("PIIIEEEECCEEE")
+console.log(this_piece)
+console.log(EPAWN3X)
+console.log(EPAWN3Y)
+var this_pawn = this_piece[0]
+
+if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
+
+  var element = "#ep"
+}
+
+else if(this_pawn[0] == EPAWN2X && this_pawn[1] == EPAWN2Y){
+
+  var element = "#ep2"
+}
+
+else if(this_pawn[0] == EPAWN3X && this_pawn[1] == EPAWN3Y){
+
+  var element = "#ep3"
+}
+
+else if(this_pawn[0] == EPAWN4X && this_pawn[1] == EPAWN4Y){
+
+  var element = "#ep4"
+}
+
+else if(this_pawn[0] == EPAWN5X && this_pawn[1] == EPAWN5Y){
+
+  var element = "#ep5"
+}
+
+else if(this_pawn[0] == EPAWN6X && this_pawn[1] == EPAWN6Y){
+
+  var element = "#ep6"
+}
+
+else if(this_pawn[0] == EPAWN7X && this_pawn[1] == EPAWN7Y){
+
+  var element = "#ep7"
+}
+
+else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
+
+  var element = "#ep8"
+}
+
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
+
+var distance = (2 - this_pawn[1]) * 62.5 
+
+
+pawnDown(element, distance.toString())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -26356,7 +28333,8 @@ else if(piece.charAt(0) == 'd'){
 
  var which =  pawnArrayx.filter(c => c[0] == 3)
   
-
+ console.log("DDDDD")
+ console.log(which)
 
 
   if(/0/.test(piece) == true) {
@@ -26411,8 +28389,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -26491,8 +28469,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -26568,8 +28546,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -26651,8 +28629,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -26736,8 +28714,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -26822,8 +28800,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -26931,8 +28909,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -27011,8 +28989,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -27088,8 +29066,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -27171,8 +29149,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -27256,8 +29234,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -27342,8 +29320,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -27451,8 +29429,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -27531,8 +29509,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -27608,8 +29586,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -27691,8 +29669,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -27776,8 +29754,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -27862,8 +29840,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -27972,8 +29950,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -28052,8 +30030,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -28129,8 +30107,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -28212,8 +30190,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -28297,8 +30275,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -28383,8 +30361,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -28492,8 +30470,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -28572,8 +30550,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -28649,8 +30627,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -28732,8 +30710,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -28817,8 +30795,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -28903,8 +30881,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 var distance = (2 - this_pawn[1]) * 62.5 
@@ -29007,8 +30985,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29065,8 +31043,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
  
 
@@ -29142,8 +31120,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29224,8 +31202,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29308,8 +31286,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29394,8 +31372,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29464,8 +31442,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -29522,8 +31500,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29599,8 +31577,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29681,8 +31659,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29766,8 +31744,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29852,8 +31830,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -29919,8 +31897,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -29977,8 +31955,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -30054,8 +32032,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 
 
@@ -30136,8 +32114,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -30221,8 +32199,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -30307,8 +32285,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -30379,8 +32357,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -30437,8 +32415,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -30514,8 +32492,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -30596,8 +32574,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -30681,8 +32659,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -30767,8 +32745,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -30833,8 +32811,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -30891,8 +32869,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -30968,8 +32946,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -31050,8 +33028,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -31135,8 +33113,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -31221,8 +33199,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -31243,7 +33221,7 @@ pieceMove(element, "62.5","62.5")
 
 
 else if(/dx/.test(piece) == true){
-console.log("TRUETRUETRUE")
+// console.log("TRUETRUETRUE")
 var which =  pawnArrayx.filter(c => c[0] == 3)
 
 
@@ -31297,8 +33275,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -31355,8 +33333,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -31432,8 +33410,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -31514,8 +33492,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -31599,8 +33577,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -31685,8 +33663,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -31750,8 +33728,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -31808,8 +33786,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -31885,8 +33863,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -31967,8 +33945,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -32052,8 +34030,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -32138,8 +34116,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -32223,8 +34201,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -32281,8 +34259,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -32358,8 +34336,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -32440,8 +34418,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -32525,8 +34503,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -32611,8 +34589,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -32681,8 +34659,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -32739,8 +34717,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -32816,8 +34794,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -32898,8 +34876,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -32983,8 +34961,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -33069,8 +35047,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -33161,8 +35139,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -33219,8 +35197,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -33296,8 +35274,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -33378,8 +35356,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -33463,8 +35441,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -33549,8 +35527,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -33615,8 +35593,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -33673,8 +35651,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -33750,8 +35728,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -33832,8 +35810,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -33917,8 +35895,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -34003,8 +35981,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -34083,8 +36061,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -34141,8 +36119,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -34218,8 +36196,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -34300,8 +36278,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -34385,8 +36363,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -34471,8 +36449,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -34537,8 +36515,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -34595,8 +36573,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -34657,8 +36635,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -34717,8 +36695,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -34777,8 +36755,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -34837,8 +36815,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -34920,8 +36898,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (7 - this_pawn[1]) * 62.5 
 
@@ -34978,8 +36956,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (6 - this_pawn[1]) * 62.5 
 
@@ -35055,8 +37033,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (5 - this_pawn[1]) * 62.5 
 
@@ -35137,8 +37115,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
@@ -35222,8 +37200,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (3 - this_pawn[1]) * 62.5 
 
@@ -35308,8 +37286,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
   var element = "#ep8"
 }
 
-console.log("THHIIIIIIISSSSS")
-console.log(element)
+// console.log("THHIIIIIIISSSSS")
+// console.log(element)
 
 var distance = (2 - this_pawn[1]) * 62.5 
 
@@ -35390,7 +37368,7 @@ else {
 if(/Bishop/.test(piece) == true){
 
 var bishopArray = [[EBISHOP1X,EBISHOP1Y], [EBISHOP2X,EBISHOP2Y]]
-console.log("BIIIISHHHOP")
+// console.log("BIIIISHHHOP")
 
 
 if (/a/.test(piece) == true){
@@ -35406,7 +37384,7 @@ var element = "#eb"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35435,7 +37413,7 @@ var element = "#eb2"
 var distance_top = (7 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35465,7 +37443,7 @@ var element = "#eb"
 var distance_top = (6 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35491,7 +37469,7 @@ var element = "#eb2"
 var distance_top = (5 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35518,7 +37496,7 @@ var element = "#eb"
 var distance_top = (4 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35546,7 +37524,7 @@ var element = "#eb2"
 var distance_top = (3 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35575,7 +37553,7 @@ var element = "#eb"
 var distance_top = (2 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35601,7 +37579,7 @@ var element = "#eb2"
 var distance_top = (1 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 }
@@ -35616,7 +37594,7 @@ var element = "#eb"
 var distance_top = (0 - this_piece[1]) * 62.5
 var distance_left = (0 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 }
@@ -35657,7 +37635,7 @@ var element = "#eb2"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (2 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35685,7 +37663,7 @@ var element = "#eb"
 var distance_top = (7 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35715,7 +37693,7 @@ var element = "#eb2"
 var distance_top = (6 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35745,7 +37723,7 @@ var element = "#eb"
 var distance_top = (5 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35775,7 +37753,7 @@ var element = "#eb2"
 var distance_top = (4 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35805,7 +37783,7 @@ var element = "#eb"
 var distance_top = (3 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35836,7 +37814,7 @@ var element = "#eb2"
 var distance_top = (2 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -35864,7 +37842,7 @@ var element = "#eb"
 var distance_top = (1 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 }
@@ -35878,7 +37856,7 @@ var element = "#eb2"
 var distance_top = (0 - this_piece[1]) * 62.5
 var distance_left = (1 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 }
@@ -35913,7 +37891,7 @@ var element = "#eb"
 var distance_top = (8 - this_piece[1]) * 62.5
 var distance_left = (3 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -40537,12 +42515,12 @@ var knight_filter = knightArray.filter(c => Math.abs(3 - c[1]) == 2 && Math.abs(
 || Math.abs(3 - c[1]) == 1 && Math.abs(5 - c[0]) == 2)
 
 
-console.log(5 - knightArray[1][0] == Math.abs(1))
-console.log(2 - knightArray[1][1] == Math.abs(2))
+// console.log(5 - knightArray[1][0] == Math.abs(1))
+// console.log(2 - knightArray[1][1] == Math.abs(2))
 
-console.log("JJJJJJJ")
-console.log(knight_filter)
-console.log(knightArray)
+// console.log("JJJJJJJ")
+// console.log(knight_filter)
+// console.log(knightArray)
 
 
 if(knight_filter[0][0] == EKNIGHT1X && knight_filter[0][1] == EKNIGHT1Y){
@@ -40605,12 +42583,12 @@ var knight_filter = knightArray.filter(c => Math.abs(2 - c[1]) == 2 && Math.abs(
 || Math.abs(2 - c[1]) == 1 && Math.abs(5 - c[0]) == 2)
 
 
-console.log(5 - knightArray[1][0] == Math.abs(1))
-console.log(2 - knightArray[1][1] == Math.abs(2))
+// console.log(5 - knightArray[1][0] == Math.abs(1))
+// console.log(2 - knightArray[1][1] == Math.abs(2))
 
-console.log("JJJJJJJ")
-console.log(knight_filter)
-console.log(knightArray)
+// console.log("JJJJJJJ")
+// console.log(knight_filter)
+// console.log(knightArray)
 
 
 if(knight_filter[0][0] == EKNIGHT1X && knight_filter[0][1] == EKNIGHT1Y){
@@ -40644,7 +42622,7 @@ var this_piece = knight_filter[0]
 var distance_top = (2 - this_piece[1]) * 62.5
 var distance_left = (5 - this_piece[0]) * 62.5
 
-console.log(distance_left)
+// console.log(distance_left)
 pieceMove(element, distance_top, distance_left)
 
 
@@ -47062,7 +49040,7 @@ else if(/5/.test(piece) == true) {
 
  var castle_filter = castleArray.filter(c =>  c[1] == 3 || c[0] == 7)
 
-console.log("YEEESSSSSS")
+// console.log("YEEESSSSSS")
 
 
 
@@ -48542,10 +50520,10 @@ setInterval(animate, 100);
 
 
 function checkOffset(){
-console.log("KDFSKFSDKF")
-console.log(drag_piece)
-console.log(overlayCount)
-console.log(count_number)
+// console.log("KDFSKFSDKF")
+// console.log(drag_piece)
+// console.log(overlayCount)
+// console.log(count_number)
 try {
   ec2offsety = $("#ec2").offset().top
   ec2offsetx = $("#ec2").offset().left
@@ -48562,9 +50540,9 @@ try {
   ec1offsety = eptop
  var epleft = $("#ec1").postion().left  
  ec1offsetx = epleft
-console.log("HHHHHHHH")
-console.log(eptop)
-console.log(epleft)
+// console.log("HHHHHHHH")
+// console.log(eptop)
+// console.log(epleft)
 
  }
 
@@ -48712,9 +50690,10 @@ catch(e){
   // console.log("this piece has been captured")
 }
 
-
-
-
+// console.log("overlayCount")
+// console.log(overlayCount)
+// console.log("COUNT")
+// console.log(count)
 
 
 
@@ -48723,6 +50702,8 @@ catch(e){
   
 
 
+console.log("WHOSEMOVE")
+console.log(whosemove)
 
 
 
@@ -48741,21 +50722,20 @@ catch(e){
 
 
 
+//   // console.log("CASTLE")
+//   // console.log(eptop)
+//   //  console.log(epleft)
+//   // console.log("BISHOP")
+//   // console.log(bisht)
+//   //  console.log(bishl)
+//   //  console.log("KNIGHT")
+//   //  console.log(eknt)
+//   //  console.log(eknl)
 
-  // console.log("CASTLE")
-  // console.log(eptop)
-  //  console.log(epleft)
-  // console.log("BISHOP")
-  // console.log(bisht)
-  //  console.log(bishl)
-  //  console.log("KNIGHT")
-  //  console.log(eknt)
-  //  console.log(eknl)
 
-
-// console.log(prevept)
-// console.log(prevepl)
-// console.log("break")
+// // console.log(prevept)
+// // console.log(prevepl)
+// // console.log("break")
 
 
 
@@ -48770,7 +50750,7 @@ catch(e){
 setInterval(checkOffset, 100);
 
 
-
+});
 
 
 // function moveAnimate(element, newParent){
