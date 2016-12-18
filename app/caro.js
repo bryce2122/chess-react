@@ -792,7 +792,7 @@ var observer = null;
 
 function emitChange() {
   observer(knightPosition2);
-
+  console.log("change has been emitted")
 }
 
 
@@ -2835,6 +2835,7 @@ ep4offsety != $("#ep4").offset().top && t === true && l === true ){
 
   // whosemove = "black"
    console.log("CHANGE PAWN4")
+  whosemove = "black"
   emitChange()
   
 
@@ -3256,6 +3257,7 @@ Ekkill++;
 
 
 renderSquare: function (i,BS) {
+  console.log("A CHANGE HAS BEEN INITIATED")
   var x = i % 8;
   var y = Math.floor(i / 8);
   var kn = this.renderPiece(x,y)
@@ -26037,7 +26039,7 @@ else if( x == EPAWN2X && y == EPAWN2Y && Ep2kill == 0) {
 
 else if( x == EPAWN3X && y == EPAWN3Y && Ep3kill == 0) {
 
-
+  console.log("This is happening")
   
   return <EPawn3/>
 }
@@ -26170,8 +26172,7 @@ else if(x == ECASTLE2X && y == ECASTLE2y && Ec2kill == 0){
 }
 else {
 
-console.log(whosemove)
-console.log("WHOSEMOVEWHOSEMOVE")
+
  if( x == EPAWN1X && y == EPAWN1Y && Ep1kill == 0) {
 
 
@@ -26332,18 +26333,18 @@ else if(x == pawn2X && y == pawn2Y && P2kill == 0){
 
 else if(x == pawn3X && y == pawn3Y && P3kill == 0){
 
-
+console.log(Xarray)
   
   var a = Xarray.some(function(c) {
 return c[0] == pawn3X && c[1] == pawn3Y
     })
 
 if(a === false){
-
+  console.log("FALSE")
   return <P3/>
 }
 else {
-
+  console.log("TRUE")
   P3kill++;
 }
 
@@ -50702,8 +50703,8 @@ catch(e){
   
 
 
-console.log("WHOSEMOVE")
-console.log(whosemove)
+// console.log("WHOSEMOVE")
+// console.log(whosemove)
 
 
 
@@ -50712,7 +50713,16 @@ console.log(whosemove)
 
 
 
+  var a = Xarray.some(function(c) {
+return c[0] == pawn3X && c[1] == pawn3Y
+    })
 
+if(a === true && whosemove == "black"){
+
+  P3kill++;
+}
+
+  
 
 
 
