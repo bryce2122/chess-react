@@ -67,7 +67,7 @@ collection.update(
 
 
 
-    res.redirect("caro-kann");
+    res.redirect("opening");
    
 
     res.status(204).end()

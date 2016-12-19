@@ -3056,6 +3056,24 @@ catch(e){
 
 Ek2kill++;
 
+EKNIGHT2X = null
+EKNIGHT2Y = null
+
+
+Xarray.forEach((c,i) => {
+
+if(c[0] == knight2X && c[1] == knight2Y){
+
+Xarray.splice(i,1)
+
+
+}
+
+
+})
+
+
+
 
 }
 
@@ -18625,7 +18643,7 @@ canMoveBishop2 = function (toX, toY) {
 }
 
 else if(/5/.test(whiteone) == true) {
-
+console.log("THE MARK HAS BEEN HIT")
 
 var this_piece = bArray[0]
 drag_piece = "BishopBoard"
@@ -18635,7 +18653,8 @@ yOverlay = this_piece[1]
 
 var ydiff = (3 - this_piece[1]) 
 var xdiff = (6 - this_piece[0]) 
-
+console.log(xdiff)
+console.log(ydiff)
 
 canMoveBishop = function (toX, toY) {
   const x = bishopPosition[0];
@@ -24998,7 +25017,7 @@ canMoveKing = function (toX, toY) {
 
 catch(e){
 
-  console.log(e)
+  // console.log(e)
   overlayCount = 0
 }
 
@@ -25079,7 +25098,7 @@ catch(e){
  }
 
 
- else if(drag_piece == "BishopBoard1"){
+ else if(drag_piece == "BishopBoard"){
 
   PIECE = BishopBoard1
  }
@@ -25617,11 +25636,11 @@ catch(e){
 
 
 
- Xarray.push([ECASTLE1X,ECASTLE1y], [EBISHOP1X,EBISHOP1Y],[EPAWN1X, EPAWN1Y],
+ Xarray = [[ECASTLE1X,ECASTLE1y], [EBISHOP1X,EBISHOP1Y],[EPAWN1X, EPAWN1Y],
   [EPAWN2X,EPAWN2Y],[EPAWN3X,EPAWN3Y],[EPAWN4X,EPAWN4Y], [EPAWN5X,EPAWN5Y],
   [EPAWN6X,EPAWN6Y],[EPAWN7X,EPAWN7Y],[EPAWN8X, EPAWN8Y],[EKNIGHT1X,EKNIGHT1Y], 
   [EKNIGHT2X,EKNIGHT2Y],[ECASTLE2X,ECASTLE2y],[EBISHOP2X, EBISHOP2Y],[EKINGX,EKINGY],
-  [EQUEENX,EQUEENY])
+  [EQUEENX,EQUEENY]]
 
  Yarray.push([knightX,knightY],[knight2X,knight2Y], [bishopX,bishopY],[bishop2X, bishop2Y],
   [pawn1X,pawn1Y],[pawn2X,pawn2Y],[pawn3X,pawn3Y],[pawn4X,pawn4Y],[pawn5X,pawn5Y],[pawn6X,
@@ -50284,6 +50303,19 @@ function checkOffset(){
 // console.log(drag_piece)
 // console.log(overlayCount)
 // console.log(count_number)
+ Xarray = [[ECASTLE1X,ECASTLE1y], [EBISHOP1X,EBISHOP1Y],[EPAWN1X, EPAWN1Y],
+  [EPAWN2X,EPAWN2Y],[EPAWN3X,EPAWN3Y],[EPAWN4X,EPAWN4Y], [EPAWN5X,EPAWN5Y],
+  [EPAWN6X,EPAWN6Y],[EPAWN7X,EPAWN7Y],[EPAWN8X, EPAWN8Y],[EKNIGHT1X,EKNIGHT1Y], 
+  [EKNIGHT2X,EKNIGHT2Y],[ECASTLE2X,ECASTLE2y],[EBISHOP2X, EBISHOP2Y],[EKINGX,EKINGY],
+  [EQUEENX,EQUEENY]]
+
+
+
+
+
+
+
+
 try {
   ec2offsety = $("#ec2").offset().top
   ec2offsetx = $("#ec2").offset().left
@@ -50455,7 +50487,11 @@ catch(e){
 // console.log("COUNT")
 // console.log(count)
 
-
+// Xarray.push([ECASTLE1X,ECASTLE1y], [EBISHOP1X,EBISHOP1Y],[EPAWN1X, EPAWN1Y],
+//   [EPAWN2X,EPAWN2Y],[EPAWN3X,EPAWN3Y],[EPAWN4X,EPAWN4Y], [EPAWN5X,EPAWN5Y],
+//   [EPAWN6X,EPAWN6Y],[EPAWN7X,EPAWN7Y],[EPAWN8X, EPAWN8Y],[EKNIGHT1X,EKNIGHT1Y], 
+//   [EKNIGHT2X,EKNIGHT2Y],[ECASTLE2X,ECASTLE2y],[EBISHOP2X, EBISHOP2Y],[EKINGX,EKINGY],
+//   [EQUEENX,EQUEENY])
 
 
 
@@ -50478,7 +50514,6 @@ K1kill++
   
 }
 
-
   var a = Xarray.some(function(c) {
 return c[0] == knight2X && c[1] == knight2Y
     })
@@ -50487,6 +50522,8 @@ if(a === true && whosemove == "black"){
 
   K2kill++
 }
+
+
 
     var a = Xarray.some(function(c) {
 return c[0] == bishopX && c[1] == bishopY
@@ -50552,11 +50589,11 @@ if(a === true && whosemove == "black"){
 
   P1kill++;
 }
-  var a = Xarray.some(function(c) {
+  var p2check = Xarray.some(function(c) {
 return c[0] == pawn2X && c[1] == pawn2Y
     })
 
-if(a === true && whosemove == "black"){
+if(p2check === true && whosemove == "black"){
 
   P2kill++;
 }
@@ -50622,10 +50659,8 @@ if(a === true && whosemove == "black"){
 
 
 
-console.log("Position")
-console.log(count)
-console.log(overlayCount)
-console.log(whosemove)
+
+
 }
 
 setInterval(checkOffset, 100);
