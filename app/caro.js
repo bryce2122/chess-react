@@ -811,14 +811,7 @@ var moveKnight = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -842,7 +835,7 @@ var moveKnight2 = function (toX, toY) {
    count_number++
   
 
-   if(count_number == 0){
+    if(count_number == 0){
 
       overlayCount == -1
 
@@ -850,14 +843,7 @@ var moveKnight2 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -883,7 +869,7 @@ var moveBishop = function (toX, toY) {
    count_number++
   
 
-    if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -891,14 +877,7 @@ var moveBishop = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -940,7 +919,7 @@ var moveBishop2 = function (toX, toY) {
   bishopPosition2 = [toX, toY];
    count_number++
   
-    if(count_number == 0){
+   if(count_number == 0){
 
       overlayCount == -1
 
@@ -948,14 +927,7 @@ var moveBishop2 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -993,7 +965,7 @@ var movePawn1 = function (toX, toY) {
   pawnPosition1 = [toX, toY];
   count_number++;
   
-     if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1001,19 +973,11 @@ var movePawn1 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
  }
-
 
 
 
@@ -1044,7 +1008,7 @@ var movePawn2 = function (toX, toY) {
   pawnPosition2 = [toX, toY];
   count_number++
   
-     if(count_number == 0){
+   if(count_number == 0){
 
       overlayCount == -1
 
@@ -1052,19 +1016,11 @@ var movePawn2 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
  }
-
 
 
 
@@ -1093,7 +1049,7 @@ var movePawn3 = function (toX, toY) {
 
   
 
-   if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1101,19 +1057,11 @@ var movePawn3 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
  }
-
 
 
 
@@ -1151,10 +1099,7 @@ var movePawn4 = function (toX, toY) {
     }
  
 
-
-
-
- else  {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1187,7 +1132,7 @@ var movePawn5 = function (toX, toY) {
    count_number++
   
 
-    if(count_number == 0){
+      if(count_number == 0){
 
       overlayCount == -1
 
@@ -1195,14 +1140,7 @@ var movePawn5 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1226,7 +1164,7 @@ var movePawn6 = function (toX, toY) {
    count_number++
  
 
-      if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1234,14 +1172,7 @@ var movePawn6 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1275,8 +1206,7 @@ var movePawn7 = function (toX, toY) {
    count_number++
   
    
-
-      if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1284,19 +1214,11 @@ var movePawn7 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
  }
-
    
 
 
@@ -1324,8 +1246,7 @@ var movePawn8 = function (toX, toY) {
    count_number++
   
 
-
-      if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1333,14 +1254,7 @@ var movePawn8 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1372,7 +1286,7 @@ var moveQueen = function (toX, toY) {
    count_number++
   
 
-      if(count_number == 0){
+     if(count_number == 0){
 
       overlayCount == -1
 
@@ -1380,14 +1294,7 @@ var moveQueen = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1424,7 +1331,7 @@ var moveKing = function (toX, toY) {
       count_number++
 
 
-      if(count_number == 0){
+   if(count_number == 0){
 
       overlayCount == -1
 
@@ -1432,14 +1339,7 @@ var moveKing = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1470,8 +1370,7 @@ var moveCastle1 = function (toX, toY) {
   castlePosition1 = [toX, toY];
   count_number++
   
-
-      if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1479,14 +1378,7 @@ var moveCastle1 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -1516,8 +1408,7 @@ var moveCastle2 = function (toX, toY) {
   castlePosition2 = [toX, toY];
    count_number++
   
-
-      if(count_number == 0){
+  if(count_number == 0){
 
       overlayCount == -1
 
@@ -1525,14 +1416,7 @@ var moveCastle2 = function (toX, toY) {
     }
  
 
- else if(count_number == 1){
-
-
-  overlayCount = 0
- }
-
-
- else if(count_number > 1) {
+ else if(count_number >= 1) {
 
 
   overlayCount += 2
@@ -2816,10 +2700,11 @@ emitChange()
 
 
 catch(e){
+EPAWN3X = null;
+EPAWN3Y = null;
 
 Ep3kill++;
-console.log(e)
-console.log("BREAK")
+
 }
 
 
@@ -17127,7 +17012,7 @@ else if(knight2X == this_knight[0] && knight2Y == this_knight[1]){
 
 
 else if(/Bishop/.test(whiteone) == true){
-
+console.log("BISHOP@@@@@@@")
 if (/a/.test(whiteone) == true){
 
 
@@ -17414,7 +17299,7 @@ canMoveBishop2 = function (toX, toY) {
 }
 
  else if(/b/.test(whiteone) == true){
-
+console.log("BBBBBBB HAS BEEN HIIIIIT")
   if(/0/.test(whiteone) == true) {
 
 
@@ -17652,8 +17537,8 @@ canMoveBishop = function (toX, toY) {
 
  }
 
-else if(/c/.test(whiteone) == 'c'){
-
+else if(/c/.test(whiteone) == true){
+console.log("CCCCCCC HAS BEEN HIIIIIT")
   if(/0/.test(whiteone) == true) {
 
 
@@ -17755,7 +17640,7 @@ canMoveBishop = function (toX, toY) {
 
 
 else if(/4/.test(whiteone) == true) {
-
+console.log("BISHOP222222")
 
 var this_piece = bArray[1]
 drag_piece = "BishopBoard2"
@@ -18848,7 +18733,7 @@ canMoveBishop2 = function (toX, toY) {
 
 }
 
-else if(/h/.test(whiteone) == true){
+else if(/h\d/.test(whiteone) == true){
 
 
   if(/0/.test(whiteone) == true) {
@@ -26186,7 +26071,7 @@ else if (x === knightX && y === knightY && K1kill == 0  ) {
   
     return <K/>
   }
-else if(x == knight2X && y == knight2Y) {
+else if(x == knight2X && y == knight2Y && K2kill == 0) {
 
 return <K2/>
   
@@ -26562,7 +26447,7 @@ $(element).animate(
                 }, 
                 1000
         );
-
+whosemove = "black"
 count++
 
 
@@ -26627,7 +26512,7 @@ $(element).animate(
                 }, 
                 1000
         );
-
+whosemove = "black"
 count++;
 
 
@@ -32177,6 +32062,7 @@ pieceMove(element, "62.5","62.5")
 
 
 else if(/cx/.test(piece) == true){
+var which = pawnArrayx.filter(c => c[0] == 2)
 
 if(/b/.test(piece) == true){
 
@@ -32853,6 +32739,8 @@ pieceMove(element,"62.5","62.5")
 
 
 else if(/4/.test(piece) == true) {
+console.log("WHICH")
+console.log(which)
 
 var this_piece = which.filter(c => c[1] == 3)
 
@@ -32904,7 +32792,8 @@ else if(this_pawn[0] == EPAWN8X && this_pawn[1] == EPAWN8Y){
 
 var distance = (4 - this_pawn[1]) * 62.5 
 
-
+console.log("WE MADE IT!!!!!!!")
+console.log(whosemove)
 pieceMove(element,"62.5","62.5")
 
 
@@ -50734,13 +50623,9 @@ if(a === true && whosemove == "black"){
 
 
 console.log("Position")
-var cl = $("#container").offset().left - $("#ep").offset().left
-console.log(cl)
-console.log("Position2")
-var cp2l = $("#container").offset().left - $("#ep2").offset().left
-console.log(cp2l)
-
-
+console.log(count)
+console.log(overlayCount)
+console.log(whosemove)
 }
 
 setInterval(checkOffset, 100);

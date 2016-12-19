@@ -107,7 +107,7 @@ app.get('/french-defense',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
-app.get('/caro-kann',function(req,res){
+app.get('/opening',function(req,res){
   res.sendFile(path.join(__dirname+'/public/caro.html'));
   
 

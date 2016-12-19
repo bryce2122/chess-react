@@ -2174,11 +2174,11 @@ renderPiece: function (x, y) {
   Xarray = []
   Yarray = []
   
-  try {
+    try {
 
-    var ECASTLE1X = ($("#ec1").offset().left - winx) / 62.5 
+     var ECASTLE1X = Math.abs(($("#container").offset().left - $("#ec1").offset().left) / 62.5)
   
-  var ECASTLE1y = ($("#ec1").offset().top  - 97) / 62.5
+     var ECASTLE1y = Math.abs(($("#container").offset().top + 5 - $("#ec1").offset().top) / 62.5)
 
 
   }
@@ -2186,9 +2186,12 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var ECASTLE1X = (ec1offsetx - winx) / 62.5 
+  var ECASTLE1X = Math.abs(($("#container").offset().left - $("#container").offset().left ) / 62.5)
   
-  var ECASTLE1y = (ec1offsety - 97) / 62.5
+  var ECASTLE1y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
+console.log("CATCH")
+console.log(ECASTLE1X)
+console.log(ECASTLE1y)
   
  
   }
@@ -2196,9 +2199,9 @@ renderPiece: function (x, y) {
   
   try {
 
-    var ECASTLE2X = ($("#ec2").offset().left - 433) / 62.5 
+     var ECASTLE2X = Math.abs(($("#container").offset().left - $("#ec2").offset().left) / 62.5)
   
-  var ECASTLE2y = ($("#ec2").offset().top - 97) / 62.5
+     var ECASTLE2y = Math.abs(($("#container").offset().top + 5 - $("#ec2").offset().top) / 62.5)
 
 
   }
@@ -2206,9 +2209,10 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var ECASTLE2X = (ec2offsetx - 433) / 62.5 
+      
+       var ECASTLE2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 7  ) / 62.5)
   
-  var ECASTLE2y = (ec2offsety - 97) / 62.5
+       var ECASTLE2y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -2218,9 +2222,9 @@ renderPiece: function (x, y) {
 
   try {
 
-    var EQUEENX = ($("#q").offset().left - 433) / 62.5 
+   var EQUEENX = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 3  ) / 62.5)
   
-  var EQUEENY = ($("#q").offset().top - 97) / 62.5
+    var EQUEENY = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -2228,9 +2232,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var EQUEENX = (eqoffsetx - 433) / 62.5 
+     var EQUEENX = (eqoffsetxa - ep1offsetxa) / 62.5 
   
-  var EQUEENY = (eqoffsety - 97) / 62.5
+    var EQUEENY = (eqoffsety - 97) / 62.5
 
 
   }
@@ -2240,9 +2244,9 @@ renderPiece: function (x, y) {
 
   try {
 
-    var EKINGX = ($("#ek").offset().left - 433) / 62.5 
+     var EKINGX = Math.abs(($("#container").offset().left - $("#ek").offset().left) / 62.5)
   
-  var EKINGY = ($("#ek").offset().top - 97) / 62.5
+     var EKINGY = Math.abs(($("#container").offset().top + 5 - $("#ek").offset().top) / 62.5)
 
 
   }
@@ -2250,9 +2254,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var EKINGX = (ekoffsetx - 433) / 62.5 
+     var EKINGX = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 4  ) / 62.5)
   
-  var EKINGY = (ekoffsety - 97) / 62.5
+    var EKINGY = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -2274,9 +2278,9 @@ renderPiece: function (x, y) {
 
   try {
 
-    var EKNIGHT1X = ($("#ek1").offset().left - 433) / 62.5 
+     var EKNIGHT1X = Math.abs(($("#container").offset().left - $("#ek1").offset().left) / 62.5)
   
-  var EKNIGHT1Y = ($("#ek1").offset().top - 97) / 62.5
+   var EKNIGHT1Y =  Math.abs(($("#container").offset().top + 5 - $("#ek1").offset().top) / 62.5)
 
 
   }
@@ -2284,9 +2288,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var EKNIGHT1X = (ek1offsetx - 433) / 62.5 
+  var EKNIGHT1X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 1  ) / 62.5)
   
-  var EKNIGHT1Y = (ek1offsety - 97) / 62.5
+  var EKNIGHT1Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -2294,9 +2298,9 @@ renderPiece: function (x, y) {
 
  try {
 
-    var EKNIGHT2X = ($("#ek2").offset().left - 433) / 62.5 
+    var  EKNIGHT2X = Math.abs(($("#container").offset().left - $("#ek2").offset().left) / 62.5)
   
-  var EKNIGHT2Y = ($("#ek2").offset().top - 97) / 62.5
+   var EKNIGHT2Y =  Math.abs(($("#container").offset().top + 5 - $("#ek2").offset().top) / 62.5)
 
 
   }
@@ -2304,9 +2308,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
- var EKNIGHT2X = (ek2offsetx - 433) / 62.5 
+var EKNIGHT2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 6  ) / 62.5)
   
-  var EKNIGHT2Y = (ek2offsety - 97) / 62.5
+var EKNIGHT2Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -2328,36 +2332,35 @@ renderPiece: function (x, y) {
 
  try {
 
-    var EBISHOP1X = ($("#eb").offset().left - 433) / 62.5 
+    var EBISHOP1X = Math.abs(($("#container").offset().left - $("#eb").offset().left) / 62.5)
   
-  var EBISHOP1Y = ($("#eb").offset().top - 97) / 62.5
+   var EBISHOP1Y = Math.abs(($("#container").offset().top + 5 - $("#eb").offset().top) / 62.5)
 
 
   }
 
   catch(e) {
- 
-var EBISHOP1X = (eb1offsetx - 433) / 62.5
-
-  var EBISHOP1Y = (eb1offsety - 97) / 62.5
+var EBISHOP1X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 2  ) / 62.5)
+  
+var EBISHOP1Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
   }
   
       
 
 try {
 
-    var EBISHOP2X = ($("#eb2").offset().left - 433) / 62.5 
+    var EBISHOP2X = Math.abs(($("#container").offset().left - $("#eb2").offset().left) / 62.5)
   
-  var EBISHOP2Y = ($("#eb2").offset().top - 97) / 62.5
+   var EBISHOP2Y = Math.abs(($("#container").offset().top + 5 - $("#eb2").offset().top) / 62.5)
 
 
   }
 
   catch(e) {
  
-var EBISHOP2X = (eb2offsetx - 433) / 62.5
-
-  var EBISHOP2Y = (eb2offsety - 97) / 62.5
+var EBISHOP2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 5  ) / 62.5)
+  
+var EBISHOP2Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
   }
   
 
@@ -2381,19 +2384,24 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
       try {
 
-    var EPAWN1X = ($("#ep").offset().left - 433) / 62.5 
+     var EPAWN1X = Math.abs(($("#container").offset().left - $("#ep").offset().left) / 62.5) 
   
-  var EPAWN1Y = ($("#ep").offset().top - 97) / 62.5
-
-
+   var EPAWN1Y = Math.abs(($("#container").offset().top + 5 - $("#ep").offset().top) / 62.5) 
+   console.log("EEEEEEEEEEE")
+   console.log(EPAWN1X)
+   console.log(EPAWN1Y)
+   console.log($("#container").offset().top)  
+   console.log($("#ec1").offset().top)
+   console.log($("#ep").offset().top)
+  
   }
 
 
   catch(e) {
 
- var EPAWN1X = (ep1offsetxa - ep1offsetxa) / 62.5 
+  var EPAWN1X = Math.abs(($("#container").offset().left - $("#container").offset().left   ) / 62.5)
   
-  var EPAWN1Y = (ep1offsety - 97) / 62.5
+  var EPAWN1Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
 
 
   }
@@ -2401,9 +2409,9 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-    var EPAWN2X = ($("#ep2").offset().left - 433) / 62.5 
+     var EPAWN2X = Math.abs(($("#container").offset().left - $("#ep2").offset().left) / 62.5)
   
-  var EPAWN2Y = ($("#ep2").offset().top - 97) / 62.5
+   var EPAWN2Y =  Math.abs(($("#container").offset().top + 5 - $("#ep2").offset().top) / 62.5) 
 
 
   }
@@ -2411,9 +2419,10 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
- var EPAWN2X = (ep2offsetx - 433) / 62.5 
+   var EPAWN2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 1 ) / 62.5)
   
-  var EPAWN2Y = (ep2offsety - 97) / 62.5
+  var EPAWN2Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -2421,9 +2430,9 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
     
     try {
 
-    var EPAWN3X = ($("#ep3").offset().left - 433) / 62.5 
+    var EPAWN3X = Math.abs(($("#container").offset().left - $("#ep3").offset().left) / 62.5)
   
-  var EPAWN3Y = ($("#ep3").offset().top - 97) / 62.5
+   var EPAWN3Y = Math.abs(($("#container").offset().top + 5 - $("#ep3").offset().top) / 62.5)
 
 
   }
@@ -2431,9 +2440,10 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
- var EPAWN3X = (ep3offsetxa - ep1offsetxa) / 62.5 
+ var EPAWN3X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 2) / 62.5)
   
-  var EPAWN3Y = (ep3offsety - 97) / 62.5
+  var EPAWN3Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -2456,9 +2466,9 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-    var EPAWN4X = ($("#ep4").offset().left - 433) / 62.5 
+     var EPAWN4X = Math.abs(($("#container").offset().left - $("#ep4").offset().left) / 62.5)
   
-  var EPAWN4Y = ($("#ep4").offset().top - 97) / 62.5
+   var EPAWN4Y = Math.abs(($("#container").offset().top + 5 - $("#ep4").offset().top) / 62.5)
 
 
   }
@@ -2466,9 +2476,10 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
- var EPAWN4X = (ep4offsetx - 433) / 62.5 
+  var EPAWN4X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 3 ) / 62.5)
   
-  var EPAWN4Y = (ep4offsety - 97) / 62.5
+  var EPAWN4Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -2476,9 +2487,9 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-    var EPAWN5X = ($("#ep5").offset().left - 433) / 62.5 
+     var EPAWN5X = Math.abs(($("#container").offset().left - $("#ep5").offset().left) / 62.5)
   
-  var EPAWN5Y = ($("#ep5").offset().top - 97) / 62.5
+   var EPAWN5Y = Math.abs(($("#container").offset().top + 5 - $("#ep5").offset().top) / 62.5)
 
 
   }
@@ -2486,18 +2497,18 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
- var EPAWN5X = (ep5offsetx - 433) / 62.5 
+  var EPAWN5X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 4 ) / 62.5)
   
-  var EPAWN5Y = (ep5offsety - 97) / 62.5
+  var EPAWN5Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
 
 
   }
 
     try {
 
-    var EPAWN6X = ($("#ep6").offset().left - 433) / 62.5 
+    var EPAWN6X =   Math.abs(($("#container").offset().left - $("#ep6").offset().left) / 62.5)
   
-  var EPAWN6Y = ($("#ep6").offset().top - 97) / 62.5
+   var EPAWN6Y = Math.abs(($("#container").offset().top + 5 - $("#ep6").offset().top) / 62.5)
 
 
   }
@@ -2505,9 +2516,10 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
- var EPAWN6X = (ep6offsetx - 433) / 62.5 
+   var EPAWN6X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 5 ) / 62.5)
   
-  var EPAWN6Y = (ep6offsety - 97) / 62.5
+   var EPAWN6Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -2515,9 +2527,9 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-    var EPAWN7X = ($("#ep7").offset().left - 433) / 62.5 
+     var EPAWN7X =  Math.abs(($("#container").offset().left - $("#ep7").offset().left) / 62.5)
   
-  var EPAWN7Y = ($("#ep7").offset().top - 97) / 62.5
+   var EPAWN7Y = Math.abs(($("#container").offset().top + 5 - $("#ep7").offset().top) / 62.5)
 
 
   }
@@ -2525,9 +2537,10 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
   catch(e) {
 
- var EPAWN7X = (ep7offsetx - 433) / 62.5 
+   var EPAWN7X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 6 ) / 62.5)
   
-  var EPAWN7Y = (ep7offsety - 97) / 62.5
+  var EPAWN7Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -2537,19 +2550,20 @@ var EBISHOP2X = (eb2offsetx - 433) / 62.5
 
     try {
 
-    var EPAWN8X = ($("#ep8").offset().left - 433) / 62.5 
+     var EPAWN8X = Math.abs(($("#container").offset().left - $("#ep8").offset().left) / 62.5)
   
-  var EPAWN8Y = ($("#ep8").offset().top - 97) / 62.5
+   var EPAWN8Y = Math.abs(($("#container").offset().top + 5 - $("#ep8").offset().top) / 62.5)
 
 
   }
 
 
   catch(e) {
-
- var EPAWN8X = (ep8offsetx - 433) / 62.5 
+ 
+  var EPAWN8X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 7 ) / 62.5)
   
-  var EPAWN8Y = (ep8offsety - 97) / 62.5
+  var EPAWN8Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
