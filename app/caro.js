@@ -123,9 +123,10 @@ var b2_pixel_subtract = 745.5 - window_difference
 var eb2offsety = 97
 var Eb2kill = 0;
 
+var containerp = $("#container").offset().left
 
-
-
+console.log("CONTAINER")
+console.log(containerp)
 
 var Ep1kill = 0;
 
@@ -2240,7 +2241,7 @@ var King = React.createClass({
         
         cursor: 'move',
         position: 'relative',
-        zIndex: 3
+        zIndex: 20
       }}>
         ♔
       </span>
@@ -3280,8 +3281,9 @@ renderSquare: function (i,BS) {
   if(/O-O/.test(whiteone) == true){
 
 drag_piece = "KB"
-castlePosition2 = [4, 7];
-
+// castlePosition2 = [4, 7];
+xOverlay = 4
+yOverlay = 7
 canMoveKing = function (toX, toY) {
   const x = kingPosition[0];
   const y = kingPosition[1];
@@ -3291,6 +3293,52 @@ canMoveKing = function (toX, toY) {
   return ((dx) === 2 && (dy) === 0) 
         
 }
+
+ moveKing = function (toX, toY) {
+  castlePosition2 = [5, 7];
+  kingPosition = [toX, toY]
+ 
+
+      count_number++
+
+
+      if(count_number == 0){
+
+      overlayCount == -1
+
+
+    }
+ 
+
+ else if(count_number == 1){
+
+
+  overlayCount = 0
+ }
+
+
+ else if(count_number > 1) {
+
+
+  overlayCount += 2
+ }
+
+
+
+
+
+ whosemove = "white"
+
+   
+  emitChange();
+}
+
+
+  
+
+
+
+
 
 
 
@@ -25252,9 +25300,9 @@ renderPiece: function (x, y) {
   pawnArrayx = []
   try {
 
-     ECASTLE1X = ($("#ec1").offset().left - ep1offsetxa) / 62.5 
+     ECASTLE1X = Math.abs(($("#container").offset().left - $("#ec1").offset().left) / 62.5)
   
-     ECASTLE1y = ($("#ec1").offset().top  - 97) / 62.5
+     ECASTLE1y = Math.abs(($("#container").offset().top + 5 - $("#ec1").offset().top) / 62.5)
 
 
   }
@@ -25262,9 +25310,12 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-    ECASTLE1X = (ec1offsetxa - ep1offsetxa) / 62.5 
+  ECASTLE1X = Math.abs(($("#container").offset().left - $("#container").offset().left ) / 62.5)
   
-    ECASTLE1y = (ec1offsety - 97) / 62.5
+  ECASTLE1y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
+console.log("CATCH")
+console.log(ECASTLE1X)
+console.log(ECASTLE1y)
   
  
   }
@@ -25272,9 +25323,9 @@ renderPiece: function (x, y) {
   
   try {
 
-     ECASTLE2X = ($("#ec2").offset().left - ep1offsetxa) / 62.5 
+     ECASTLE2X = Math.abs(($("#container").offset().left - $("#ec2").offset().left) / 62.5)
   
-     ECASTLE2y = ($("#ec2").offset().top - 97) / 62.5
+     ECASTLE2y = Math.abs(($("#container").offset().top + 5 - $("#ec2").offset().top) / 62.5)
 
 
   }
@@ -25282,9 +25333,10 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-      ECASTLE2X = (ec2offsetxa - ep1offsetxa) / 62.5 
+      
+       ECASTLE2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 7  ) / 62.5)
   
-      ECASTLE2y = (ec2offsety - 97) / 62.5
+       ECASTLE2y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -25294,9 +25346,9 @@ renderPiece: function (x, y) {
 
   try {
 
-     EQUEENX = ($("#q").offset().left - ep1offsetxa) / 62.5 
+   EQUEENX = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 3  ) / 62.5)
   
-     EQUEENY = ($("#q").offset().top - 97) / 62.5
+   EQUEENY = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -25316,9 +25368,9 @@ renderPiece: function (x, y) {
 
   try {
 
-     EKINGX = ($("#ek").offset().left - ep1offsetxa) / 62.5 
+     EKINGX = Math.abs(($("#container").offset().left - $("#ek").offset().left) / 62.5)
   
-     EKINGY = ($("#ek").offset().top - 97) / 62.5
+     EKINGY = Math.abs(($("#container").offset().top + 5 - $("#ek").offset().top) / 62.5)
 
 
   }
@@ -25326,9 +25378,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-     EKINGX = (ekoffsetxa - ep1offsetxa) / 62.5 
+     EKINGX = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 4  ) / 62.5)
   
-     EKINGY = (ekoffsety - 97) / 62.5
+    EKINGY = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -25350,9 +25402,9 @@ renderPiece: function (x, y) {
 
   try {
 
-     EKNIGHT1X = ($("#ek1").offset().left - ep1offsetxa) / 62.5 
+     EKNIGHT1X = Math.abs(($("#container").offset().left - $("#ek1").offset().left) / 62.5)
   
-   EKNIGHT1Y = ($("#ek1").offset().top - 97) / 62.5
+   EKNIGHT1Y =  Math.abs(($("#container").offset().top + 5 - $("#ek1").offset().top) / 62.5)
 
 
   }
@@ -25360,9 +25412,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-  EKNIGHT1X = (ek1offsetxa - ep1offsetxa) / 62.5 
+  EKNIGHT1X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 1  ) / 62.5)
   
-   EKNIGHT1Y = (ek1offsety - 97) / 62.5
+  EKNIGHT1Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -25370,9 +25422,9 @@ renderPiece: function (x, y) {
 
  try {
 
-     EKNIGHT2X = ($("#ek2").offset().left - ep1offsetxa) / 62.5 
+     EKNIGHT2X = Math.abs(($("#container").offset().left - $("#ek2").offset().left) / 62.5)
   
-   EKNIGHT2Y = ($("#ek2").offset().top - 97) / 62.5
+   EKNIGHT2Y =  Math.abs(($("#container").offset().top + 5 - $("#ek2").offset().top) / 62.5)
 
 
   }
@@ -25380,9 +25432,9 @@ renderPiece: function (x, y) {
 
   catch(e) {
 
-  EKNIGHT2X = (ek2offsetxa - ep1offsetxa) / 62.5 
+EKNIGHT2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 6  ) / 62.5)
   
-   EKNIGHT2Y = (ek2offsety - 97) / 62.5
+EKNIGHT2Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
 
 
   }
@@ -25404,36 +25456,35 @@ renderPiece: function (x, y) {
 
  try {
 
-     EBISHOP1X = ($("#eb").offset().left - ep1offsetxa) / 62.5 
+     EBISHOP1X = Math.abs(($("#container").offset().left - $("#eb").offset().left) / 62.5)
   
-   EBISHOP1Y = ($("#eb").offset().top - 97) / 62.5
+   EBISHOP1Y = Math.abs(($("#container").offset().top + 5 - $("#eb").offset().top) / 62.5)
 
 
   }
 
   catch(e) {
- 
- EBISHOP1X = (eb1offsetxa - ep1offsetxa) / 62.5
-
-   EBISHOP1Y = (eb1offsety - 97) / 62.5
+EBISHOP1X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 2  ) / 62.5)
+  
+EBISHOP1Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
   }
   
       
 
 try {
 
-     EBISHOP2X = ($("#eb2").offset().left - ep1offsetxa) / 62.5 
+     EBISHOP2X = Math.abs(($("#container").offset().left - $("#eb2").offset().left) / 62.5)
   
-   EBISHOP2Y = ($("#eb2").offset().top - 97) / 62.5
+   EBISHOP2Y = Math.abs(($("#container").offset().top + 5 - $("#eb2").offset().top) / 62.5)
 
 
   }
 
   catch(e) {
  
-EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
-
-   EBISHOP2Y = (eb2offsety - 97) / 62.5
+EBISHOP2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 5  ) / 62.5)
+  
+EBISHOP2Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5))/ 62.5)
   }
   
 
@@ -25457,19 +25508,24 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
       try {
 
-     EPAWN1X = ($("#ep").offset().left - ep1offsetxa) / 62.5 
+     EPAWN1X = Math.abs(($("#container").offset().left - $("#ep").offset().left) / 62.5) 
   
-   EPAWN1Y = ($("#ep").offset().top - 97) / 62.5
-
-
+   EPAWN1Y = Math.abs(($("#container").offset().top + 5 - $("#ep").offset().top) / 62.5) 
+   console.log("EEEEEEEEEEE")
+   console.log(EPAWN1X)
+   console.log(EPAWN1Y)
+   console.log($("#container").offset().top)  
+   console.log($("#ec1").offset().top)
+   console.log($("#ep").offset().top)
+  
   }
 
 
   catch(e) {
 
-  EPAWN1X = (ep1offsetxa - ep1offsetxa) / 62.5 
+  EPAWN1X = Math.abs(($("#container").offset().left - $("#container").offset().left   ) / 62.5)
   
-   EPAWN1Y = (ep1offsety - 97) / 62.5
+  EPAWN1Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
 
 
   }
@@ -25477,9 +25533,9 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
     try {
 
-     EPAWN2X = ($("#ep2").offset().left - ep1offsetxa) / 62.5 
+     EPAWN2X = Math.abs(($("#container").offset().left - $("#ep2").offset().left) / 62.5)
   
-   EPAWN2Y = ($("#ep2").offset().top - 97) / 62.5
+   EPAWN2Y =  Math.abs(($("#container").offset().top + 5 - $("#ep2").offset().top) / 62.5) 
 
 
   }
@@ -25487,9 +25543,10 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
   catch(e) {
 
-  EPAWN2X = (ep2offsetxa - ep1offsetxa) / 62.5 
+   EPAWN2X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 1 ) / 62.5)
   
-   EPAWN2Y = (ep2offsety - 97) / 62.5
+  EPAWN2Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -25497,9 +25554,9 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
     
     try {
 
-     EPAWN3X = ($("#ep3").offset().left - ep1offsetxa) / 62.5 
+     EPAWN3X = Math.abs(($("#container").offset().left - $("#ep3").offset().left) / 62.5)
   
-   EPAWN3Y = ($("#ep3").offset().top - 97) / 62.5
+   EPAWN3Y = Math.abs(($("#container").offset().top + 5 - $("#ep3").offset().top) / 62.5)
 
 
   }
@@ -25507,9 +25564,10 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
   catch(e) {
 
-  EPAWN3X = (ep3offsetxa - ep1offsetxa) / 62.5 
+ EPAWN3X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 2) / 62.5)
   
-   EPAWN3Y = (ep3offsety - 97) / 62.5
+  EPAWN3Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -25532,9 +25590,9 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
     try {
 
-     EPAWN4X = ($("#ep4").offset().left - ep1offsetxa) / 62.5 
+     EPAWN4X = Math.abs(($("#container").offset().left - $("#ep4").offset().left) / 62.5)
   
-   EPAWN4Y = ($("#ep4").offset().top - 97) / 62.5
+   EPAWN4Y = Math.abs(($("#container").offset().top + 5 - $("#ep4").offset().top) / 62.5)
 
 
   }
@@ -25542,9 +25600,10 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
   catch(e) {
 
-  EPAWN4X = (ep4offsetxa - ep1offsetxa) / 62.5 
+  EPAWN4X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 3 ) / 62.5)
   
-   EPAWN4Y = (ep4offsety - 97) / 62.5
+  EPAWN4Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -25552,9 +25611,9 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
     try {
 
-     EPAWN5X = ($("#ep5").offset().left - ep1offsetxa) / 62.5 
+     EPAWN5X = Math.abs(($("#container").offset().left - $("#ep5").offset().left) / 62.5)
   
-   EPAWN5Y = ($("#ep5").offset().top - 97) / 62.5
+   EPAWN5Y = Math.abs(($("#container").offset().top + 5 - $("#ep5").offset().top) / 62.5)
 
 
   }
@@ -25562,18 +25621,18 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
   catch(e) {
 
-  EPAWN5X = (ep5offsetxa - ep1offsetxa) / 62.5 
+  EPAWN5X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 4 ) / 62.5)
   
-   EPAWN5Y = (ep5offsety - 97) / 62.5
+  EPAWN5Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
 
 
   }
 
     try {
 
-     EPAWN6X = ($("#ep6").offset().left - ep1offsetxa) / 62.5 
+     EPAWN6X =   Math.abs(($("#container").offset().left - $("#ep6").offset().left) / 62.5)
   
-   EPAWN6Y = ($("#ep6").offset().top - 97) / 62.5
+   EPAWN6Y = Math.abs(($("#container").offset().top + 5 - $("#ep6").offset().top) / 62.5)
 
 
   }
@@ -25581,9 +25640,10 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
   catch(e) {
 
-  EPAWN6X = (ep6offsetxa - ep1offsetxa) / 62.5 
+   EPAWN6X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 5 ) / 62.5)
   
-   EPAWN6Y = (ep6offsety - 97) / 62.5
+  EPAWN6Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -25591,9 +25651,9 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
     try {
 
-     EPAWN7X = ($("#ep7").offset().left - ep1offsetxa) / 62.5 
+     EPAWN7X =  Math.abs(($("#container").offset().left - $("#ep7").offset().left) / 62.5)
   
-   EPAWN7Y = ($("#ep7").offset().top - 97) / 62.5
+   EPAWN7Y = Math.abs(($("#container").offset().top + 5 - $("#ep7").offset().top) / 62.5)
 
 
   }
@@ -25601,9 +25661,10 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
   catch(e) {
 
-  EPAWN7X = (ep7offsetxa - ep1offsetxa) / 62.5 
+   EPAWN7X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 6 ) / 62.5)
   
-   EPAWN7Y = (ep7offsety - 97) / 62.5
+  EPAWN7Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -25613,19 +25674,20 @@ EBISHOP2X = (eb2offsetxa - ep1offsetxa) / 62.5
 
     try {
 
-     EPAWN8X = ($("#ep8").offset().left - ep1offsetxa) / 62.5 
+     EPAWN8X = Math.abs(($("#container").offset().left - $("#ep8").offset().left) / 62.5)
   
-   EPAWN8Y = ($("#ep8").offset().top - 97) / 62.5
+   EPAWN8Y = Math.abs(($("#container").offset().top + 5 - $("#ep8").offset().top) / 62.5)
 
 
   }
 
 
   catch(e) {
-
-  EPAWN8X = (ep8offsetxa - ep1offsetxa) / 62.5 
+ 
+  EPAWN8X = Math.abs(($("#container").offset().left - $("#container").offset().left + 62.5 * 7 ) / 62.5)
   
-   EPAWN8Y = (ep8offsety - 97) / 62.5
+  EPAWN8Y = Math.abs(($("#container").offset().top + 5 - ($("#container").offset().top + 5 + 62.5))/ 62.5)
+
 
 
   }
@@ -25717,67 +25779,27 @@ if(pcheck.toString() != prevc.toString()){
 
   if (x === knightX && y === knightY && K1kill == 0  ) {
   
-      var a = Xarray.some(function(c) {
-return c[0] == knightX && c[1] == knightY
-    })
 
-if(a === false){
+   return <K/>
 
-  return <K/>
-}
-else {
 
-  K1kill++;
-}
+
   }
 else if(x == knight2X && y == knight2Y && K2kill == 0) {
 
-  var a = Xarray.some(function(c) {
-return c[0] == knight2X && c[1] == knight2Y
-    })
-
-if(a === false){
-
-  return <K2/>
-}
-else {
-
-  K2kill++;
-}
+ return <K2/>
   
 }
 
 else if(x == bishopX && y == bishopY && B1kill == 0){
   
-    var a = Xarray.some(function(c) {
-return c[0] == bishopX && c[1] == bishopY
-    })
-
-if(a === false){
-
-  return <B1/>
-}
-else {
-
-  B1kill++;
-}
+return <B1/>
   
 }
 
 else if(x == bishop2X && y == bishop2Y && B2kill == 0){
 
-   var a = Xarray.some(function(c) {
-return c[0] == bishop2X && c[1] == bishop2Y
-    })
-
-if(a === false){
-
-  return <B2/>
-}
-else {
-
-  B2kill++;
-}
+return <B2/>
 
   
 }
@@ -25785,230 +25807,101 @@ else {
 
 else if(x == pawn1X && y == pawn1Y && P1kill == 0){
 
+return <P1/>
 
-    var a = Xarray.some(function(c) {
-return c[0] == pawn1X && c[1] == pawn1Y
-    })
-
-if(a === false){
-
-  return <P1/>
-}
-else {
-
-  P1kill++;
-}
 }
 
 else if(x == pawn2X && y == pawn2Y && P2kill == 0){
 
-  var a = Xarray.some(function(c) {
-return c[0] == pawn2X && c[1] == pawn2Y
-    })
+//   var a = Xarray.some(function(c) {
+// return c[0] == pawn2X && c[1] == pawn2Y
+//     })
 
-if(a === false){
+// if(a === false){
 
   return <P2/>
-}
-else {
+// }
+// else {
 
-  P2kill++;
-}
+//   P2kill++;
+// }
   
 }
 
 
 else if(x == pawn3X && y == pawn3Y && P3kill == 0){
 
-//   var a = Xarray.some(function(c) {
-// return c[0] == pawn3X && c[1] == pawn3Y
-//     })
-
-// if(a === false){
-
-//   return <P3/>
-// }
-// else {
-
-//   P3kill++;
-// }
-  
 return <P3/>
 
 }
 
 else if(x == pawn4X && y == pawn4Y && P4kill == 0){
 
- let p = Xarray.some(function(c) {
-return c[0] == pawn4X && c[1] == pawn4Y
-    })
 
-if(p === false){
 
   return <P4/>
-}
-else {
 
-  P4kill++;
-}
-  
-
-
-
-  
-}
+  }
 
 else if(x == pawn5X && y == pawn5Y && P5kill == 0){
 
 
-  var a = Xarray.some(function(c) {
-return c[0] == pawn5X && c[1] == pawn5Y
-    })
-
-if(a === false){
-
-  return <P5/>
-}
-else {
-
-  P5kill++;
-}
-
-
-
-
-
+return <P5/>
 
 
 }
 
 else if(x == pawn6X && y == pawn6Y && P6kill == 0){
 
+ return <P6/>
 
-    var a = Xarray.some(function(c) {
-return c[0] == pawn6X && c[1] == pawn6Y
-    })
-
-if(a === false){
-
-  return <P6/>
-}
-else {
-
-  P6kill++;
-}
 }
 
 else if(x == pawn7X && y == pawn7Y && P7kill == 0){
 
-
-    var a = Xarray.some(function(c) {
-return c[0] == pawn7X && c[1] == pawn7Y
-    })
-
-if(a === false){
-
-  return <P7/>
-}
-else {
-
-  P7kill++;
-}
+return <P7/>
 }
 
 
 else if(x == pawn8X && y == pawn8Y && P8kill == 0){
 
 
-    var a = Xarray.some(function(c) {
-return c[0] == pawn8X && c[1] == pawn8Y
-    })
-
-if(a === false){
+  
 
   return <P8/>
-}
-else {
 
-  P8kill++;
-}
 }
 
 else if(x == castle1X && y == castle1Y && C1kill == 0){
 
 
-  var a = Xarray.some(function(c) {
-return c[0] == castle1X && c[1] == castle1Y
-    })
-
-if(a === false){
-
-  return <C1/>
-}
-else {
-
-  C1kill++;
-}
+return <C1/>
 
 }
 
 else if(x == castle2X && y == castle2Y && C2kill == 0){
 
-  var a = Xarray.some(function(c) {
-return c[0] == castle2X && c[1] == castle2Y
-    })
-
-if(a === false){
+ 
 
   return <C2/>
-}
-else {
 
-  C2kill++;
-}
-  
-
-
-
-}
+  }
 
 else if(x == queenX && y == queenY && Qkill == 0){
 
 
-  var a = Xarray.some(function(c) {
-return c[0] == queenX && c[1] == queenY
-    })
-
-if(a === false){
-
   return <Q/>
-}
-else {
-
-  Qkill++;
-}
-
-
-
 
 }
 
 else if(x == kingX && y == kingY && Kkill == 0){
 
 
-    var a = Xarray.some(function(c) {
-return c[0] == kingX && c[1] == kingY
-    })
-
-if(a === false){
+ 
 
   return <KING/>
 }
-else {
 
-  Kkill++;
-}
-}
 
 
 
@@ -26299,10 +26192,7 @@ return <K2/>
   
 }
 
-else if(x == 7 && y == 3){
-  
-  
-}
+
 
 else if(x == bishopX && y == bishopY && B1kill == 0){
   
@@ -26333,22 +26223,10 @@ else if(x == pawn2X && y == pawn2Y && P2kill == 0){
 
 else if(x == pawn3X && y == pawn3Y && P3kill == 0){
 
-console.log(Xarray)
+
   
-  var a = Xarray.some(function(c) {
-return c[0] == pawn3X && c[1] == pawn3Y
-    })
-
-if(a === false){
-  console.log("FALSE")
+  
   return <P3/>
-}
-else {
-  console.log("TRUE")
-  P3kill++;
-}
-
-
 
 
 }
@@ -26356,40 +26234,19 @@ else {
 else if(x == pawn4X && y == pawn4Y && P4kill == 0) {
 
 
-   let p = Xarray.some(function(c) {
-return c[0] == pawn4X && c[1] == pawn4Y
-    })
-
-if(p === false){
+   
 
   return <P4/>
-}
-else {
 
-  P4kill++;
-}
-  
-}
+  }
 
 else if(x == pawn5X && y == pawn5Y && P5kill == 0){
 
-let p = Xarray.some(function(c) {
-return c[0] == pawn5X && c[1] == pawn5Y
-    })
 
-if(p === false){
 
   return <P5/>
-}
-else {
 
-  P5kill++;
-}
-  
-
-
-
-}
+  }
 
 else if(x == pawn6X && y == pawn6Y && P6kill == 0){
 
@@ -26793,8 +26650,20 @@ if (count == m){
 
 var piece = blackmove[number]
 
- 
-  if(piece.length < 3) {
+ if(/O-O/.test(piece) == true){
+
+
+  pieceMove("#ek", "0.0", "125.0")
+   pieceMove("#ec2", "0.0", "-125.0")
+
+count--;
+
+ }
+  
+
+
+
+  else if(piece.length < 3) {
 
 
  if (piece.charAt(0) == 'a'){
@@ -27724,7 +27593,8 @@ else if(/6/.test(piece) == true) {
 
 var this_piece = which.filter(c => c[1] == 1)
 
-
+console.log("THIS PIECE")
+console.log(this_piece)
 var this_pawn = this_piece[0]
 
 if(this_pawn[0] == EPAWN1X && this_pawn[1] == EPAWN1Y){
@@ -50710,10 +50580,100 @@ catch(e){
 
 
 
+        var a = Xarray.some(function(c) {
+return c[0] == knightX && c[1] == knightY
+    })
 
+if(a === true && whosemove == "black"){
+K1kill++
+  
+}
 
 
   var a = Xarray.some(function(c) {
+return c[0] == knight2X && c[1] == knight2Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  K2kill++
+}
+
+    var a = Xarray.some(function(c) {
+return c[0] == bishopX && c[1] == bishopY
+    })
+
+if(a === true && whosemove == "black"){
+
+B1kill++;
+}
+
+   var a = Xarray.some(function(c) {
+return c[0] == bishop2X && c[1] == bishop2Y
+    })
+
+if(a === true && whosemove == "black"){
+
+    B2kill++;
+ 
+}
+
+  var a = Xarray.some(function(c) {
+return c[0] == castle1X && c[1] == castle1Y
+    })
+
+if(a === true && whosemove == "black"){
+ C1kill++;
+  
+}
+
+
+  var a = Xarray.some(function(c) {
+return c[0] == castle2X && c[1] == castle2Y
+    })
+
+if(a === true && whosemove == "black"){
+ C2kill++;
+  
+}
+
+  var a = Xarray.some(function(c) {
+return c[0] == queenX && c[1] == queenY
+    })
+
+if(a === true && whosemove == "black"){
+Qkill++
+  
+}
+
+  var a = Xarray.some(function(c) {
+return c[0] == kingX && c[1] == kingY
+    })
+
+if(a === true && whosemove == "black"){
+ Kkill++;
+  
+}
+
+  var a = Xarray.some(function(c) {
+return c[0] == pawn1X && c[1] == pawn1Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P1kill++;
+}
+  var a = Xarray.some(function(c) {
+return c[0] == pawn2X && c[1] == pawn2Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P2kill++;
+}
+ 
+
+ var a = Xarray.some(function(c) {
 return c[0] == pawn3X && c[1] == pawn3Y
     })
 
@@ -50723,36 +50683,62 @@ if(a === true && whosemove == "black"){
 }
 
   
+  var a = Xarray.some(function(c) {
+return c[0] == pawn4X && c[1] == pawn4Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P4kill++;
+}
+
+  var a = Xarray.some(function(c) {
+return c[0] == pawn5X && c[1] == pawn5Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P5kill++;
+}
 
 
 
+  var a = Xarray.some(function(c) {
+return c[0] == pawn6X && c[1] == pawn6Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P6kill++;
+}
+
+
+  var a = Xarray.some(function(c) {
+return c[0] == pawn7X && c[1] == pawn7Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P7kill++;
+}
+
+  var a = Xarray.some(function(c) {
+return c[0] == pawn8X && c[1] == pawn8Y
+    })
+
+if(a === true && whosemove == "black"){
+
+  P8kill++;
+}
 
 
 
-
-
-
-//   // console.log("CASTLE")
-//   // console.log(eptop)
-//   //  console.log(epleft)
-//   // console.log("BISHOP")
-//   // console.log(bisht)
-//   //  console.log(bishl)
-//   //  console.log("KNIGHT")
-//   //  console.log(eknt)
-//   //  console.log(eknl)
-
-
-// // console.log(prevept)
-// // console.log(prevepl)
-// // console.log("break")
-
-
-
-
-
-
-
+console.log("Position")
+var cl = $("#container").offset().left - $("#ep").offset().left
+console.log(cl)
+console.log("Position2")
+var cp2l = $("#container").offset().left - $("#ep2").offset().left
+console.log(cp2l)
 
 
 }

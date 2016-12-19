@@ -47,12 +47,12 @@
 
 <div class="panel panel-default">
   <div class="panel-heading" id="m">Chesstart</div>
-  <div class="panel-body" id="basic">Learning Chess Openings Interactively</div> 
+  <div class="panel-body" id="basic">Learn Chess Openings Interactively</div> 
 
 </div>
  
 
-  <div id="train" class="btn-group" data-toggle="buttons">
+ <!--  <div id="train" class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
     <input type="checkbox" checked autocomplete="off"> Train Mode
   </label>
@@ -60,24 +60,25 @@
     <input type="checkbox" autocomplete="off"> Test Mode
   </label>
  
-</div>
+</div> -->
+<div id="center">
+<a id="link" href="http://www.pgnmentor.com/files.html#openings">Copy and Paste Chess Openings From Here</a>
+ </div> 
 
-  
 
 
-
-<form action="upload"
+<form id="paste" action="upload"
 enctype="multipart/form-data" method="post">
 <p>
-Type some text (if you like):<br>
-<input type="text" name="textline" size="30">
+Enter an Opening:<br>
+<input type="text" name="textline" placeholder="1.d4 Knightf6 2.c4 e6 3.Knightf3" size="30">
 </p>
-<p>
+<!-- <p>
 Please specify a file, or a set of files:<br>
 <input type="file" name="datafile" size="40">
-</p>
+</p> -->
 <div>
-<input type="submit" value="Send">
+<input id="s" type="submit" value="Send">
 </div>
 </form>
 
@@ -85,7 +86,7 @@ Please specify a file, or a set of files:<br>
 
 
 
-  <div class="dropdown open" id="dd">
+ <!--  <div class="dropdown open" id="dd">
   <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    OPENINGS
   </button>
@@ -95,7 +96,7 @@ Please specify a file, or a set of files:<br>
     <a class="dropdown-item" href="/stonewall">Stonewall-Attack</a>
     <a class="dropdown-item" href="/french-defense">French-Defense</a>
   </div>
-</div>
+</div> -->
 
 
 </body>
